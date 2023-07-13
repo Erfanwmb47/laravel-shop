@@ -34,14 +34,14 @@ use Illuminate\Support\Facades\Route;
 
 
 
-
+//hello
 
 
 Route::domain(parse_url(config('app.url'),PHP_URL_HOST))->group(function (){
    // session()->forget('errors');
 
         Route::get('/', function () {
-            dd(\Illuminate\Support\Facades\Gate::raw('show-categories',[]));
+            //dd(\Illuminate\Support\Facades\Gate::raw('show-categories',[]));
             return view('Admin.Dashboard');
         })->name('DashboardPanel');
         //Brands
@@ -209,7 +209,7 @@ Route::domain(parse_url(config('app.url'),PHP_URL_HOST))->group(function (){
     Route::get('login', function () {
 
             return view('Admin.Users.Login');
-            return view('dashboard');
+            //return view('dashboard');
         })->middleware(['auth'])->name('dashboard');
     Route::get('/reports/users',[\App\Http\Controllers\Admin\Reports\UsersReportController::class,'index'])->name('reports.users');
 
