@@ -1,0 +1,28 @@
+.sms-div{
+    padding: 4rem;
+}
+.sms-code-verification {
+    border: 3px solid #aaa;
+    margin: 0 auto;
+    max-width: 400px;
+    padding: 3rem;
+    text-align: center;
+}
+.sms-code-verification h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+.sms-code-verification input {
+    font-size: 1.5rem;
+    height: 2rem;
+    text-align: center;
+    width: 3rem;
+}
+.sms-code-verification [type=submit] {
+    background-color: #000;
+    color: #fff;
+    border: 1px solid #fff;
+    margin-top: 1rem;
+    padding: 0.5rem;
+}
