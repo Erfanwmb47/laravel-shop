@@ -1,0 +1,65 @@
+.dropbtnAddress {
+    z-index: 0;
+    width: 100%;
+}
+
+.dropbtnAddress:hover, .dropbtnAddress:focus {
+
+}
+
+#myInputProvince {
+    box-sizing: border-box;
+    background-image: url('searchicon.png');
+    background-position: 14px 12px;
+    background-repeat: no-repeat;
+    font-size: 16px;
+    padding: 14px 20px 12px 45px;
+    border: none;
+    border-bottom: 1px solid #ddd;
+}
+
+#myInputProvince:focus {outline: 3px solid #ddd;}
+
+#myInputCounty {
+    box-sizing: border-box;
+    background-image: url('searchicon.png');
+    background-position: 14px 12px;
+    background-repeat: no-repeat;
+    font-size: 16px;
+    padding: 14px 20px 12px 45px;
+    border: none;
+    border-bottom: 1px solid #ddd;
+}
+
+#myInputCounty:focus {outline: 3px solid #ddd;}
+.dropdownAddress {
+    position: relative;
+    display: inline-block;
+
+}
+
+.dropdown-content-address {
+    display: none;
+    position: absolute;
+    background-color: #f6f6f6;
+    min-width: 230px;
+    overflow: auto;
+    border: 1px solid #ddd;
+    z-index: 1;
+    top: 50px;
+    overflow-y:scroll;
+    max-height:200px;
+}
+
+.dropdown-content-address span {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdownAddress span:hover {background-color: #ddd;}
+
+.showProvince {display: block;}
+.showCounty {display: block;}
+
