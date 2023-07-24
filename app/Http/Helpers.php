@@ -36,3 +36,38 @@ if (! function_exists('order_status')){
     }
 
 }
+
+
+
+if (! function_exists('gallery_flag')){
+    function gallery_flag($flag){
+
+
+        //'brands','categories','users','products','sliders','countries'
+        if($flag =='Brands'){
+            return 'برندها';
+        }
+        else if ($flag =='Categories'){
+            return 'دسته بندی ها';
+        }
+        else if ($flag =='Users'){
+            return 'کاربران';
+        }
+        else if ($flag =='Products'){
+            return 'محصولات';
+        }
+        else if ($flag =='Sliders'){
+            return 'اسلایدرها';
+        }
+        else if ($flag =='Countries'){
+            return 'کشورها';
+        }
+        else if ($flag =='Uncategorized'){
+            return 'بدون دسته بندی';
+        }
+        else
+            return '';
+    }
+
+}
+

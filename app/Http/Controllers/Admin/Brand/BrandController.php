@@ -45,8 +45,7 @@ class BrandController extends AdminController
         return view('Admin.Brands.Create',[
             'brands' => Brand::all(),
             'countries' => Country::all(),
-              'galleries' => Gallery::all()
-
+            'galleries' => Gallery::all()
         ]);
 
     }
