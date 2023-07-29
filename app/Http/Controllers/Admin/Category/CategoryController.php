@@ -20,8 +20,6 @@ class CategoryController extends AdminController
      */
     public function index()
     {
-
-        dd('fo');
            return view('Admin.Categories.Index', [
                'categories' => Category::all(),
                'categorySelected' => '0',
@@ -37,11 +35,10 @@ class CategoryController extends AdminController
      */
     public function create()
     {
-
         return view('Admin.Categories.Create',[
 
             'categories' => Category::all(),
-            'galleries' =>Gallery::all()
+            'galleries' =>Gallery::whereFlag('Categories')->get()
 
         ]);
 

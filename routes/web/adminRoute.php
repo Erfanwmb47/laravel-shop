@@ -4,6 +4,7 @@
 use App\Http\Controllers\Admin\Brand\BrandController;
 use App\Http\Controllers\Admin\Category\CategoryController;
 use App\Http\Controllers\Admin\Comment\CommentController;
+use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\Discount\DiscountController;
 use App\Http\Controllers\Admin\Gallery\GalleryController;
 use App\Http\Controllers\Admin\Order\OrderController;
@@ -11,6 +12,7 @@ use App\Http\Controllers\Admin\Order\PaymentHistory\PaymentHistoryController;
 use App\Http\Controllers\Admin\Payment\PaymentGatewayController;
 use App\Http\Controllers\Admin\Product\Gallery\ProductGalleryController;
 use App\Http\Controllers\Admin\Product\ProductController;
+use App\Http\Controllers\Admin\Setting\SettingController;
 use App\Http\Controllers\Admin\Slider\SliderController;
 use App\Http\Controllers\Admin\Transportation\TransportationsController;
 use App\Http\Controllers\Admin\User\Address\AddressController;
@@ -34,16 +36,13 @@ use Illuminate\Support\Facades\Route;
 
 
 
-//hello
+
 
 
 Route::domain(parse_url(config('app.url'),PHP_URL_HOST))->group(function (){
    // session()->forget('errors');
 
-        Route::get('/', function () {
-            //dd(\Illuminate\Support\Facades\Gate::raw('show-categories',[]));
-            return view('Admin.Dashboard');
-        })->name('DashboardPanel');
+        Route::get('/',[DashboardController::class,'index'])->name('DashboardPanel');
         //Brands
         Route::prefix('brands')->middleware('can:show-brands')->group(function () {
             Route::post('/', [BrandController::class, 'index']);
@@ -207,13 +206,13 @@ Route::domain(parse_url(config('app.url'),PHP_URL_HOST))->group(function (){
     Route::post('paymentgateways',[PaymentGatewayController::class,'index']);
 
     Route::get('login', function () {
-
             return view('Admin.Users.Login');
-            //return view('dashboard');
+            return view('dashboard');
         })->middleware(['auth'])->name('dashboard');
     Route::get('/reports/users',[\App\Http\Controllers\Admin\Reports\UsersReportController::class,'index'])->name('reports.users');
+    Route::prefix('setting')->name('admin.setting.')->group(function (){
+        Route::get('/',[SettingController::class,'index'])->name('index');
+        Route::patch('/update',[SettingController::class,'update'])->name('update');
 
-
-
-
+   });
 });

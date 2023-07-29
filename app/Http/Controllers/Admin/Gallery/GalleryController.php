@@ -9,21 +9,24 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
-
 class GalleryController extends AdminController
 
 {
+    public  $flag=['Brands','Categories','Users','Products','Sliders','Countries'];
+
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     *
      */
     public function index(Request $request)
     {
+
         //session()->forget('errors');
        // $request->session()->regenerate();
         return view('Admin.Galleries.Index',[
             'galleries'=>$this->PaginatePagez(Gallery::query()->latest(),$request,['title','alt','mime','flag'],[]),
+            'flag'=>$this->flag
         ]);
     }
 

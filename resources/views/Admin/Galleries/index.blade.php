@@ -2,16 +2,16 @@
 
 @section('css')
     <link rel="stylesheet" href="/Admin/css/GalleryFileUploader.css" />
-@endsection
+    @endsection
 @section('content')
     <div class="grid-rtl grid-cols-12 gap-6 mt-8">
 
         <div class="col-span-12 lg:col-span-3 xxl:col-span-2">
 
+            <h2 class="intro-y text-lg font-medium ml-auto mt-2">
+                آرشیو رسانه ها           </h2>
             <!-- BEGIN: File Manager Menu -->
             <div class="intro-y box p-5 mt-6 z-10">
-                <h2 class="intro-y text-lg font-medium ml-auto mt-2">
-                    آرشیو رسانه ها           </h2>
                 <div class="mt-1">
                     <a href="" class="flex-reverse-start items-center px-3 py-2 rounded-md bg-theme-1 text-white font-medium"> <i class="w-4 h-4 ml-2" data-feather="image"></i> عکس ها  </a>
                     <a href="" class="flex-reverse-start items-center px-3 py-2 mt-2 rounded-md"> <i class="w-4 h-4 ml-2" data-feather="video"></i> ویدیو ها  </a>
@@ -78,7 +78,7 @@
                             </div>
                             <a href="" class="  mx-auto my-auto">
                                 <div class="file__icon__gallerys m-auto justify-center items-center">
-                                    <img src="{{str_replace('public','/storage',$gallery->path)}}" class="gallery_image ">
+                                    <img src="{{str_replace('public/','/storage/',$gallery->path)}}" class="gallery_image ">
                                 </div>
                             </a>
                             <a href="" class="block font-medium mt-4 text-center truncate">{{$gallery->title}}</a>
@@ -247,15 +247,13 @@
                                 <input class="  input w-full rtl border mt-2 align-right" value="{{$gallery->alt}}" id="FileAlt" name="alt" placeholder="alt عکس را وارد کنید ">
 
                                 <label class="  w-full h-full text-right float-right ml-2 mt-2 text-blue-400" id="labelFileFlag">شاخص </label>
+
                                 <div class="mt-1 ">
                                     <select class="select2 block w-full border  mt-2" name="flag" style="width: 100% !important;">
                                         <option value="0" disabled label="انتخاب شاخص ... " selected="selected" name="flag" class="align-right" style="direction: rtl">انتخاب شاخص ... </option>
-                                        <option value="brands" @if($gallery->flag == 'brand')selected @endif label="برند">برند</option>
-                                        <option value="categories" @if($gallery->flag == 'categories')selected @endif label="دسته بندی ها">دسته بندی ها</option>
-                                        <option value="users" @if($gallery->flag == 'users')selected @endif label="کاربران">کاربران</option>
-                                        <option value="products" @if($gallery->flag == 'products')selected @endif label="محصولات">محصولات</option>
-                                        <option value="sliders" @if($gallery->flag == 'sliders')selected @endif label="اسلایدر ها">اسلایدر ها</option>
-                                        <option value="Exa" @if($gallery->flag == 'Exa')selected @endif label="اسلایدر ها">Exa</option>
+                                        @foreach($flag as $f)
+                                            <option value="brands" @if($gallery->flag == $f)selected @endif label="{{$f}}">{{gallery_flag($f)}}</option>
+                                        @endforeach
                                     </select>
                                 </div>
 

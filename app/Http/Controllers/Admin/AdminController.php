@@ -3,12 +3,23 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Metakey;
+use Artesaos\SEOTools\Facades\SEOTools;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\View;
 
 class AdminController extends Controller
 {
+
+    public function __construct()
+    {
+        View::share('site_name',json_decode(Metakey::where('key','shop_name')->first()->Setting->object));
+        SEOTools::setDescription(json_decode(Metakey::where('key','shop_name')->first()->Setting->object)->Persian_name);
+
+    }
+
     public function PaginatePagez($object,Request $request,$items,$list)
     {
 

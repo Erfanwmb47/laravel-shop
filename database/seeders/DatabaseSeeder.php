@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Database\Seeders\Setting\MetaKeySeeder;
+use Database\Seeders\Setting\SettingSeeder;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -21,6 +23,8 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
         $this->call([
+            SettingSeeder::class,
+            MetaKeySeeder::class,
             countryGalleries::class,
             GalleryTableSeeder::class,
             UserTableSeeder::class,

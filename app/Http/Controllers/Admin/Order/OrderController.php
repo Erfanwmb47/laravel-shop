@@ -21,7 +21,6 @@ class OrderController extends AdminController
      */
     public function index(Request $request)
     {
-
             if (isset($request->status)){
                 return view('Admin.Orders.index', [
                     'orders' => $this->PaginatePagez(Order::where('status','=',$request->status,'and'), $request,
