@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Country;
 use App\Models\Gallery;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -17,7 +18,6 @@ class BrandTableSeeder extends Seeder
      */
     public function run()
     {
-
         $tmp=Gallery::create([
             'title' => 'bencer',
             'alt' => 'bencer_logo',
@@ -33,6 +33,7 @@ class BrandTableSeeder extends Seeder
             'tag' => 'bencer',
             'description' => 'محصولات بهداشت دهان و دندان بنسر',
             'gallery_id' => $tmp->id,
+            'country_id' => Country::whereName('Iran')->first()->id,
             'created_at' => Jalalian::now(),
             'updated_at' => Jalalian::now()
         ]);
@@ -52,6 +53,7 @@ class BrandTableSeeder extends Seeder
             'tag' => 'bitroy',
             'description' => 'محصولات مراقبتی پوست و مو بیتروی',
             'gallery_id' => $tmp->id,
+            'country_id' => Country::whereName('Iran')->first()->id,
             'created_at' => Jalalian::now(),
             'updated_at' => Jalalian::now()
         ]);
@@ -71,6 +73,7 @@ class BrandTableSeeder extends Seeder
             'tag' => 'dermalift',
             'description' => 'محصولات مراقبتی پوست و مو بیتروی',
             'gallery_id' => $tmp->id,
+            'country_id' => Country::whereName('Iran')->first()->id,
             'created_at' => Jalalian::now(),
             'updated_at' => Jalalian::now()
         ]);

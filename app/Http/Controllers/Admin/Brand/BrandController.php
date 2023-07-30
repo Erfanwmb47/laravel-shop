@@ -25,7 +25,6 @@ class BrandController extends AdminController
 
     {
 
-        Brand::factory()->count(1)->create();
         AdminLog::InsertLog(Auth::user(),'brand','seen');
 
         return view('Admin.brands.Index', [

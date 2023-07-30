@@ -220,7 +220,7 @@
                         <img src="{{str_replace('public' , '/storage',$home_main_top->gallery->path)}}" class="bg-img blur-up lazyload" alt="{{$home_main_top->gallery->alt}}">
                         <div class="banner-details p-center p-sm-4 p-3 text-white text-center">
                             <div>
-                                <h3 class="lh-base fw-bold text-white">
+                                <h3 class="lh-base fw-bold text-black-50">
                                     @php
                                         echo $home_main_top->description;
                                     @endphp

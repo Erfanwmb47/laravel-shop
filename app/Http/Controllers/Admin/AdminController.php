@@ -13,8 +13,17 @@ use Illuminate\Support\Facades\View;
 class AdminController extends Controller
 {
 
+    public function query( ) : array
+{
+    $query=\request()->query();
+
+    return $query;
+}
+
     public function __construct()
     {
+        $query=$this->query();
+        View::share('query', $query);
         View::share('shop_name',json_decode(Metakey::where('key','shop_name')->first()->Setting->object));
         SEOTools::setDescription(json_decode(Metakey::where('key','shop_name')->first()->Setting->object)->Persian_name);
 

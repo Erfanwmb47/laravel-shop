@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Gallery;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -26,7 +27,7 @@ class UserTableSeeder extends Seeder
             'phone' => '09217341024',
             'firstName' => 'مصطفی',
             'lastName'=>'خلیق',
-            'gallery_id' => '1',
+            'gallery_id' => Gallery::whereTitle('man_Avatar')->first()->id,
             'is_staff'=> '0',
             'is_superuser' => '1',
             'score' => 1000,
@@ -43,7 +44,7 @@ class UserTableSeeder extends Seeder
             'phone' => '09309447576',
             'firstName' => 'عرفان',
             'lastName'=>'قالی باف',
-            'gallery_id' => '1',
+            'gallery_id' => Gallery::whereTitle('man_Avatar')->first()->id,
             'is_staff'=> '0',
             'is_superuser' => '1',
             'score' => 1000,
