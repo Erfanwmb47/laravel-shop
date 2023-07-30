@@ -20,7 +20,7 @@ class SliderController extends AdminController
      */
     public  $flag=['home_header_left','home_header_right',
                    'home_main_top',
-                   'home_offer_0','home_offer_2','home_offer_3','home_offer_4',
+                   'home_offer_1','home_offer_2','home_offer_3','home_offer_4',
                    'home_sticky_bottom','home_sticky_top',
                    'home_main_bottom',
                    'home_footer'
@@ -29,14 +29,22 @@ class SliderController extends AdminController
     public function index()
     {
 
-      //  dd(Slider::whereFlag('home_header_left')->whereStatus(0)->firstOrFail());
+      //  dd(Slider::whereFlag('home_header_left')->whereStatus(1)->firstOrFail());
         return view('Admin.Sliders.Index',[
-           'home_header_right_active'=>Slider::whereFlag('home_header_right')->whereStatus(0)->first(),
+           'home_header_right_active'=>Slider::whereFlag('home_header_right')->whereStatus(1)->first(),
             'home_header_right'=>Slider::whereFlag('home_header_right')->get(),
-           'home_header_left_active'=>Slider::whereFlag('home_header_left')->whereStatus(0)->first(),
+           'home_header_left_active'=>Slider::whereFlag('home_header_left')->whereStatus(1)->first(),
             'home_header_left'=>Slider::whereFlag('home_header_left')->get(),
-            'home_main_top_active'=>Slider::whereFlag('home_main_top')->whereStatus(0)->first(),
+            'home_main_top_active'=>Slider::whereFlag('home_main_top')->whereStatus(1)->first(),
             'home_main_top'=>Slider::whereFlag('home_main_top')->get(),
+            'home_offer_1_active'=>Slider::whereFlag('home_offer_1')->whereStatus(1)->first(),
+            'home_offer_1'=>Slider::whereFlag('home_offer_1')->get(),
+            'home_offer_2_active'=>Slider::whereFlag('home_offer_2')->whereStatus(1)->first(),
+            'home_offer_2'=>Slider::whereFlag('home_offer_2')->get(),
+            'home_offer_3_active'=>Slider::whereFlag('home_offer_3')->whereStatus(1)->first(),
+            'home_offer_3'=>Slider::whereFlag('home_offer_3')->get(),
+            'home_offer_4_active'=>Slider::whereFlag('home_offer_4')->whereStatus(1)->first(),
+            'home_offer_4'=>Slider::whereFlag('home_offer_4')->get(),
 
         ]);
 

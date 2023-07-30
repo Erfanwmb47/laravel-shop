@@ -39,5 +39,60 @@ class SliderTableSeeder extends Seeder
             'created_at'=>now(),
             'updated_at'=>now(),
         ]);
+        DB::table('sliders')->insert([
+            'title' => 'اسلایدر بدنه بالا',
+            'description' =>'کد تخفیفت رو از اینجا بردار',
+            'link' => '/',
+            'flag' => 'home_main_top',
+            'tag' => 'تخفیف',
+            'status' => '1',
+            'gallery_id' => Gallery::where('alt','home_main_top')->first()->id,
+            'created_at'=>now(),
+            'updated_at'=>now(),
+        ]);
+        DB::table('sliders')->insert([
+            'title' => 'اسلایدر آفر 1',
+            'description' =>'کد تخفیفت رو از اینجا بردار',
+            'link' => '/',
+            'flag' => 'home_offer_1',
+            'tag' => 'تخفیف',
+            'status' => '1',
+            'gallery_id' => Gallery::where('alt','home_offer_1')->first()->id,
+            'created_at'=>now(),
+            'updated_at'=>now(),
+        ]);
+        DB::table('sliders')->insert([
+            'title' => 'اسلایدر آفر 2',
+            'description' =>'کد تخفیفت رو از اینجا بردار',
+            'link' => '/',
+            'flag' => 'home_offer_2',
+            'tag' => 'تخفیف',
+            'status' => '1',
+            'gallery_id' => Gallery::where('alt','home_offer_2')->first()->id,
+            'created_at'=>now(),
+            'updated_at'=>now(),
+        ]);
+        DB::table('sliders')->insert([
+            'title' => 'اسلایدر آفر 3',
+            'description' =>'کد تخفیفت رو از اینجا بردار',
+            'link' => '/',
+            'flag' => 'home_offer_3',
+            'tag' => 'تخفیف',
+            'status' => '1',
+            'gallery_id' => Gallery::where('alt','home_offer_3')->first()->id,
+            'created_at'=>now(),
+            'updated_at'=>now(),
+        ]);
+        DB::table('sliders')->insert([
+            'title' => 'اسلایدر آفر 4',
+            'description' =>'کد تخفیفت رو از اینجا بردار',
+            'link' => '/',
+            'flag' => 'home_offer_4',
+            'tag' => 'تخفیف',
+            'status' => '1',
+            'gallery_id' => Gallery::where('alt','home_offer_4')->first()->id,
+            'created_at'=>now(),
+            'updated_at'=>now(),
+        ]);
     }
 }

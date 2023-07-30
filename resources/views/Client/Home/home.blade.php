@@ -251,71 +251,79 @@
     <!-- Discount Section End -->
 
     <!-- Banner Section Start -->
+    @if(isset($home_offer_1))
     <section class="ratio_60">
         <div class="container-fluid-lg">
             <div class="row g-3">
+                @if(isset($home_offer_1))
                 <div class="col-xxl-3 col-sm-6">
                     <a href="shop-left-sidebar.html" class="banner-contain-2 hover-effect">
-                        <img src="/Client/assets/images/cake/banner/5.jpg" class="bg-img blur-up lazyload" alt="">
-                        <div class="banner-detail p-top-left">
-                            <div>
-                                <div class="banner-detail-box mb-md-3 mb-1">
-                                    <h6 class="text-danger">5% OFF</h6>
-                                    <h4 class="mt-2">New Items</h4>
-                                    <h6 class="mt-2 text-content">Daily Essentials</h6>
-                                </div>
-                            </div>
-                        </div>
+                        <img src="{{str_replace('public' , '/storage',$home_offer_1->gallery->path)}}" class="bg-img blur-up lazyload" alt="">
+{{--                        <div class="banner-detail p-top-left">--}}
+{{--                            <div>--}}
+{{--                                <div class="banner-detail-box mb-md-3 mb-1">--}}
+{{--                                    <h6 class="text-danger">5% OFF</h6>--}}
+{{--                                    <h4 class="mt-2">New Items</h4>--}}
+{{--                                    <h6 class="mt-2 text-content">Daily Essentials</h6>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
                     </a>
                 </div>
+                @endif
+                @if(isset($home_offer_2))
+                <div class="col-xxl-3 col-sm-6">
+                    <a href="shop-left-sidebar.html" class="banner-contain-2 hover-effect">
+                        <img src="{{str_replace('public' , '/storage',$home_offer_2->gallery->path)}}" class="bg-img blur-up lazyload" alt="">
+{{--                        <div class="banner-detail p-top-left">--}}
+{{--                            <div>--}}
+{{--                                <div class="banner-detail-box mb-md-3 mb-1">--}}
+{{--                                    <h6 class="text-danger">5% OFF</h6>--}}
+{{--                                    <h4 class="mt-2">New Items</h4>--}}
+{{--                                    <h6 class="mt-2 text-content">Daily Essentials</h6>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+                    </a>
+                </div>
+                @endif
+                @if(isset($home_offer_3))
+                <div class="col-xxl-3 col-sm-6">
+                    <a href="shop-left-sidebar.html" class="banner-contain-2 hover-effect">
+                        <img src="{{str_replace('public' , '/storage',$home_offer_3->gallery->path)}}" class="bg-img blur-up lazyload" alt="">
+{{--                        <div class="banner-detail p-top-left">--}}
+{{--                            <div>--}}
+{{--                                <div class="banner-detail-box mb-md-3 mb-1">--}}
+{{--                                    <h6 class="text-danger">5% OFF</h6>--}}
+{{--                                    <h4 class="mt-2">New Items</h4>--}}
+{{--                                    <h6 class="mt-2 text-content">Daily Essentials</h6>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+                    </a>
+                </div>
+                @endif
+                @if(isset($home_offer_4))
+                <div class="col-xxl-3 col-sm-6">
+                    <a href="shop-left-sidebar.html" class="banner-contain-2 hover-effect">
+                        <img src="{{str_replace('public' , '/storage',$home_offer_4->gallery->path)}}" class="bg-img blur-up lazyload" alt="">
+{{--                        <div class="banner-detail p-top-left">--}}
+{{--                            <div>--}}
+{{--                                <div class="banner-detail-box mb-md-3 mb-1">--}}
+{{--                                    <h6 class="text-danger">5% OFF</h6>--}}
+{{--                                    <h4 class="mt-2">New Items</h4>--}}
+{{--                                    <h6 class="mt-2 text-content">Daily Essentials</h6>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+                    </a>
+                </div>
+                @endif
 
-                <div class="col-xxl-3 col-sm-6">
-                    <a href="shop-left-sidebar.html" class="banner-contain-2 hover-effect">
-                        <img src="/Client/assets/images/cake/banner/6.jpg" class="bg-img blur-up lazyload" alt="">
-                        <div class="banner-detail p-top-left">
-                            <div>
-                                <div class="banner-detail-box mb-md-3 mb-1">
-                                    <h6 class="text-danger">5% OFF</h6>
-                                    <h4 class="mt-2">Save More</h4>
-                                    <h6 class="mt-2 text-content">Fresh Toast Rusk</h6>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="col-xxl-3 col-sm-6">
-                    <a href="shop-left-sidebar.html" class="banner-contain-2 hover-effect">
-                        <img src="/Client/assets/images/cake/banner/7.jpg" class="bg-img blur-up lazyload" alt="">
-                        <div class="banner-detail p-top-left">
-                            <div>
-                                <div class="banner-detail-box mb-md-3 mb-1">
-                                    <h6 class="text-danger">5% OFF</h6>
-                                    <h4 class="mt-2">Fresh Every Day!</h4>
-                                    <h6 class="mt-2 text-content">Delivered @ Home</h6>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="col-xxl-3 col-sm-6">
-                    <a href="shop-left-sidebar.html" class="banner-contain-2 hover-effect">
-                        <img src="/Client/assets/images/cake/banner/8.jpg" class="bg-img blur-up lazyload" alt="">
-                        <div class="banner-detail p-top-left">
-                            <div>
-                                <div class="banner-detail-box mb-md-3 mb-1">
-                                    <h6 class="text-danger">5% OFF</h6>
-                                    <h4 class="mt-2">Hot Deals</h4>
-                                    <h6 class="mt-2 text-content">Fresh Cake</h6>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
             </div>
         </div>
     </section>
+    @endif
     <!-- Banner Section End -->
 
     <!-- Product Section Start -->
