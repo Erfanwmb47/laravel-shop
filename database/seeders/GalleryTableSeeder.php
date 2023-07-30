@@ -99,6 +99,26 @@ class GalleryTableSeeder extends Seeder
             'created_at'=>now(),
             'updated_at'=>now(),
         ]);
+        DB::table('galleries')->insert([
+            'title' => 'اسلایدر هدر سمت راست',
+            'alt' =>'home_header_right',
+            'mime' => 'jpeg',
+            'path' => 'public/Image/Sliders/home_header_right.jpg',
+            'flag' => 'Sliders',
+            'size' => '1',
+            'created_at'=>now(),
+            'updated_at'=>now(),
+        ]);
+        DB::table('galleries')->insert([
+            'title' => 'اسلایدر هدر سمت چپ',
+            'alt' =>'home_header_left',
+            'mime' => 'jpeg',
+            'path' => 'public/Image/Sliders/home_header_left.jpg',
+            'flag' => 'Sliders',
+            'size' => '1',
+            'created_at'=>now(),
+            'updated_at'=>now(),
+        ]);
 
     }
 }

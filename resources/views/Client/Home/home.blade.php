@@ -9,41 +9,42 @@
                 <div class="col-xl-9 col-lg-8">
 
                     @if(isset($home_header_right))
-
+                        <a href="{{route('home')}}">
                     <div class="home-contain h-100">
-                        <img src="{{str_replace('public','/storage',optional($home_header_right->gallery)->path)}}" class="bg-img blur-up lazyload" alt="">
-                        <div class="home-detail p-center-left w-75 position-relative mend-auto">
-                            <div>
-                                <h6>{{$home_header_right->tag}} <span>{{$home_header_right->offer}}% Off</span></h6>
-                                <h1 class="w-75 text-uppercase poster-1">{{$home_header_right->title}} <span
-                                        class="daily">{{$home_header_right->title}}</span></h1>
-                                <p class="w-58 d-none d-sm-block">
-                                    @php
-                                        echo $home_header_right->description
-                                    @endphp
-                                </p>
-                                <button onclick="location.href = '{{$home_header_right->link}}';"
-                                        class="btn btn-animation mt-xxl-4 mt-2 home-button mend-auto">Shop Now <i
-                                        class="fa-solid fa-right-long ms-2 icon"></i>
-                                </button>
-                            </div>
-                        </div>
+                         <img src="{{str_replace('public','/storage',optional($home_header_right->gallery)->path)}}" class="bg-img blur-up lazyload" alt="">
+{{--                        <div class="home-detail p-center-left w-75 position-relative mend-auto">--}}
+{{--                            <div>--}}
+{{--                                <h6>{{$home_header_right->tag}} <span>{{$home_header_right->offer}}% Off</span></h6>--}}
+{{--                                <h1 class="w-75 text-uppercase poster-1">{{$home_header_right->title}} <span--}}
+{{--                                        class="daily">{{$home_header_right->title}}</span></h1>--}}
+{{--                                <p class="w-58 d-none d-sm-block">--}}
+{{--                                    @php--}}
+{{--                                        echo $home_header_right->description--}}
+{{--                                    @endphp--}}
+{{--                                </p>--}}
+{{--                                <button onclick="location.href = '{{$home_header_right->link}}';"--}}
+{{--                                        class="btn btn-animation mt-xxl-4 mt-2 home-button mend-auto">Shop Now <i--}}
+{{--                                        class="fa-solid fa-right-long ms-2 icon"></i>--}}
+{{--                                </button>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
                     </div>
+                        </a>
                     @else
                         <div class="home-contain h-100">
                             <img src="/Client/assets/images/veg-2/banner/1.jpg" class="bg-img blur-up lazyload" alt="">
-                            <div class="home-detail p-center-left w-75 position-relative mend-auto">
-                                <div>
-                                    <h6>Exclusive offer <span>30% Off</span></h6>
-                                    <h1 class="w-75 text-uppercase poster-1">Stay home & delivered your <span
-                                            class="daily">Daily Needs</span></h1>
-                                    <p class="w-58 d-none d-sm-block">Many organizations have issued official
-                                        statements encouraging people to reduce their intake of sugary drinks.</p>
-                                    <button onclick="location.href = 'shop-left-sidebar.html';"
-                                            class="btn btn-animation mt-xxl-4 mt-2 home-button mend-auto">Shop Now <i
-                                            class="fa-solid fa-right-long ms-2 icon"></i></button>
-                                </div>
-                            </div>
+{{--                            <div class="home-detail p-center-left w-75 position-relative mend-auto">--}}
+{{--                                <div>--}}
+{{--                                    <h6>Exclusive offer <span>30% Off</span></h6>--}}
+{{--                                    <h1 class="w-75 text-uppercase poster-1">Stay home & delivered your <span--}}
+{{--                                            class="daily">Daily Needs</span></h1>--}}
+{{--                                    <p class="w-58 d-none d-sm-block">Many organizations have issued official--}}
+{{--                                        statements encouraging people to reduce their intake of sugary drinks.</p>--}}
+{{--                                    <button onclick="location.href = 'shop-left-sidebar.html';"--}}
+{{--                                            class="btn btn-animation mt-xxl-4 mt-2 home-button mend-auto">Shop Now <i--}}
+{{--                                            class="fa-solid fa-right-long ms-2 icon"></i></button>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
                         </div>
                     @endif
 
@@ -52,21 +53,21 @@
                 <div class="col-xl-3 col-lg-4 d-lg-inline-block d-none ratio_156">
                     @if(isset($home_header_left))
                     <div class="home-contain h-100">
-                        <img src="{{str_replace('public','/storage',optional($home_header_left->gallery)->path)}}" class="bg-img blur-up lazyload" alt="">
-                        <div class="home-detail p-top-left home-p-sm w-75">
-                            <div>
-                                <h2 class="mt-0 text-danger">{{$home_header_left->offer}}% <span class="discount text-title">OFF</span>
-                                </h2>
-                                <h3 class="theme-color">{{$home_header_left->title}}</h3>
-                                <h5 class="text-content">
-                                    @php
-                                        echo $home_header_left->description
-                                    @endphp
-                                </h5>
-                                <a href="shop-left-sidebar.html" class="shop-button">همین الان بخر <i
-                                        class="fa-solid fa-right-long ms-2"></i></a>
-                            </div>
-                        </div>
+                        <a href="{{route('home')}}"><img src="{{str_replace('public','/storage',optional($home_header_left->gallery)->path)}}" class="bg-img blur-up lazyload" alt=""></a>
+{{--                        <div class="home-detail p-top-left home-p-sm w-75">--}}
+{{--                            <div>--}}
+{{--                                <h2 class="mt-0 text-danger">{{$home_header_left->offer}}% <span class="discount text-title">OFF</span>--}}
+{{--                                </h2>--}}
+{{--                                <h3 class="theme-color">{{$home_header_left->title}}</h3>--}}
+{{--                                <h5 class="text-content">--}}
+{{--                                    @php--}}
+{{--                                        echo $home_header_left->description--}}
+{{--                                    @endphp--}}
+{{--                                </h5>--}}
+{{--                                <a href="shop-left-sidebar.html" class="shop-button">همین الان بخر <i--}}
+{{--                                        class="fa-solid fa-right-long ms-2"></i></a>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
                     </div>
                     @else
                         <div class="home-contain h-100">
@@ -214,14 +215,14 @@
         <div class="container-fluid-lg">
             <div class="row">
                 <div class="col-12">
-                    @if(isset($home_body_top))
+                    @if(isset($home_main_top))
                     <div class="banner-contain hover-effect">
-                        <img src="{{str_replace('public' , '/storage',$home_body_top->gallery->path)}}" class="bg-img blur-up lazyload" alt="{{$home_body_top->gallery->alt}}">
+                        <img src="{{str_replace('public' , '/storage',$home_main_top->gallery->path)}}" class="bg-img blur-up lazyload" alt="{{$home_main_top->gallery->alt}}">
                         <div class="banner-details p-center p-sm-4 p-3 text-white text-center">
                             <div>
                                 <h3 class="lh-base fw-bold text-white">
                                     @php
-                                        echo $home_body_top->description;
+                                        echo $home_main_top->description;
                                     @endphp
                                 </h3>
                                 <h6 class="coupon-code code-2">کد تخفیف : GROCERY1920</h6>
@@ -230,7 +231,7 @@
                     </div>
                     @else
                     <div class="banner-contain hover-effect">
-                            <img src="../assets/images/cake/banner/4.jpg" class="bg-img blur-up lazyload" alt="">
+                            <img src="{{str_replace('public' , '/storage',$home_main_top->gallery->path)}}" class="bg-img blur-up lazyload" alt="">
                             <div class="banner-details p-center p-sm-4 p-3 text-white text-center">
                                 <div>
                                     <h3 class="lh-base fw-bold text-white">

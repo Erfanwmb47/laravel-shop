@@ -501,7 +501,7 @@ License: You must have a valid license purchased only from themeforest(the above
     <nav class="side-nav">
         <a href="{{route('home')}}" class="intro-x flex items-center pl-5 pt-4">
             <img alt="Midone Tailwind HTML Admin Template" class="w-6" src="/Admin/images/logo.svg">
-            <span class="hidden xl:block text-white text-lg ml-3"> {{$site_name->English_name}} </span>
+            <span class="hidden xl:block text-white text-lg ml-3"> {{$shop_name->English_name}} </span>
         </a>
         <div class="side-nav__devider my-6"></div>
         <ul>

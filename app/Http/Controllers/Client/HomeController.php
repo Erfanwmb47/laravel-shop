@@ -19,7 +19,7 @@ class HomeController extends ClientController
         return view('Client.Home.home',[
             'home_header_left'=>Slider::whereFlag('home_header_left')->whereStatus(1)->first(),
             'home_header_right'=>Slider::whereFlag('home_header_right')->whereStatus(1)->first(),
-            'home_body_top'=>Slider::whereFlag('home_body_top')->whereStatus(1)->first(),
+            'home_main_top'=>Slider::whereFlag('home_main_top')->whereStatus(1)->first(),
             'home_body_middle'=>Slider::whereFlag('home_body_middle')->whereStatus(1)->first(),
             'home_body_bottom'=>Slider::whereFlag('home_body_bottom')->whereStatus(1)->first(),
             'home_body_left_top'=>Slider::whereFlag('home_body_left_top')->whereStatus(1)->first(),

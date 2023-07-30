@@ -29,6 +29,11 @@ class SettingSeeder extends Seeder
         DB::table('settings')->insert([//5
             'object'=>'{"title":"آدرس فروشگاه","value":"جنت آباد مرکزی، خیابان مخبری، پلاک 324، واحد 3"}'
         ]);
+        DB::table('settings')->insert([//6
+            'object'=>'{"title":"توضیحات فروشگاه","value":"فروشگاه اینترنتی سینویا دارای 5 سال سابقه فعالیت در حوزه سلامت و بهداشت، معتبرترین فروشگاه اینترنتی لوازم آرایشی و بهداشتی"}'
+        ]);
+
+
 
        /* $faviconImage=optional(Gallery::whereTitle('Espandar_favicon')->first())->path;
         DB::table('settings')->insert([//3

@@ -33,6 +33,7 @@ class DatabaseSeeder extends Seeder
             TransportationTableSeeder::class,
             PaymentGatewayTableSeeder::class,
             BrandTableSeeder::class,
+            SliderTableSeeder::class,
         ]);
     }
 }

@@ -3,12 +3,13 @@
 namespace App\Http\Controllers\Client\Cart;
 
 use App\Helpers\Cart\Cart;
+use App\Http\Controllers\Client\ClientController;
 use App\Http\Controllers\Controller;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
 
-class CartController extends Controller
+class CartController extends ClientController
 {
     public function index(Request $request)
     {

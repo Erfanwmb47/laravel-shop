@@ -15,7 +15,7 @@ class AdminController extends Controller
 
     public function __construct()
     {
-        View::share('site_name',json_decode(Metakey::where('key','shop_name')->first()->Setting->object));
+        View::share('shop_name',json_decode(Metakey::where('key','shop_name')->first()->Setting->object));
         SEOTools::setDescription(json_decode(Metakey::where('key','shop_name')->first()->Setting->object)->Persian_name);
 
     }

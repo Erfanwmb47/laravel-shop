@@ -33,26 +33,11 @@ class MetaKeySeeder extends Seeder
             'key'=>'shop_address',
             'setting_id'=>5
         ]);
-       /* DB::table('metakeys')->insert([//3
-            'key'=>'favicon',
-            'setting_id'=>3
-        ]);
-        DB::table('metakeys')->insert([//4
-            'key'=>'address',
-            'setting_id'=>4
-        ]);
-        DB::table('metakeys')->insert([//5
-            'key'=>'logo',
-            'setting_id'=>5
-        ]);
         DB::table('metakeys')->insert([//6
-            'key'=>'description_index_client',
+            'key'=>'shop_description',
             'setting_id'=>6
         ]);
-        DB::table('metakeys')->insert([//7
-            'key'=>'key_words_index_client',
-            'setting_id'=>7
-        ]);*/
+
 
     }
 }
