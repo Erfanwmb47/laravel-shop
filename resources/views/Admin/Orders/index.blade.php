@@ -31,6 +31,27 @@
                 </div>
             </div>
         </div>
+
+        <!-- START: Query URL -->
+        <div class="intro-y rtl col-span-12 flex-reverese-end flex-wrap sm:flex-no-wrap items-center mt-2  border-gray-200">
+            <div class="flex-justify-start flex-col lg:flex-row">
+                @foreach($query as $key=>$value)
+                    @if(is_array($value))
+                        @foreach($value as $k=>$v)
+                            <div class="button pointer-events-none flex justify-center  border shadow-md  mb-2 bg-gray-200 text-gray-600 ml-2">
+                                <a  href="{{str_replace($key.'[]='.$v,'',request()->getRequestUri())}}" class="pointer-events-auto">
+                                    <i data-feather="x" class="h-4 w-4 mr-2"></i></a>{{__('query.'.$key)}} : {{__('query.'.$v)}}</div>
+                        @endforeach
+                    @else
+                        <div class="button pointer-events-none flex justify-center  border shadow-md  mb-2 bg-gray-200 text-gray-600 ml-2">
+                            <a  href="{{str_replace($key.'='.$value,'',request()->getRequestUri())}}" class="pointer-events-auto">
+                                <i   data-feather="x" class="h-4 w-4 mr-2"></i></a>{{__('query.'.$key)}} : {{__('query.'.$value)}}</div>
+                    @endif
+                @endforeach
+            </div>
+        </div>
+        <!-- END: Query URL -->
+
         <!-- BEGIN: Data List -->
         <div class="col-span-12 mt-6">
             <div class="intro-y overflow-auto lg:overflow-visible mt-8 sm:mt-0">

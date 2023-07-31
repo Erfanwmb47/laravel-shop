@@ -67,10 +67,10 @@
         <div class="container-fluid-lg">
             <div class="row">
                 <div class="col-xxl-3 d-xxl-block d-none">
-                    <div class="top-left-header">
-                        <i class="iconly-Location icli text-white"></i>
-                        <span class="text-white">جنت آباد شمالی خ مخبری </span>
-                    </div>
+{{--                    <div class="top-left-header">--}}
+{{--                        <i class="iconly-Location icli text-white"></i>--}}
+{{--                        <span class="text-white">{{$shop_address->value}}</span>--}}
+{{--                    </div>--}}
                 </div>
 
                 <div class="col-xxl-6 col-lg-9 d-lg-block d-none">
@@ -112,7 +112,7 @@
                                     <i class="fa-solid fa-bars"></i>
                                 </span>
                         </button>
-                        <a href="index.html" class="web-logo nav-logo">
+                        <a href="{{route('home')}}" class="web-logo nav-logo">
                             <img src="/Client/assets/images/logo/seanovia.png" class="img-fluid blur-up lazyload" alt="">
                         </a>
 
@@ -127,7 +127,6 @@
                                 </div>
                             </div>
                         </div>
-
                         <div class="rightside-box">
                             <div class="search-full">
                                 <div class="input-group">
@@ -715,13 +714,11 @@
                                                 @endforeach
                                             </ul>
                                         </li>
-
                                         <li class="nav-item  new-nav-item">
 {{--                                            <label class="new-dropdown">تازه</label>--}}
                                             <a class="nav-link dropdown-toggle" href="/magazine"
                                                data-bs-toggle="dropdown">مجله سینویا</a>
                                         </li>
-
                                         <li class="nav-item ">
                                             <a class="nav-link dropdown-toggle" href="/aboutUs"
                                                >درباره سینویا</a>
@@ -731,7 +728,6 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="header-nav-right">
                         <button class="btn deal-button" data-bs-toggle="modal" data-bs-target="#deal-box">
                             <i data-feather="zap"></i>
@@ -775,7 +771,6 @@
                 <span>My Wish</span>
             </a>
         </li>
-
         <li>
             <a href="cart.html">
                 <i class="iconly-Bag-2 icli fly-cate"></i>
@@ -844,26 +839,23 @@
                 <div class="col-xl-3 col-lg-4 col-sm-6">
                     <div class="footer-logo">
                         <div class="theme-logo">
-                            <a href="index.html">
+                            <a href="{{route('home')}}">
                                 <img src="/Client/assets/images/logo/seanovia.png" class="blur-up lazyload" alt="">
                             </a>
                         </div>
 
                         <div class="footer-logo-contain">
-                            <p>
-                                فروشگاه اینترنتی سینویا دارای 5 سال سابقه فعالیت در حوزه سلامت و بهداشت .
-                                معتبر ترین فروشگاه لوازم بهداشتی و آرایشی.
-                            </p>
+                            <p>{{$shop_description->value}}</p>
 
                             <ul class="address">
                                 <li>
                                     <i data-feather="home"></i>
-                                    <a href="javascript:void(0)">جنت آباد شمالی خیابان مخبری پلاک 23</a>
+                                    <a href="javascript:void(0)">{{$shop_address->value}}</a>
                                 </li>
-                                <li>
-                                    <i data-feather="mail"></i>
-                                    <a href="javascript:void(0)">support@seanovia.com</a>
-                                </li>
+{{--                                <li>--}}
+{{--                                    <i data-feather="mail"></i>--}}
+{{--                                    <a href="javascript:void(0)">{{$shop_email->value}}</a>--}}
+{{--                                </li>--}}
                             </ul>
                         </div>
                     </div>
@@ -948,8 +940,10 @@
                                 <div class="footer-number">
                                     <i data-feather="phone"></i>
                                     <div class="contact-number">
-                                        <h6 class="text-content">شماره تماس 24/7 :</h6>
-                                        <h5 class="rtl text-right" href="tel:+989209447576 " style="direction: ltr">+98 920 944 7576</h5>
+                                        <h6 class="text-content">{{$shop_tel->title}} 24/7 :</h6>
+                                        <a href="tel:{{$shop_tel->value}}">
+                                        <h5 class="rtl text-right"  style="direction: ltr">{{str_replace('+98921','021-',$shop_tel->value)}}</h5>
+                                        </a>
                                     </div>
                                 </div>
                             </li>
@@ -958,8 +952,10 @@
                                 <div class="footer-number">
                                     <i data-feather="mail"></i>
                                     <div class="contact-number">
-                                        <h6 class="text-content">ایمیل :</h6>
-                                        <h5>seanoviaShop@gmail.com</h5>
+                                        <h6 class="text-content">{{$shop_email->title}} :</h6>
+                                        <a href="mailto: {{$shop_email->value}}">
+                                        <h5>{{$shop_email->value}}</h5>
+                                        </a>
                                     </div>
                                 </div>
                             </li>

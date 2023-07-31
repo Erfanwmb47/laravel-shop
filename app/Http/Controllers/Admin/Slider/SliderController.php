@@ -18,14 +18,37 @@ class SliderController extends AdminController
      *
      * @return \Illuminate\Http\Response
      */
+    public  $flag=['home_header_left','home_header_right',
+                   'home_main_top',
+                   'home_offer_1','home_offer_2','home_offer_3','home_offer_4',
+                   'home_sticky_bottom','home_sticky_top',
+                   'home_main_bottom',
+                   'home_footer'
+        ];
+
     public function index()
     {
+
       //  dd(Slider::whereFlag('home_header_left')->whereStatus(1)->firstOrFail());
         return view('Admin.Sliders.Index',[
            'home_header_right_active'=>Slider::whereFlag('home_header_right')->whereStatus(1)->first(),
-            'home_header_right'=>Slider::whereFlag('home_header_right'),
+            'home_header_right'=>Slider::whereFlag('home_header_right')->get(),
            'home_header_left_active'=>Slider::whereFlag('home_header_left')->whereStatus(1)->first(),
             'home_header_left'=>Slider::whereFlag('home_header_left')->get(),
+            'home_main_top_active'=>Slider::whereFlag('home_main_top')->whereStatus(1)->first(),
+            'home_main_top'=>Slider::whereFlag('home_main_top')->get(),
+            'home_offer_1_active'=>Slider::whereFlag('home_offer_1')->whereStatus(1)->first(),
+            'home_offer_1'=>Slider::whereFlag('home_offer_1')->get(),
+            'home_offer_2_active'=>Slider::whereFlag('home_offer_2')->whereStatus(1)->first(),
+            'home_offer_2'=>Slider::whereFlag('home_offer_2')->get(),
+            'home_offer_3_active'=>Slider::whereFlag('home_offer_3')->whereStatus(1)->first(),
+            'home_offer_3'=>Slider::whereFlag('home_offer_3')->get(),
+            'home_offer_4_active'=>Slider::whereFlag('home_offer_4')->whereStatus(1)->first(),
+            'home_offer_4'=>Slider::whereFlag('home_offer_4')->get(),
+            'home_sticky_top_active'=>Slider::whereFlag('home_sticky_top')->whereStatus(1)->first(),
+            'home_sticky_top'=>Slider::whereFlag('home_sticky_top')->get(),
+            'home_sticky_bottom_active'=>Slider::whereFlag('home_sticky_bottom')->whereStatus(1)->first(),
+            'home_sticky_bottom'=>Slider::whereFlag('home_sticky_bottom')->get(),
 
         ]);
 
@@ -34,12 +57,14 @@ class SliderController extends AdminController
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     *
      */
     public function create()
     {
+        $flag=json_encode($this->flag);
         return view('Admin.Sliders.Create',[
-            'galleries' => Gallery::all(),
+            'galleries' => Gallery::whereFlag('Sliders')->get(),
+            'flag'=>$flag
         ]);
     }
 
@@ -51,11 +76,13 @@ class SliderController extends AdminController
      */
     public function store(Request $request)
     {
+        //TODO age flag jadid bod
 //        dd($request);
+
 
         if ($request->get('selectedImage') == 'uploadedImage')
         {        $object= explode("/",$request->file('image')->getClientMimeType());
-            $imagePath = $request->file('image')->storeAs('public/Image/Brands',$request->get('title') . '.'. $object[1]);
+            $imagePath = $request->file('image')->storeAs('public/Image/Sliders',$request->get('title') . '.'. $object[1]);
             $h=Gallery::query()->create([
                 'title' => $request->get('title'),
                 'alt' =>$request->get('alt'),
@@ -74,7 +101,11 @@ class SliderController extends AdminController
         {
             $imagePath= $request->get('selectedImage');
         }
-        $brand=Slider::query()->create([
+
+        if (! in_array($request->get('flag'),$this->flag))
+         array_push($this->flag,$request->flag);
+
+            $brand=Slider::query()->create([
             'title' => $request->get('SliderTitle'),
             'gallery_id' =>$imagePath,
             'link'=>$request->get('link'),
@@ -133,7 +164,16 @@ class SliderController extends AdminController
      */
     public function destroy(Slider $slider)
     {
-        //
+
+        $s1 = $slider;
+        $slider->delete();
+        if (!!$s1->status){
+            Slider::whereFlag($s1->flag)->firstOrFail()->update([
+               'status' => 1
+            ]);
+        }
+        toast('اسلایدر مورد نظر حذف شد','success');
+        return back();
     }
 
     public function select(Slider $slider)

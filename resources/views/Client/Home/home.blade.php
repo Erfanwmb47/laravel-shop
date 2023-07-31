@@ -9,41 +9,42 @@
                 <div class="col-xl-9 col-lg-8">
 
                     @if(isset($home_header_right))
-
+                        <a href="{{route('home')}}">
                     <div class="home-contain h-100">
-                        <img src="{{str_replace('public','/storage',optional($home_header_right->gallery)->path)}}" class="bg-img blur-up lazyload" alt="">
-                        <div class="home-detail p-center-left w-75 position-relative mend-auto">
-                            <div>
-                                <h6>{{$home_header_right->tag}} <span>{{$home_header_right->offer}}% Off</span></h6>
-                                <h1 class="w-75 text-uppercase poster-1">{{$home_header_right->title}} <span
-                                        class="daily">{{$home_header_right->title}}</span></h1>
-                                <p class="w-58 d-none d-sm-block">
-                                    @php
-                                        echo $home_header_right->description
-                                    @endphp
-                                </p>
-                                <button onclick="location.href = '{{$home_header_right->link}}';"
-                                        class="btn btn-animation mt-xxl-4 mt-2 home-button mend-auto">Shop Now <i
-                                        class="fa-solid fa-right-long ms-2 icon"></i>
-                                </button>
-                            </div>
-                        </div>
+                         <img src="{{str_replace('public','/storage',optional($home_header_right->gallery)->path)}}" class="bg-img blur-up lazyload" alt="">
+{{--                        <div class="home-detail p-center-left w-75 position-relative mend-auto">--}}
+{{--                            <div>--}}
+{{--                                <h6>{{$home_header_right->tag}} <span>{{$home_header_right->offer}}% Off</span></h6>--}}
+{{--                                <h1 class="w-75 text-uppercase poster-1">{{$home_header_right->title}} <span--}}
+{{--                                        class="daily">{{$home_header_right->title}}</span></h1>--}}
+{{--                                <p class="w-58 d-none d-sm-block">--}}
+{{--                                    @php--}}
+{{--                                        echo $home_header_right->description--}}
+{{--                                    @endphp--}}
+{{--                                </p>--}}
+{{--                                <button onclick="location.href = '{{$home_header_right->link}}';"--}}
+{{--                                        class="btn btn-animation mt-xxl-4 mt-2 home-button mend-auto">Shop Now <i--}}
+{{--                                        class="fa-solid fa-right-long ms-2 icon"></i>--}}
+{{--                                </button>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
                     </div>
+                        </a>
                     @else
                         <div class="home-contain h-100">
                             <img src="/Client/assets/images/veg-2/banner/1.jpg" class="bg-img blur-up lazyload" alt="">
-                            <div class="home-detail p-center-left w-75 position-relative mend-auto">
-                                <div>
-                                    <h6>Exclusive offer <span>30% Off</span></h6>
-                                    <h1 class="w-75 text-uppercase poster-1">Stay home & delivered your <span
-                                            class="daily">Daily Needs</span></h1>
-                                    <p class="w-58 d-none d-sm-block">Many organizations have issued official
-                                        statements encouraging people to reduce their intake of sugary drinks.</p>
-                                    <button onclick="location.href = 'shop-left-sidebar.html';"
-                                            class="btn btn-animation mt-xxl-4 mt-2 home-button mend-auto">Shop Now <i
-                                            class="fa-solid fa-right-long ms-2 icon"></i></button>
-                                </div>
-                            </div>
+{{--                            <div class="home-detail p-center-left w-75 position-relative mend-auto">--}}
+{{--                                <div>--}}
+{{--                                    <h6>Exclusive offer <span>30% Off</span></h6>--}}
+{{--                                    <h1 class="w-75 text-uppercase poster-1">Stay home & delivered your <span--}}
+{{--                                            class="daily">Daily Needs</span></h1>--}}
+{{--                                    <p class="w-58 d-none d-sm-block">Many organizations have issued official--}}
+{{--                                        statements encouraging people to reduce their intake of sugary drinks.</p>--}}
+{{--                                    <button onclick="location.href = 'shop-left-sidebar.html';"--}}
+{{--                                            class="btn btn-animation mt-xxl-4 mt-2 home-button mend-auto">Shop Now <i--}}
+{{--                                            class="fa-solid fa-right-long ms-2 icon"></i></button>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
                         </div>
                     @endif
 
@@ -52,21 +53,21 @@
                 <div class="col-xl-3 col-lg-4 d-lg-inline-block d-none ratio_156">
                     @if(isset($home_header_left))
                     <div class="home-contain h-100">
-                        <img src="{{str_replace('public','/storage',optional($home_header_left->gallery)->path)}}" class="bg-img blur-up lazyload" alt="">
-                        <div class="home-detail p-top-left home-p-sm w-75">
-                            <div>
-                                <h2 class="mt-0 text-danger">{{$home_header_left->offer}}% <span class="discount text-title">OFF</span>
-                                </h2>
-                                <h3 class="theme-color">{{$home_header_left->title}}</h3>
-                                <h5 class="text-content">
-                                    @php
-                                        echo $home_header_left->description
-                                    @endphp
-                                </h5>
-                                <a href="shop-left-sidebar.html" class="shop-button">همین الان بخر <i
-                                        class="fa-solid fa-right-long ms-2"></i></a>
-                            </div>
-                        </div>
+                        <a href="{{route('home')}}"><img src="{{str_replace('public','/storage',optional($home_header_left->gallery)->path)}}" class="bg-img blur-up lazyload" alt=""></a>
+{{--                        <div class="home-detail p-top-left home-p-sm w-75">--}}
+{{--                            <div>--}}
+{{--                                <h2 class="mt-0 text-danger">{{$home_header_left->offer}}% <span class="discount text-title">OFF</span>--}}
+{{--                                </h2>--}}
+{{--                                <h3 class="theme-color">{{$home_header_left->title}}</h3>--}}
+{{--                                <h5 class="text-content">--}}
+{{--                                    @php--}}
+{{--                                        echo $home_header_left->description--}}
+{{--                                    @endphp--}}
+{{--                                </h5>--}}
+{{--                                <a href="shop-left-sidebar.html" class="shop-button">همین الان بخر <i--}}
+{{--                                        class="fa-solid fa-right-long ms-2"></i></a>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
                     </div>
                     @else
                         <div class="home-contain h-100">
@@ -214,14 +215,14 @@
         <div class="container-fluid-lg">
             <div class="row">
                 <div class="col-12">
-                    @if(isset($home_body_top))
+                    @if(isset($home_main_top))
                     <div class="banner-contain hover-effect">
-                        <img src="{{str_replace('public' , '/storage',$home_body_top->gallery->path)}}" class="bg-img blur-up lazyload" alt="{{$home_body_top->gallery->alt}}">
+                        <img src="{{str_replace('public' , '/storage',$home_main_top->gallery->path)}}" class="bg-img blur-up lazyload" alt="{{$home_main_top->gallery->alt}}">
                         <div class="banner-details p-center p-sm-4 p-3 text-white text-center">
                             <div>
-                                <h3 class="lh-base fw-bold text-white">
+                                <h3 class="lh-base fw-bold text-black-50">
                                     @php
-                                        echo $home_body_top->description;
+                                        echo $home_main_top->description;
                                     @endphp
                                 </h3>
                                 <h6 class="coupon-code code-2">کد تخفیف : GROCERY1920</h6>
@@ -230,7 +231,7 @@
                     </div>
                     @else
                     <div class="banner-contain hover-effect">
-                            <img src="../assets/images/cake/banner/4.jpg" class="bg-img blur-up lazyload" alt="">
+                            <img src="{{str_replace('public' , '/storage',$home_main_top->gallery->path)}}" class="bg-img blur-up lazyload" alt="">
                             <div class="banner-details p-center p-sm-4 p-3 text-white text-center">
                                 <div>
                                     <h3 class="lh-base fw-bold text-white">
@@ -250,71 +251,79 @@
     <!-- Discount Section End -->
 
     <!-- Banner Section Start -->
+    @if(isset($home_offer_1))
     <section class="ratio_60">
         <div class="container-fluid-lg">
             <div class="row g-3">
+                @if(isset($home_offer_1))
                 <div class="col-xxl-3 col-sm-6">
                     <a href="shop-left-sidebar.html" class="banner-contain-2 hover-effect">
-                        <img src="/Client/assets/images/cake/banner/5.jpg" class="bg-img blur-up lazyload" alt="">
-                        <div class="banner-detail p-top-left">
-                            <div>
-                                <div class="banner-detail-box mb-md-3 mb-1">
-                                    <h6 class="text-danger">5% OFF</h6>
-                                    <h4 class="mt-2">New Items</h4>
-                                    <h6 class="mt-2 text-content">Daily Essentials</h6>
-                                </div>
-                            </div>
-                        </div>
+                        <img src="{{str_replace('public' , '/storage',$home_offer_1->gallery->path)}}" class="bg-img blur-up lazyload" alt="">
+{{--                        <div class="banner-detail p-top-left">--}}
+{{--                            <div>--}}
+{{--                                <div class="banner-detail-box mb-md-3 mb-1">--}}
+{{--                                    <h6 class="text-danger">5% OFF</h6>--}}
+{{--                                    <h4 class="mt-2">New Items</h4>--}}
+{{--                                    <h6 class="mt-2 text-content">Daily Essentials</h6>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
                     </a>
                 </div>
+                @endif
+                @if(isset($home_offer_2))
+                <div class="col-xxl-3 col-sm-6">
+                    <a href="shop-left-sidebar.html" class="banner-contain-2 hover-effect">
+                        <img src="{{str_replace('public' , '/storage',$home_offer_2->gallery->path)}}" class="bg-img blur-up lazyload" alt="">
+{{--                        <div class="banner-detail p-top-left">--}}
+{{--                            <div>--}}
+{{--                                <div class="banner-detail-box mb-md-3 mb-1">--}}
+{{--                                    <h6 class="text-danger">5% OFF</h6>--}}
+{{--                                    <h4 class="mt-2">New Items</h4>--}}
+{{--                                    <h6 class="mt-2 text-content">Daily Essentials</h6>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+                    </a>
+                </div>
+                @endif
+                @if(isset($home_offer_3))
+                <div class="col-xxl-3 col-sm-6">
+                    <a href="shop-left-sidebar.html" class="banner-contain-2 hover-effect">
+                        <img src="{{str_replace('public' , '/storage',$home_offer_3->gallery->path)}}" class="bg-img blur-up lazyload" alt="">
+{{--                        <div class="banner-detail p-top-left">--}}
+{{--                            <div>--}}
+{{--                                <div class="banner-detail-box mb-md-3 mb-1">--}}
+{{--                                    <h6 class="text-danger">5% OFF</h6>--}}
+{{--                                    <h4 class="mt-2">New Items</h4>--}}
+{{--                                    <h6 class="mt-2 text-content">Daily Essentials</h6>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+                    </a>
+                </div>
+                @endif
+                @if(isset($home_offer_4))
+                <div class="col-xxl-3 col-sm-6">
+                    <a href="shop-left-sidebar.html" class="banner-contain-2 hover-effect">
+                        <img src="{{str_replace('public' , '/storage',$home_offer_4->gallery->path)}}" class="bg-img blur-up lazyload" alt="">
+{{--                        <div class="banner-detail p-top-left">--}}
+{{--                            <div>--}}
+{{--                                <div class="banner-detail-box mb-md-3 mb-1">--}}
+{{--                                    <h6 class="text-danger">5% OFF</h6>--}}
+{{--                                    <h4 class="mt-2">New Items</h4>--}}
+{{--                                    <h6 class="mt-2 text-content">Daily Essentials</h6>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+                    </a>
+                </div>
+                @endif
 
-                <div class="col-xxl-3 col-sm-6">
-                    <a href="shop-left-sidebar.html" class="banner-contain-2 hover-effect">
-                        <img src="/Client/assets/images/cake/banner/6.jpg" class="bg-img blur-up lazyload" alt="">
-                        <div class="banner-detail p-top-left">
-                            <div>
-                                <div class="banner-detail-box mb-md-3 mb-1">
-                                    <h6 class="text-danger">5% OFF</h6>
-                                    <h4 class="mt-2">Save More</h4>
-                                    <h6 class="mt-2 text-content">Fresh Toast Rusk</h6>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="col-xxl-3 col-sm-6">
-                    <a href="shop-left-sidebar.html" class="banner-contain-2 hover-effect">
-                        <img src="/Client/assets/images/cake/banner/7.jpg" class="bg-img blur-up lazyload" alt="">
-                        <div class="banner-detail p-top-left">
-                            <div>
-                                <div class="banner-detail-box mb-md-3 mb-1">
-                                    <h6 class="text-danger">5% OFF</h6>
-                                    <h4 class="mt-2">Fresh Every Day!</h4>
-                                    <h6 class="mt-2 text-content">Delivered @ Home</h6>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="col-xxl-3 col-sm-6">
-                    <a href="shop-left-sidebar.html" class="banner-contain-2 hover-effect">
-                        <img src="/Client/assets/images/cake/banner/8.jpg" class="bg-img blur-up lazyload" alt="">
-                        <div class="banner-detail p-top-left">
-                            <div>
-                                <div class="banner-detail-box mb-md-3 mb-1">
-                                    <h6 class="text-danger">5% OFF</h6>
-                                    <h4 class="mt-2">Hot Deals</h4>
-                                    <h6 class="mt-2 text-content">Fresh Cake</h6>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
             </div>
         </div>
     </section>
+    @endif
     <!-- Banner Section End -->
 
     <!-- Product Section Start -->
@@ -324,7 +333,7 @@
                 <div class="col-xxl-9 col-xl-8">
                     <div class="title title-flex">
                         <div>
-                            <h2>Top Save Today</h2>
+                            <h2>تخفیف های امروز</h2>
                             <span class="title-leaf">
                                 <svg class="icon-width">
                                     <use xlink:href="/Client/assets/svg/leaf.svg#cake"></use>
@@ -334,19 +343,12 @@
                         <div class="timing-box">
                             <div class="timing theme-bg-color">
                                 <i data-feather="clock"></i>
-                                <h6 class="name">Expires in :</h6>
+                                <h6 class="name">اتمام تخفیف :</h6>
                                 <div class="time" id="clockdiv-1" data-hours="1" data-minutes="2" data-seconds="3">
                                     <ul>
                                         <li>
                                             <div class="counter">
-                                                <div class="days">
-                                                    <h6></h6>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="counter">
-                                                <div class="hours">
+                                                <div class="seconds">
                                                     <h6></h6>
                                                 </div>
                                             </div>
@@ -360,7 +362,14 @@
                                         </li>
                                         <li>
                                             <div class="counter">
-                                                <div class="seconds">
+                                                <div class="hours">
+                                                    <h6></h6>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="counter">
+                                                <div class="days">
                                                     <h6></h6>
                                                 </div>
                                             </div>
@@ -372,11 +381,12 @@
                     </div>
 
                     <div class="product-box-slider-2 no-arrow">
+                        @foreach($offerProducts as $product)
                         <div>
                             <div class="product-box product-box-bg wow fadeInUp">
                                 <div class="product-image">
                                     <a href="product-left-thumbnail.html">
-                                        <img src="/Client/assets/images/cake/product/1.png"
+                                        <img src="{{str_replace('public','/storage',$product->gallery->path)}}"
                                              class="img-fluid blur-up lazyload" alt="">
                                     </a>
                                     <ul class="product-option">
@@ -402,13 +412,25 @@
                                 <div class="product-detail">
                                     <a href="product-left-thumbnail.html">
                                         <h6 class="name">
-                                            Muffets & Tuffets Whole Wheat Bread 400 g
+                                            {{$product->name}}
                                         </h6>
                                     </a>
 
                                     <h5 class="sold text-content">
-                                        <span class="theme-color price">$26.69</span>
-                                        <del>28.56</del>
+                                        @if($product->offer)
+                                        <span class="theme-color price">{{faNumber(number_format($product->price - ($product->price*$product->offer/100)))}}
+                                            <object data="/Client/assets/svg/toman.svg" width="20" height="20"> </object>
+                                        </span>
+                                        <br>
+                                        <del class="">{{faNumber(number_format($product->price))}}
+                                        </del>
+                                        @else
+                                            <span class="theme-color price fa-num">{{faNumber(number_format($product->price))}}
+                                                <object data="/Client/assets/svg/toman.svg" width="20" height="20"> </object>
+                                                <br>
+                                                <del></del>
+                                            </span>
+                                        @endif
                                     </h5>
 
                                     <div class="product-rating mt-2">
@@ -429,12 +451,12 @@
                                                 <i data-feather="star"></i>
                                             </li>
                                         </ul>
+                                            <h6 class="theme-color">در سبد خرید</h6>
 
-                                        <h6 class="theme-color">In Stock</h6>
                                     </div>
 
                                     <div class="add-to-cart-box bg-white">
-                                        <button class="btn btn-add-cart addcart-button">Add
+                                        <button class="btn btn-add-cart addcart-button" onclick="addCartlistShop(event,{{$product->id}},1,true)">Add
                                             <span class="add-icon bg-light-orange">
                                                 <i class="fa-solid fa-plus"></i>
                                             </span>
@@ -442,13 +464,13 @@
                                         <div class="cart_qty qty-box">
                                             <div class="input-group">
                                                 <button type="button" class="qty-left-minus" data-type="minus"
-                                                        data-field="">
+                                                        data-field="" onclick="addCartlistShop(event,{{$product->id}},null,true)">
                                                     <i class="fa fa-minus" aria-hidden="true"></i>
                                                 </button>
-                                                <input class="form-control input-number qty-input" type="text"
-                                                       name="quantity" value="0">
+                                                <input class="form-control input-number qty-input ProductQuantity" type="text"
+                                                       name="quantity" value="1" id="valueSingleProductFloating{{$product->id}}">
                                                 <button type="button" class="qty-right-plus" data-type="plus"
-                                                        data-field="">
+                                                        data-field="" onclick="addCartlistShop(event,{{$product->id}},null,true)">
                                                     <i class="fa fa-plus" aria-hidden="true"></i>
                                                 </button>
                                             </div>
@@ -457,938 +479,9 @@
                                 </div>
                             </div>
 
-                            <div class="product-box product-box-bg wow fadeInUp" data-wow-delay="0.1s">
-                                <div class="product-image">
-                                    <a href="product-left-thumbnail.html">
-                                        <img src="/Client/assets/images/cake/product/2.png"
-                                             class="img-fluid blur-up lazyload" alt="">
-                                    </a>
-                                    <ul class="product-option">
-                                        <li data-bs-toggle="tooltip" data-bs-placement="top" title="View">
-                                            <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#view">
-                                                <i data-feather="eye"></i>
-                                            </a>
-                                        </li>
-
-                                        <li data-bs-toggle="tooltip" data-bs-placement="top" title="Compare">
-                                            <a href="compare.html">
-                                                <i data-feather="refresh-cw"></i>
-                                            </a>
-                                        </li>
-
-                                        <li data-bs-toggle="tooltip" data-bs-placement="top" title="Wishlist">
-                                            <a href="wishlist.html" class="notifi-wishlist">
-                                                <i data-feather="heart"></i>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="product-detail">
-                                    <a href="product-left-thumbnail.html">
-                                        <h6 class="name">
-                                            Fresh Bread and Pastry Flour 200 g
-                                        </h6>
-                                    </a>
-
-                                    <h5 class="sold text-content">
-                                        <span class="theme-color price">$26.69</span>
-                                        <del>28.56</del>
-                                    </h5>
-
-                                    <div class="product-rating mt-2">
-                                        <ul class="rating">
-                                            <li>
-                                                <i data-feather="star" class="fill"></i>
-                                            </li>
-                                            <li>
-                                                <i data-feather="star" class="fill"></i>
-                                            </li>
-                                            <li>
-                                                <i data-feather="star" class="fill"></i>
-                                            </li>
-                                            <li>
-                                                <i data-feather="star" class="fill"></i>
-                                            </li>
-                                            <li>
-                                                <i data-feather="star"></i>
-                                            </li>
-                                        </ul>
-
-                                        <h6 class="theme-color">In Stock</h6>
-                                    </div>
-
-                                    <div class="add-to-cart-box bg-white">
-                                        <button class="btn btn-add-cart addcart-button">Add
-                                            <span class="add-icon bg-light-orange">
-                                                <i class="fa-solid fa-plus"></i>
-                                            </span>
-                                        </button>
-                                        <div class="cart_qty qty-box">
-                                            <div class="input-group">
-                                                <button type="button" class="qty-left-minus" data-type="minus"
-                                                        data-field="">
-                                                    <i class="fa fa-minus" aria-hidden="true"></i>
-                                                </button>
-                                                <input class="form-control input-number qty-input" type="text"
-                                                       name="quantity" value="0">
-                                                <button type="button" class="qty-right-plus" data-type="plus"
-                                                        data-field="">
-                                                    <i class="fa fa-plus" aria-hidden="true"></i>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
+                        @endforeach
 
-                        <div>
-                            <div class="product-box product-box-bg wow fadeInUp">
-                                <div class="product-image">
-                                    <a href="product-left-thumbnail.html">
-                                        <img src="/Client/assets/images/cake/product/3.png"
-                                             class="img-fluid blur-up lazyload" alt="">
-                                    </a>
-                                    <ul class="product-option">
-                                        <li data-bs-toggle="tooltip" data-bs-placement="top" title="View">
-                                            <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#view">
-                                                <i data-feather="eye"></i>
-                                            </a>
-                                        </li>
-
-                                        <li data-bs-toggle="tooltip" data-bs-placement="top" title="Compare">
-                                            <a href="compare.html">
-                                                <i data-feather="refresh-cw"></i>
-                                            </a>
-                                        </li>
-
-                                        <li data-bs-toggle="tooltip" data-bs-placement="top" title="Wishlist">
-                                            <a href="wishlist.html" class="notifi-wishlist">
-                                                <i data-feather="heart"></i>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="product-detail">
-                                    <a href="product-left-thumbnail.html">
-                                        <h6 class="name">
-                                            Peanut Butter Bite Premium Butter Cookies 600 g
-                                        </h6>
-                                    </a>
-
-                                    <h5 class="sold text-content">
-                                        <span class="theme-color price">$26.69</span>
-                                        <del>28.56</del>
-                                    </h5>
-
-                                    <div class="product-rating mt-2">
-                                        <ul class="rating">
-                                            <li>
-                                                <i data-feather="star" class="fill"></i>
-                                            </li>
-                                            <li>
-                                                <i data-feather="star" class="fill"></i>
-                                            </li>
-                                            <li>
-                                                <i data-feather="star" class="fill"></i>
-                                            </li>
-                                            <li>
-                                                <i data-feather="star" class="fill"></i>
-                                            </li>
-                                            <li>
-                                                <i data-feather="star"></i>
-                                            </li>
-                                        </ul>
-
-                                        <h6 class="theme-color">In Stock</h6>
-                                    </div>
-
-                                    <div class="add-to-cart-box bg-white">
-                                        <button class="btn btn-add-cart addcart-button">Add
-                                            <span class="add-icon bg-light-orange">
-                                                <i class="fa-solid fa-plus"></i>
-                                            </span>
-                                        </button>
-                                        <div class="cart_qty qty-box">
-                                            <div class="input-group">
-                                                <button type="button" class="qty-left-minus" data-type="minus"
-                                                        data-field="">
-                                                    <i class="fa fa-minus" aria-hidden="true"></i>
-                                                </button>
-                                                <input class="form-control input-number qty-input" type="text"
-                                                       name="quantity" value="0">
-                                                <button type="button" class="qty-right-plus" data-type="plus"
-                                                        data-field="">
-                                                    <i class="fa fa-plus" aria-hidden="true"></i>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="product-box product-box-bg wow fadeInUp" data-wow-delay="0.1s">
-                                <div class="product-image">
-                                    <a href="product-left-thumbnail.html">
-                                        <img src="/Client/assets/images/cake/product/4.png"
-                                             class="img-fluid blur-up lazyload" alt="">
-                                    </a>
-                                    <ul class="product-option">
-                                        <li data-bs-toggle="tooltip" data-bs-placement="top" title="View">
-                                            <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#view">
-                                                <i data-feather="eye"></i>
-                                            </a>
-                                        </li>
-
-                                        <li data-bs-toggle="tooltip" data-bs-placement="top" title="Compare">
-                                            <a href="compare.html">
-                                                <i data-feather="refresh-cw"></i>
-                                            </a>
-                                        </li>
-
-                                        <li data-bs-toggle="tooltip" data-bs-placement="top" title="Wishlist">
-                                            <a href="wishlist.html" class="notifi-wishlist">
-                                                <i data-feather="heart"></i>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="product-detail">
-                                    <a href="product-left-thumbnail.html">
-                                        <h6 class="name">
-                                            SnackAmor Combo Pack of Jowar Stick and Jowar Chips
-                                        </h6>
-                                    </a>
-
-                                    <h5 class="sold text-content">
-                                        <span class="theme-color price">$26.69</span>
-                                        <del>28.56</del>
-                                    </h5>
-
-                                    <div class="product-rating mt-2">
-                                        <ul class="rating">
-                                            <li>
-                                                <i data-feather="star" class="fill"></i>
-                                            </li>
-                                            <li>
-                                                <i data-feather="star" class="fill"></i>
-                                            </li>
-                                            <li>
-                                                <i data-feather="star" class="fill"></i>
-                                            </li>
-                                            <li>
-                                                <i data-feather="star" class="fill"></i>
-                                            </li>
-                                            <li>
-                                                <i data-feather="star"></i>
-                                            </li>
-                                        </ul>
-
-                                        <h6 class="theme-color">In Stock</h6>
-                                    </div>
-
-                                    <div class="add-to-cart-box bg-white">
-                                        <button class="btn btn-add-cart addcart-button">Add
-                                            <span class="add-icon bg-light-orange">
-                                                <i class="fa-solid fa-plus"></i>
-                                            </span>
-                                        </button>
-                                        <div class="cart_qty qty-box">
-                                            <div class="input-group">
-                                                <button type="button" class="qty-left-minus" data-type="minus"
-                                                        data-field="">
-                                                    <i class="fa fa-minus" aria-hidden="true"></i>
-                                                </button>
-                                                <input class="form-control input-number qty-input" type="text"
-                                                       name="quantity" value="0">
-                                                <button type="button" class="qty-right-plus" data-type="plus"
-                                                        data-field="">
-                                                    <i class="fa fa-plus" aria-hidden="true"></i>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div>
-                            <div class="product-box product-box-bg wow fadeInUp">
-                                <div class="product-image">
-                                    <a href="product-left-thumbnail.html">
-                                        <img src="/Client/assets/images/cake/product/5.png"
-                                             class="img-fluid blur-up lazyload" alt="">
-                                    </a>
-                                    <ul class="product-option">
-                                        <li data-bs-toggle="tooltip" data-bs-placement="top" title="View">
-                                            <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#view">
-                                                <i data-feather="eye"></i>
-                                            </a>
-                                        </li>
-
-                                        <li data-bs-toggle="tooltip" data-bs-placement="top" title="Compare">
-                                            <a href="compare.html">
-                                                <i data-feather="refresh-cw"></i>
-                                            </a>
-                                        </li>
-
-                                        <li data-bs-toggle="tooltip" data-bs-placement="top" title="Wishlist">
-                                            <a href="wishlist.html" class="notifi-wishlist">
-                                                <i data-feather="heart"></i>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="product-detail">
-                                    <a href="product-left-thumbnail.html">
-                                        <h6 class="name">
-                                            Yumitos Chilli Sprinkled Potato Chips 100 g
-                                        </h6>
-                                    </a>
-
-                                    <h5 class="sold text-content">
-                                        <span class="theme-color price">$26.69</span>
-                                        <del>28.56</del>
-                                    </h5>
-
-                                    <div class="product-rating mt-2">
-                                        <ul class="rating">
-                                            <li>
-                                                <i data-feather="star" class="fill"></i>
-                                            </li>
-                                            <li>
-                                                <i data-feather="star" class="fill"></i>
-                                            </li>
-                                            <li>
-                                                <i data-feather="star" class="fill"></i>
-                                            </li>
-                                            <li>
-                                                <i data-feather="star" class="fill"></i>
-                                            </li>
-                                            <li>
-                                                <i data-feather="star"></i>
-                                            </li>
-                                        </ul>
-
-                                        <h6 class="theme-color">In Stock</h6>
-                                    </div>
-
-                                    <div class="add-to-cart-box bg-white">
-                                        <button class="btn btn-add-cart addcart-button">Add
-                                            <span class="add-icon bg-light-orange">
-                                                <i class="fa-solid fa-plus"></i>
-                                            </span>
-                                        </button>
-                                        <div class="cart_qty qty-box">
-                                            <div class="input-group">
-                                                <button type="button" class="qty-left-minus" data-type="minus"
-                                                        data-field="">
-                                                    <i class="fa fa-minus" aria-hidden="true"></i>
-                                                </button>
-                                                <input class="form-control input-number qty-input" type="text"
-                                                       name="quantity" value="0">
-                                                <button type="button" class="qty-right-plus" data-type="plus"
-                                                        data-field="">
-                                                    <i class="fa fa-plus" aria-hidden="true"></i>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="product-box product-box-bg wow fadeInUp" data-wow-delay="0.1s">
-                                <div class="product-image">
-                                    <a href="product-left-thumbnail.html">
-                                        <img src="/Client/assets/images/cake/product/6.png"
-                                             class="img-fluid blur-up lazyload" alt="">
-                                    </a>
-                                    <ul class="product-option">
-                                        <li data-bs-toggle="tooltip" data-bs-placement="top" title="View">
-                                            <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#view">
-                                                <i data-feather="eye"></i>
-                                            </a>
-                                        </li>
-
-                                        <li data-bs-toggle="tooltip" data-bs-placement="top" title="Compare">
-                                            <a href="compare.html">
-                                                <i data-feather="refresh-cw"></i>
-                                            </a>
-                                        </li>
-
-                                        <li data-bs-toggle="tooltip" data-bs-placement="top" title="Wishlist">
-                                            <a href="wishlist.html" class="notifi-wishlist">
-                                                <i data-feather="heart"></i>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="product-detail">
-                                    <a href="product-left-thumbnail.html">
-                                        <h6 class="name">
-                                            Fantasy Crunchy Choco Chip Cookies
-                                        </h6>
-                                    </a>
-
-                                    <h5 class="sold text-content">
-                                        <span class="theme-color price">$26.69</span>
-                                        <del>28.56</del>
-                                    </h5>
-
-                                    <div class="product-rating mt-2">
-                                        <ul class="rating">
-                                            <li>
-                                                <i data-feather="star" class="fill"></i>
-                                            </li>
-                                            <li>
-                                                <i data-feather="star" class="fill"></i>
-                                            </li>
-                                            <li>
-                                                <i data-feather="star" class="fill"></i>
-                                            </li>
-                                            <li>
-                                                <i data-feather="star" class="fill"></i>
-                                            </li>
-                                            <li>
-                                                <i data-feather="star"></i>
-                                            </li>
-                                        </ul>
-
-                                        <h6 class="theme-color">In Stock</h6>
-                                    </div>
-
-                                    <div class="add-to-cart-box bg-white">
-                                        <button class="btn btn-add-cart addcart-button">Add
-                                            <span class="add-icon bg-light-orange">
-                                                <i class="fa-solid fa-plus"></i>
-                                            </span>
-                                        </button>
-                                        <div class="cart_qty qty-box">
-                                            <div class="input-group">
-                                                <button type="button" class="qty-left-minus" data-type="minus"
-                                                        data-field="">
-                                                    <i class="fa fa-minus" aria-hidden="true"></i>
-                                                </button>
-                                                <input class="form-control input-number qty-input" type="text"
-                                                       name="quantity" value="0">
-                                                <button type="button" class="qty-right-plus" data-type="plus"
-                                                        data-field="">
-                                                    <i class="fa fa-plus" aria-hidden="true"></i>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div>
-                            <div class="product-box product-box-bg wow fadeInUp">
-                                <div class="product-image">
-                                    <a href="product-left-thumbnail.html">
-                                        <img src="/Client/assets/images/cake/product/7.png"
-                                             class="img-fluid blur-up lazyload" alt="">
-                                    </a>
-                                    <ul class="product-option">
-                                        <li data-bs-toggle="tooltip" data-bs-placement="top" title="View">
-                                            <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#view">
-                                                <i data-feather="eye"></i>
-                                            </a>
-                                        </li>
-
-                                        <li data-bs-toggle="tooltip" data-bs-placement="top" title="Compare">
-                                            <a href="compare.html">
-                                                <i data-feather="refresh-cw"></i>
-                                            </a>
-                                        </li>
-
-                                        <li data-bs-toggle="tooltip" data-bs-placement="top" title="Wishlist">
-                                            <a href="wishlist.html" class="notifi-wishlist">
-                                                <i data-feather="heart"></i>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="product-detail">
-                                    <a href="product-left-thumbnail.html">
-                                        <h6 class="name">
-                                            Fresh Bread and Pastry Flour 200 g
-                                        </h6>
-                                    </a>
-
-                                    <h5 class="sold text-content">
-                                        <span class="theme-color price">$26.69</span>
-                                        <del>28.56</del>
-                                    </h5>
-
-                                    <div class="product-rating mt-2">
-                                        <ul class="rating">
-                                            <li>
-                                                <i data-feather="star" class="fill"></i>
-                                            </li>
-                                            <li>
-                                                <i data-feather="star" class="fill"></i>
-                                            </li>
-                                            <li>
-                                                <i data-feather="star" class="fill"></i>
-                                            </li>
-                                            <li>
-                                                <i data-feather="star" class="fill"></i>
-                                            </li>
-                                            <li>
-                                                <i data-feather="star"></i>
-                                            </li>
-                                        </ul>
-
-                                        <h6 class="theme-color">In Stock</h6>
-                                    </div>
-
-                                    <div class="add-to-cart-box bg-white">
-                                        <button class="btn btn-add-cart addcart-button">Add
-                                            <span class="add-icon bg-light-orange">
-                                                <i class="fa-solid fa-plus"></i>
-                                            </span>
-                                        </button>
-                                        <div class="cart_qty qty-box">
-                                            <div class="input-group">
-                                                <button type="button" class="qty-left-minus" data-type="minus"
-                                                        data-field="">
-                                                    <i class="fa fa-minus" aria-hidden="true"></i>
-                                                </button>
-                                                <input class="form-control input-number qty-input" type="text"
-                                                       name="quantity" value="0">
-                                                <button type="button" class="qty-right-plus" data-type="plus"
-                                                        data-field="">
-                                                    <i class="fa fa-plus" aria-hidden="true"></i>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="product-box product-box-bg wow fadeInUp" data-wow-delay="0.1s">
-                                <div class="product-image">
-                                    <a href="product-left-thumbnail.html">
-                                        <img src="/Client/assets/images/cake/product/8.png"
-                                             class="img-fluid blur-up lazyload" alt="">
-                                    </a>
-                                    <ul class="product-option">
-                                        <li data-bs-toggle="tooltip" data-bs-placement="top" title="View">
-                                            <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#view">
-                                                <i data-feather="eye"></i>
-                                            </a>
-                                        </li>
-
-                                        <li data-bs-toggle="tooltip" data-bs-placement="top" title="Compare">
-                                            <a href="compare.html">
-                                                <i data-feather="refresh-cw"></i>
-                                            </a>
-                                        </li>
-
-                                        <li data-bs-toggle="tooltip" data-bs-placement="top" title="Wishlist">
-                                            <a href="wishlist.html" class="notifi-wishlist">
-                                                <i data-feather="heart"></i>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="product-detail">
-                                    <a href="product-left-thumbnail.html">
-                                        <h6 class="name">
-                                            Milky Silicone Heart Chocolate Mould ( Pack of 1 )
-                                        </h6>
-                                    </a>
-
-                                    <h5 class="sold text-content">
-                                        <span class="theme-color price">$26.69</span>
-                                        <del>28.56</del>
-                                    </h5>
-
-                                    <div class="product-rating mt-2">
-                                        <ul class="rating">
-                                            <li>
-                                                <i data-feather="star" class="fill"></i>
-                                            </li>
-                                            <li>
-                                                <i data-feather="star" class="fill"></i>
-                                            </li>
-                                            <li>
-                                                <i data-feather="star" class="fill"></i>
-                                            </li>
-                                            <li>
-                                                <i data-feather="star" class="fill"></i>
-                                            </li>
-                                            <li>
-                                                <i data-feather="star"></i>
-                                            </li>
-                                        </ul>
-
-                                        <h6 class="theme-color">In Stock</h6>
-                                    </div>
-
-                                    <div class="add-to-cart-box bg-white">
-                                        <button class="btn btn-add-cart addcart-button">Add
-                                            <span class="add-icon bg-light-orange">
-                                                <i class="fa-solid fa-plus"></i>
-                                            </span>
-                                        </button>
-                                        <div class="cart_qty qty-box">
-                                            <div class="input-group">
-                                                <button type="button" class="qty-left-minus" data-type="minus"
-                                                        data-field="">
-                                                    <i class="fa fa-minus" aria-hidden="true"></i>
-                                                </button>
-                                                <input class="form-control input-number qty-input" type="text"
-                                                       name="quantity" value="0">
-                                                <button type="button" class="qty-right-plus" data-type="plus"
-                                                        data-field="">
-                                                    <i class="fa fa-plus" aria-hidden="true"></i>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div>
-                            <div class="product-box product-box-bg wow fadeInUp">
-                                <div class="product-image">
-                                    <a href="product-left-thumbnail.html">
-                                        <img src="/Client/assets/images/cake/product/9.png"
-                                             class="img-fluid blur-up lazyload" alt="">
-                                    </a>
-                                    <ul class="product-option">
-                                        <li data-bs-toggle="tooltip" data-bs-placement="top" title="View">
-                                            <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#view">
-                                                <i data-feather="eye"></i>
-                                            </a>
-                                        </li>
-
-                                        <li data-bs-toggle="tooltip" data-bs-placement="top" title="Compare">
-                                            <a href="compare.html">
-                                                <i data-feather="refresh-cw"></i>
-                                            </a>
-                                        </li>
-
-                                        <li data-bs-toggle="tooltip" data-bs-placement="top" title="Wishlist">
-                                            <a href="wishlist.html" class="notifi-wishlist">
-                                                <i data-feather="heart"></i>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="product-detail">
-                                    <a href="product-left-thumbnail.html">
-                                        <h6 class="name">chocolate-chip-cookies 250 g</h6>
-                                    </a>
-
-                                    <h5 class="sold text-content">
-                                        <span class="theme-color price">$26.69</span>
-                                        <del>28.56</del>
-                                    </h5>
-
-                                    <div class="product-rating mt-2">
-                                        <ul class="rating">
-                                            <li>
-                                                <i data-feather="star" class="fill"></i>
-                                            </li>
-                                            <li>
-                                                <i data-feather="star" class="fill"></i>
-                                            </li>
-                                            <li>
-                                                <i data-feather="star" class="fill"></i>
-                                            </li>
-                                            <li>
-                                                <i data-feather="star" class="fill"></i>
-                                            </li>
-                                            <li>
-                                                <i data-feather="star"></i>
-                                            </li>
-                                        </ul>
-
-                                        <h6 class="theme-color">In Stock</h6>
-                                    </div>
-
-                                    <div class="add-to-cart-box bg-white">
-                                        <button class="btn btn-add-cart addcart-button">Add
-                                            <span class="add-icon bg-light-orange">
-                                                <i class="fa-solid fa-plus"></i>
-                                            </span>
-                                        </button>
-                                        <div class="cart_qty qty-box">
-                                            <div class="input-group">
-                                                <button type="button" class="qty-left-minus" data-type="minus"
-                                                        data-field="">
-                                                    <i class="fa fa-minus" aria-hidden="true"></i>
-                                                </button>
-                                                <input class="form-control input-number qty-input" type="text"
-                                                       name="quantity" value="0">
-                                                <button type="button" class="qty-right-plus" data-type="plus"
-                                                        data-field="">
-                                                    <i class="fa fa-plus" aria-hidden="true"></i>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="product-box product-box-bg wow fadeInUp" data-wow-delay="0.1s">
-                                <div class="product-image">
-                                    <a href="product-left-thumbnail.html">
-                                        <img src="/Client/assets/images/cake/product/10.png"
-                                             class="img-fluid blur-up lazyload" alt="">
-                                    </a>
-                                    <ul class="product-option">
-                                        <li data-bs-toggle="tooltip" data-bs-placement="top" title="View">
-                                            <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#view">
-                                                <i data-feather="eye"></i>
-                                            </a>
-                                        </li>
-
-                                        <li data-bs-toggle="tooltip" data-bs-placement="top" title="Compare">
-                                            <a href="compare.html">
-                                                <i data-feather="refresh-cw"></i>
-                                            </a>
-                                        </li>
-
-                                        <li data-bs-toggle="tooltip" data-bs-placement="top" title="Wishlist">
-                                            <a href="wishlist.html" class="notifi-wishlist">
-                                                <i data-feather="heart"></i>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="product-detail">
-                                    <a href="product-left-thumbnail.html">
-                                        <h6 class="name">
-                                            Cupcake Holder for Birthday and Wedding Party 100 g
-                                        </h6>
-                                    </a>
-
-                                    <h5 class="sold text-content">
-                                        <span class="theme-color price">$26.69</span>
-                                        <del>28.56</del>
-                                    </h5>
-
-                                    <div class="product-rating mt-2">
-                                        <ul class="rating">
-                                            <li>
-                                                <i data-feather="star" class="fill"></i>
-                                            </li>
-                                            <li>
-                                                <i data-feather="star" class="fill"></i>
-                                            </li>
-                                            <li>
-                                                <i data-feather="star" class="fill"></i>
-                                            </li>
-                                            <li>
-                                                <i data-feather="star" class="fill"></i>
-                                            </li>
-                                            <li>
-                                                <i data-feather="star"></i>
-                                            </li>
-                                        </ul>
-
-                                        <h6 class="theme-color">In Stock</h6>
-                                    </div>
-
-                                    <div class="add-to-cart-box bg-white">
-                                        <button class="btn btn-add-cart addcart-button">Add
-                                            <span class="add-icon bg-light-orange">
-                                                <i class="fa-solid fa-plus"></i>
-                                            </span>
-                                        </button>
-                                        <div class="cart_qty qty-box">
-                                            <div class="input-group">
-                                                <button type="button" class="qty-left-minus" data-type="minus"
-                                                        data-field="">
-                                                    <i class="fa fa-minus" aria-hidden="true"></i>
-                                                </button>
-                                                <input class="form-control input-number qty-input" type="text"
-                                                       name="quantity" value="0">
-                                                <button type="button" class="qty-right-plus" data-type="plus"
-                                                        data-field="">
-                                                    <i class="fa fa-plus" aria-hidden="true"></i>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div>
-                            <div class="product-box product-box-bg wow fadeInUp">
-                                <div class="product-image">
-                                    <a href="product-left-thumbnail.html">
-                                        <img src="/Client/assets/images/cake/product/1.png"
-                                             class="img-fluid blur-up lazyload" alt="">
-                                    </a>
-                                    <ul class="product-option">
-                                        <li data-bs-toggle="tooltip" data-bs-placement="top" title="View">
-                                            <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#view">
-                                                <i data-feather="eye"></i>
-                                            </a>
-                                        </li>
-
-                                        <li data-bs-toggle="tooltip" data-bs-placement="top" title="Compare">
-                                            <a href="compare.html">
-                                                <i data-feather="refresh-cw"></i>
-                                            </a>
-                                        </li>
-
-                                        <li data-bs-toggle="tooltip" data-bs-placement="top" title="Wishlist">
-                                            <a href="wishlist.html" class="notifi-wishlist">
-                                                <i data-feather="heart"></i>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="product-detail">
-                                    <a href="product-left-thumbnail.html">
-                                        <h6 class="name">
-                                            Muffets & Tuffets Whole Wheat Bread 400 g
-                                        </h6>
-                                    </a>
-
-                                    <h5 class="sold text-content">
-                                        <span class="theme-color price">$26.69</span>
-                                        <del>28.56</del>
-                                    </h5>
-
-                                    <div class="product-rating mt-2">
-                                        <ul class="rating">
-                                            <li>
-                                                <i data-feather="star" class="fill"></i>
-                                            </li>
-                                            <li>
-                                                <i data-feather="star" class="fill"></i>
-                                            </li>
-                                            <li>
-                                                <i data-feather="star" class="fill"></i>
-                                            </li>
-                                            <li>
-                                                <i data-feather="star" class="fill"></i>
-                                            </li>
-                                            <li>
-                                                <i data-feather="star"></i>
-                                            </li>
-                                        </ul>
-
-                                        <h6 class="theme-color">In Stock</h6>
-                                    </div>
-
-                                    <div class="add-to-cart-box bg-white">
-                                        <button class="btn btn-add-cart addcart-button">Add
-                                            <span class="add-icon bg-light-orange">
-                                                <i class="fa-solid fa-plus"></i>
-                                            </span>
-                                        </button>
-                                        <div class="cart_qty qty-box">
-                                            <div class="input-group">
-                                                <button type="button" class="qty-left-minus" data-type="minus"
-                                                        data-field="">
-                                                    <i class="fa fa-minus" aria-hidden="true"></i>
-                                                </button>
-                                                <input class="form-control input-number qty-input" type="text"
-                                                       name="quantity" value="0">
-                                                <button type="button" class="qty-right-plus" data-type="plus"
-                                                        data-field="">
-                                                    <i class="fa fa-plus" aria-hidden="true"></i>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="product-box product-box-bg wow fadeInUp" data-wow-delay="0.1s">
-                                <div class="product-image">
-                                    <a href="product-left-thumbnail.html">
-                                        <img src="/Client/assets/images/cake/product/2.png"
-                                             class="img-fluid blur-up lazyload" alt="">
-                                    </a>
-                                    <ul class="product-option">
-                                        <li data-bs-toggle="tooltip" data-bs-placement="top" title="View">
-                                            <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#view">
-                                                <i data-feather="eye"></i>
-                                            </a>
-                                        </li>
-
-                                        <li data-bs-toggle="tooltip" data-bs-placement="top" title="Compare">
-                                            <a href="compare.html">
-                                                <i data-feather="refresh-cw"></i>
-                                            </a>
-                                        </li>
-
-                                        <li data-bs-toggle="tooltip" data-bs-placement="top" title="Wishlist">
-                                            <a href="wishlist.html" class="notifi-wishlist">
-                                                <i data-feather="heart"></i>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="product-detail">
-                                    <a href="product-left-thumbnail.html">
-                                        <h6 class="name">
-                                            Fresh Bread and Pastry Flour 200 g
-                                        </h6>
-                                    </a>
-
-                                    <h5 class="sold text-content">
-                                        <span class="theme-color price">$26.69</span>
-                                        <del>28.56</del>
-                                    </h5>
-
-                                    <div class="product-rating mt-2">
-                                        <ul class="rating">
-                                            <li>
-                                                <i data-feather="star" class="fill"></i>
-                                            </li>
-                                            <li>
-                                                <i data-feather="star" class="fill"></i>
-                                            </li>
-                                            <li>
-                                                <i data-feather="star" class="fill"></i>
-                                            </li>
-                                            <li>
-                                                <i data-feather="star" class="fill"></i>
-                                            </li>
-                                            <li>
-                                                <i data-feather="star"></i>
-                                            </li>
-                                        </ul>
-
-                                        <h6 class="theme-color">In Stock</h6>
-                                    </div>
-
-                                    <div class="add-to-cart-box bg-white">
-                                        <button class="btn btn-add-cart addcart-button">Add
-                                            <span class="add-icon bg-light-orange">
-                                                <i class="fa-solid fa-plus"></i>
-                                            </span>
-                                        </button>
-                                        <div class="cart_qty qty-box">
-                                            <div class="input-group">
-                                                <button type="button" class="qty-left-minus" data-type="minus"
-                                                        data-field="">
-                                                    <i class="fa fa-minus" aria-hidden="true"></i>
-                                                </button>
-                                                <input class="form-control input-number qty-input" type="text"
-                                                       name="quantity" value="0">
-                                                <button type="button" class="qty-right-plus" data-type="plus"
-                                                        data-field="">
-                                                    <i class="fa fa-plus" aria-hidden="true"></i>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
 
                     <div class="title section-t-space">
@@ -2684,34 +1777,34 @@
                 <div class="col-xxl-3 col-xl-4 d-none d-xl-block">
                     <div class="position-sticky top-0">
                         <div class="ratio_209 rounded wow fadeIn">
-                            @if(isset($home_body_left_top))
+                            @if(isset($home_sticky_top))
                             <div class="banner-contain-2 rounded hover-effect">
-                                <img src="{{str_replace('public','/storage',$home_body_left_top->gallery->path)}}" class="bg-img blur-up lazyload" alt="">
-                                <div class="banner-detail p-top-left">
-                                    <div>
-                                        <h6 class="text-uppercase theme-color fw-500">{{$home_body_left_top->tag}}</h6>
-                                        <h3 class="text-uppercase">
-                                            special <span class="brand-name">ویژه</span>
-                                        </h3>
-                                        <p class="text-content fw-500 mt-3 lh-lg">
-                                            @php
-                                                echo $home_body_left_top->description;
-                                            @endphp
-                                        </p>
+                                <img src="{{str_replace('public','/storage',$home_sticky_top->gallery->path)}}" class="bg-img blur-up lazyload" alt="">
+{{--                                <div class="banner-detail p-top-left">--}}
+{{--                                    <div>--}}
+{{--                                        <h6 class="text-uppercase theme-color fw-500">{{$home_sticky_top->tag}}</h6>--}}
+{{--                                        <h3 class="text-uppercase">--}}
+{{--                                            special <span class="brand-name">ویژه</span>--}}
+{{--                                        </h3>--}}
+{{--                                        <p class="text-content fw-500 mt-3 lh-lg">--}}
+{{--                                            @php--}}
+{{--                                                echo $home_sticky_top->description;--}}
+{{--                                            @endphp--}}
+{{--                                        </p>--}}
 
-                                        <div class="banner-detail-box banner-detail-box-2 mb-md-3 mb-1">
-                                            <h4 class="text-uppercase">تا</h4>
-                                            <h2 class="mt-2 text-white">{{$home_body_left_top->offer}}%</h2>
-                                            <h3 class="text-uppercase">off</h3>
-                                        </div>
+{{--                                        <div class="banner-detail-box banner-detail-box-2 mb-md-3 mb-1">--}}
+{{--                                            <h4 class="text-uppercase">تا</h4>--}}
+{{--                                            <h2 class="mt-2 text-white">{{$home_sticky_top->offer}}%</h2>--}}
+{{--                                            <h3 class="text-uppercase">off</h3>--}}
+{{--                                        </div>--}}
 
-                                        <div>
-                                            <button onclick="location.href = 'shop-left-sidebar.html';"
-                                                    class="btn text-white btn-md mt-xxl-4 mt-2 home-button mend-auto theme-bg-color">سفارش دهید<i class="fa-solid fa-right-long icon ms-2"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
+{{--                                        <div>--}}
+{{--                                            <button onclick="location.href = 'shop-left-sidebar.html';"--}}
+{{--                                                    class="btn text-white btn-md mt-xxl-4 mt-2 home-button mend-auto theme-bg-color">سفارش دهید<i class="fa-solid fa-right-long icon ms-2"></i>--}}
+{{--                                            </button>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
                             </div>
                             @else
                             <div class="banner-contain-2 rounded hover-effect">
@@ -2746,49 +1839,47 @@
 
                         <div class="ratio_125 section-t-space wow fadeIn">
                             <div class="banner-contain-2 rounded hover-effect">
-                                <img src="/Client/assets/images/cake/banner/9.jpg" class="bg-img blur-up lazyload" alt="">
-                                <div class="banner-detail p-top-left">
-                                    <div>
-                                        <h6 class="text-uppercase theme-color fw-500">Freash Every Day!</h6>
-                                        <h3 class=" mt-2">Delicioud <span class="theme-color">Bread</span>
-                                        </h3>
-                                        <p class="text-content fw-500 mt-3 w-75 mend-auto">Delicioud Bread and Brend new
-                                            fresh bread.</p>
-                                        <button onclick="location.href = 'shop-left-sidebar.html';"
-                                                class="btn text-white btn-md mt-2 home-button mend-auto theme-bg-color">
-                                            Shop Now <i class="fa-solid fa-right-long icon ms-2"></i>
-                                        </button>
-                                    </div>
-                                </div>
+                                <img src="{{str_replace('public','/storage',$home_sticky_bottom->gallery->path)}}" class="bg-img blur-up lazyload" alt="">
+{{--                                <div class="banner-detail p-top-left">--}}
+{{--                                    <div>--}}
+{{--                                        <h6 class="text-uppercase theme-color fw-500">Freash Every Day!</h6>--}}
+{{--                                        <h3 class=" mt-2">Delicioud <span class="theme-color">Bread</span>--}}
+{{--                                        </h3>--}}
+{{--                                        <p class="text-content fw-500 mt-3 w-75 mend-auto">Delicioud Bread and Brend new--}}
+{{--                                            fresh bread.</p>--}}
+{{--                                        <button onclick="location.href = 'shop-left-sidebar.html';"--}}
+{{--                                                class="btn text-white btn-md mt-2 home-button mend-auto theme-bg-color">--}}
+{{--                                            Shop Now <i class="fa-solid fa-right-long icon ms-2"></i>--}}
+{{--                                        </button>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
                             </div>
                         </div>
-
+                        @if(isset($comment))
                         <div class="section-t-space wow fadeIn">
                             <div class="category-menu category-menu-2">
-                                <h3>Customer Comment</h3>
+                                <h3>محبوب ترین نظرات</h3>
 
                                 <div class="review-box">
                                     <div class="review-contain">
-                                        <h5 class="w-75">We Care About Our Customer Experience</h5>
-                                        <p>In publishing and graphic design, Lorem ipsum is a
-                                            placeholder text commonly used to demonstrate the visual
-                                            form of a document or a typeface without relying on
-                                            meaningful content.</p>
+                                        <h5 class="w-75">{{$comment->user->firstName}}</h5>
+                                        <p>{{$comment->text}}</p>
                                     </div>
 
                                     <div class="review-profile">
                                         <div class="review-image">
-                                            <img src="/Client/assets/images/vegetable/review/1.jpg"
+                                            <img src="{{str_replace('public','/storage',$comment->product->gallery->path)}}"
                                                  class="img-fluid blur-up lazyload" alt="">
                                         </div>
                                         <div class="review-detail">
-                                            <h5>Tina Mcdonnale</h5>
-                                            <h6>Sale Manager</h6>
+                                            <h5>{{$comment->product->name}}</h5>
+                                            <h6>{{jdate($comment->created_at)->ago()}}</h6>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -2801,50 +1892,50 @@
         <div class="container-fluid-lg">
             <div class="row">
                 <div class="col-12">
-                    @if(isset($home_body_bottom))
+                    @if(isset($home_main_middle))
                     <div class="home-contain hover-effect">
-                        <img src="{{str_replace('public','/storage',$home_body_bottom->gallery->path)}}" class="bg-img blur-up lazyload" alt="">
-                        <div class="home-detail p-center position-relative text-center">
-                            <div>
-                                <h3 class="text-danger text-uppercase fw-bold mb-0 text-center">
-                                    {{$home_body_bottom->title}}
-                                </h3>
-                                <h2 class="theme-color  fw-normal mb-0 super-sale text-center">
-                                    {{$home_body_bottom->tag}}
-                                </h2>
-                                <h2 class="home-name text-uppercase"></h2>
-                                <h3 class=" fw-normal text-content text-center">
-                                    @php
-                                        echo $home_body_bottom->description
-                                    @endphp
-                                </h3>
-                                <ul class="social-icon">
-                                    <li>
-                                        <a href="https://www.instagram.com/">
-                                            <i class="fa-brands fa-instagram"></i>
-                                        </a>
-                                    </li>
+                        <img src="{{str_replace('public','/storage',$home_main_middle->gallery->path)}}" class="bg-img blur-up lazyload" alt="">
+{{--                        <div class="home-detail p-center position-relative text-center">--}}
+{{--                            <div>--}}
+{{--                                <h3 class="text-danger text-uppercase fw-bold mb-0 text-center">--}}
+{{--                                    {{$home_main_middle->title}}--}}
+{{--                                </h3>--}}
+{{--                                <h2 class="theme-color  fw-normal mb-0 super-sale text-center">--}}
+{{--                                    {{$home_main_middle->tag}}--}}
+{{--                                </h2>--}}
+{{--                                <h2 class="home-name text-uppercase"></h2>--}}
+{{--                                <h3 class=" fw-normal text-content text-center">--}}
+{{--                                    @php--}}
+{{--                                        echo $home_main_middle->description--}}
+{{--                                    @endphp--}}
+{{--                                </h3>--}}
+{{--                                <ul class="social-icon">--}}
+{{--                                    <li>--}}
+{{--                                        <a href="https://www.instagram.com/">--}}
+{{--                                            <i class="fa-brands fa-instagram"></i>--}}
+{{--                                        </a>--}}
+{{--                                    </li>--}}
 
-                                    <li>
-                                        <a href="https://www.facebook.com/">
-                                            <i class="fa-brands fa-facebook-f"></i>
-                                        </a>
-                                    </li>
+{{--                                    <li>--}}
+{{--                                        <a href="https://www.facebook.com/">--}}
+{{--                                            <i class="fa-brands fa-facebook-f"></i>--}}
+{{--                                        </a>--}}
+{{--                                    </li>--}}
 
-                                    <li>
-                                        <a href="https://twitter.com/">
-                                            <i class="fa-brands fa-twitter"></i>
-                                        </a>
-                                    </li>
+{{--                                    <li>--}}
+{{--                                        <a href="https://twitter.com/">--}}
+{{--                                            <i class="fa-brands fa-twitter"></i>--}}
+{{--                                        </a>--}}
+{{--                                    </li>--}}
 
-                                    <li>
-                                        <a href="https://www.whatsapp.com/">
-                                            <i class="fa-brands fa-whatsapp"></i>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
+{{--                                    <li>--}}
+{{--                                        <a href="https://www.whatsapp.com/">--}}
+{{--                                            <i class="fa-brands fa-whatsapp"></i>--}}
+{{--                                        </a>--}}
+{{--                                    </li>--}}
+{{--                                </ul>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
                     </div>
                     @else
                     <div class="home-contain hover-effect">
@@ -3416,4 +2507,7 @@
 
     <!-- sidebar open js -->
     <script src="/Client/assets/js/filter-sidebar.js"></script>
+
+    {{--    Add to Cart js --}}
+    <script src="/Client/assets/js/Cart.js"></script>
 @endsection

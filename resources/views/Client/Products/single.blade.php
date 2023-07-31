@@ -16,7 +16,6 @@
                                         <i class="fa-solid fa-house"></i>
                                     </a>
                                 </li>
-
                                 <li class="breadcrumb-item active">{{$product->name}}</li>
                             </ol>
                         </nav>

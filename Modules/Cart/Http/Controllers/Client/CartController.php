@@ -2,6 +2,7 @@
 
 namespace Modules\Cart\Http\Controllers\Client;
 
+use App\Http\Controllers\Client\ClientController;
 use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Product;
@@ -9,7 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Modules\Cart\Helpers\Cart\Cart;
 
-class CartController extends Controller
+class CartController extends ClientController
 {
     public function index(Request $request)
     {

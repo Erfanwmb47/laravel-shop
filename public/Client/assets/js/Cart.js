@@ -142,6 +142,10 @@ function addCartlistShop(event, id,quantity,plus = false) {
     if (quantity == null && document.getElementById('valueSingleProduct'+id)){
         quantity = document.getElementById('valueSingleProduct'+id).value;
     }
+    else if(quantity == null && document.getElementById('valueSingleProductFloating'+id)){
+        quantity = Number(document.getElementById('valueSingleProductFloating'+id).value)+1;
+        console.log(quantity);
+    }
     $.ajaxSetup({
         headers : {
             'X-CSRF-TOKEN' : document.head.querySelector('meta[name="csrf-token"]').content,

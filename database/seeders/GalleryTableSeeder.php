@@ -99,6 +99,96 @@ class GalleryTableSeeder extends Seeder
             'created_at'=>now(),
             'updated_at'=>now(),
         ]);
+        DB::table('galleries')->insert([
+            'title' => 'اسلایدر هدر سمت راست',
+            'alt' =>'home_header_right',
+            'mime' => 'jpeg',
+            'path' => 'public/Image/Sliders/home_header_right.jpg',
+            'flag' => 'Sliders',
+            'size' => '1',
+            'created_at'=>now(),
+            'updated_at'=>now(),
+        ]);
+        DB::table('galleries')->insert([
+            'title' => 'اسلایدر هدر سمت چپ',
+            'alt' =>'home_header_left',
+            'mime' => 'jpeg',
+            'path' => 'public/Image/Sliders/home_header_left.jpg',
+            'flag' => 'Sliders',
+            'size' => '1',
+            'created_at'=>now(),
+            'updated_at'=>now(),
+        ]);
+        DB::table('galleries')->insert([
+            'title' => 'اسلایدر بدنه بالا',
+            'alt' =>'home_main_top',
+            'mime' => 'jpeg',
+            'path' => 'public/Image/Sliders/home_main_top.jpeg',
+            'flag' => 'Sliders',
+            'size' => '1',
+            'created_at'=>now(),
+            'updated_at'=>now(),
+        ]);
+        DB::table('galleries')->insert([
+            'title' => 'اسلایدر آفر 1',
+            'alt' =>'home_offer_1',
+            'mime' => 'jpeg',
+            'path' => 'public/Image/Sliders/home_offer_1.jpg',
+            'flag' => 'Sliders',
+            'size' => '1',
+            'created_at'=>now(),
+            'updated_at'=>now(),
+        ]);
+        DB::table('galleries')->insert([
+            'title' => 'اسلایدر آفر 2',
+            'alt' =>'home_offer_2',
+            'mime' => 'jpeg',
+            'path' => 'public/Image/Sliders/home_offer_2.jpg',
+            'flag' => 'Sliders',
+            'size' => '1',
+            'created_at'=>now(),
+            'updated_at'=>now(),
+        ]);
+        DB::table('galleries')->insert([
+            'title' => 'اسلایدر آفر 3',
+            'alt' =>'home_offer_3',
+            'mime' => 'jpeg',
+            'path' => 'public/Image/Sliders/home_offer_3.jpg',
+            'flag' => 'Sliders',
+            'size' => '1',
+            'created_at'=>now(),
+            'updated_at'=>now(),
+        ]);
+        DB::table('galleries')->insert([
+            'title' => 'اسلایدر آفر 4',
+            'alt' =>'home_offer_4',
+            'mime' => 'jpeg',
+            'path' => 'public/Image/Sliders/home_offer_4.jpg',
+            'flag' => 'Sliders',
+            'size' => '1',
+            'created_at'=>now(),
+            'updated_at'=>now(),
+        ]);
+        DB::table('galleries')->insert([
+            'title' => 'اسلایدر چسبیده بدنه بالا',
+            'alt' =>'home_sticky_top',
+            'mime' => 'jpeg',
+            'path' => 'public/Image/Sliders/home_sticky_top.jpg',
+            'flag' => 'Sliders',
+            'size' => '1',
+            'created_at'=>now(),
+            'updated_at'=>now(),
+        ]);
+        DB::table('galleries')->insert([
+            'title' => 'اسلایدر چسبیده بدنه پایین',
+            'alt' =>'home_sticky_bottom',
+            'mime' => 'jpeg',
+            'path' => 'public/Image/Sliders/home_sticky_bottom.jpg',
+            'flag' => 'Sliders',
+            'size' => '1',
+            'created_at'=>now(),
+            'updated_at'=>now(),
+        ]);
 
     }
 }
