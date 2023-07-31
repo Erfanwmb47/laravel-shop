@@ -23,7 +23,7 @@ class CategoryController extends AdminController
            return view('Admin.Categories.Index', [
                'categories' => Category::all(),
                'categorySelected' => '0',
-               'galleries' =>Gallery::whereFlag('Categories')->get()
+               'galleries' => Gallery::all()
 
            ]);
     }
@@ -36,8 +36,10 @@ class CategoryController extends AdminController
     public function create()
     {
         return view('Admin.Categories.Create',[
+
             'categories' => Category::all(),
             'galleries' =>Gallery::whereFlag('Categories')->get()
+
         ]);
 
 
@@ -52,6 +54,7 @@ class CategoryController extends AdminController
     public function store(CreateCategoryRequest $request)
     {
 
+//        dd($request);
         if($request->category_id){
             $request->validate([
                 'category_id' => 'exists:categories,id'
@@ -100,7 +103,7 @@ class CategoryController extends AdminController
 
             'categories'=> Category::all(),
             'categorySelected'=> $category->id,
-            'galleries' =>Gallery::whereFlag('Categories')->get()
+            'galleries' => Gallery::all()
 
         ]);
     }

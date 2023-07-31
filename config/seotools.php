@@ -3,13 +3,15 @@
  * @see https://github.com/artesaos/seotools
  */
 
+use App\Models\Metakey;
+
 return [
     'meta' => [
         /*
          * The default configurations to be used by the meta generator.
          */
         'defaults'       => [
-            'title'        => "سینویا", // set false to total remove
+            'title'        => false    , // set false to total remove
             'titleBefore'  => false, // Put defaults.title before page title, like 'It's Over 9000! - Dashboard'
             'description'  => 'For those who helped create the Genki Dama', // set false to total remove
             'separator'    => ' ',

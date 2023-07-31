@@ -3,7 +3,10 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Database\Seeders\Setting\MetaKeySeeder;
+use Database\Seeders\Setting\SettingSeeder;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class DatabaseSeeder extends Seeder
 {
@@ -20,7 +23,14 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+
+        DB::unprepared(file_get_contents('database/files/country.sql'));
+         DB::unprepared(file_get_contents('database/files/province.sql'));
+        DB::unprepared(file_get_contents('database/files/counties.sql'));
+
         $this->call([
+            SettingSeeder::class,
+            MetaKeySeeder::class,
             countryGalleries::class,
             GalleryTableSeeder::class,
             UserTableSeeder::class,
@@ -29,6 +39,7 @@ class DatabaseSeeder extends Seeder
             TransportationTableSeeder::class,
             PaymentGatewayTableSeeder::class,
             BrandTableSeeder::class,
+            SliderTableSeeder::class,
         ]);
     }
 }

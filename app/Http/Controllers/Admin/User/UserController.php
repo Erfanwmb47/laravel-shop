@@ -8,12 +8,15 @@ use App\Models\Address;
 use App\Models\AdminLog;
 use App\Models\County;
 use App\Models\Gallery;
+use App\Models\Metakey;
 use App\Models\Province;
 use App\Models\Role;
+use App\Models\Setting;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\View;
 use Illuminate\Validation\Rule;
 use Morilog\Jalali\Jalalian;
 
@@ -23,6 +26,8 @@ class UserController extends AdminController
 
         public function __construct()
         {
+            View::share('shop_name',json_decode(Metakey::where('key','shop_name')->first()->Setting->object));
+
             $this->middleware('can:show-users')->only(['index']);
             $this->middleware('can:edit-user')->only(['edit','update']);
             $this->middleware('can:create-user')->only(['create','store']);
@@ -32,7 +37,7 @@ class UserController extends AdminController
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     *
      */
     public function index(Request $request)
     {
