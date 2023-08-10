@@ -772,11 +772,11 @@
                 </div>
             @endif
         @endif
-        @if(isset($home_body_bottom))
-            @if($home_body_bottom->count())
+        @if(isset($home_sticky_bottom))
+            @if($home_sticky_bottom->count())
             <div class="intro-y blog col-span-12 md:col-span-6 box">
                 <div class="blog__preview image-fit">
-                    <img alt="Midone Tailwind HTML Admin Template" class="rounded-t-md" src="{{str_replace('public','/storage',optional($home_body_bottom_active->gallery)->path)}}">
+                    <img alt="Midone Tailwind HTML Admin Template" class="rounded-t-md" src="{{str_replace('public','/storage',optional($home_sticky_bottom_active->gallery)->path)}}">
                     <div class="absolute w-full flex items-center px-5 pt-6 z-10">
                         <div class="ml-3 text-white mr-auto">
                             <a href="" class="font-medium">اسلایدر صفحه اصلی بدنه پایین </a>
@@ -792,19 +792,19 @@
                             </div>
                         </div>
                     </div>
-                    <div class="absolute bottom-0 text-white px-5 pb-6 z-10"> <span class="bg-theme-17 text-theme-11 px-2 py-1 rounded">{{$home_body_bottom_active->offer}} %</span> <span class="blog__category px-2 py-1 rounded">{{$home_body_bottom_active->tag}} </span> <a href="" class="block font-medium text-xl mt-3">{{$home_body_bottom_active->title}}</a> </div>
+                    <div class="absolute bottom-0 text-white px-5 pb-6 z-10"> <span class="bg-theme-17 text-theme-11 px-2 py-1 rounded">{{$home_sticky_bottom_active->offer}} %</span> <span class="blog__category px-2 py-1 rounded">{{$home_sticky_bottom_active->tag}} </span> <a href="" class="block font-medium text-xl mt-3">{{$home_sticky_bottom_active->title}}</a> </div>
                 </div>
                 <div class="p-5 text-gray-700">
                     @php
-                        echo $home_body_bottom_active->description;
+                        echo $home_sticky_bottom_active->description;
                     @endphp
                 </div>
                 <div class="flex items-center px-5 py-3 border-t border-gray-200">
                     <div class="intro-x flex mr-2">
                         <div class="intro-x w-8 h-8 image-fit">
-                            <img alt="{{$home_body_bottom_active->title}}" class="rounded-full border border-white zoom-in tooltip" src="{{str_replace('public','/storage',optional($home_body_bottom_active->gallery)->path)}}" title="selected">
+                            <img alt="{{$home_sticky_bottom_active->title}}" class="rounded-full border border-white zoom-in tooltip" src="{{str_replace('public','/storage',optional($home_sticky_bottom_active->gallery)->path)}}" title="selected">
                         </div>
-                        @foreach($home_body_bottom as $hhl)
+                        @foreach($home_sticky_bottom as $hhl)
                             @if(!$hhl->status)
                                 <div class="intro-x w-8 h-8 image-fit -ml-4">
                                     <img alt="{{$hhl->gallery->alt}}" class="rounded-full border border-white zoom-in tooltip" src="{{str_replace('public','/storage',optional($hhl->gallery)->path)}}" title="{{$hhl->title}}">
@@ -878,11 +878,11 @@
             </div>
             @endif
         @endif
-        @if(isset($home_body_left_top))
-            @if($home_body_left_top->count())
+        @if(isset($home_sticky_top))
+            @if($home_sticky_top->count())
             <div class="intro-y blog col-span-12 md:col-span-6 box">
                 <div class="blog__preview image-fit">
-                    <img alt="Midone Tailwind HTML Admin Template" class="rounded-t-md" src="{{str_replace('public','/storage',optional($home_body_left_top_active->gallery)->path)}}">
+                    <img alt="Midone Tailwind HTML Admin Template" class="rounded-t-md" src="{{str_replace('public','/storage',optional($home_sticky_top_active->gallery)->path)}}">
                     <div class="absolute w-full flex items-center px-5 pt-6 z-10">
                         <div class="ml-3 text-white mr-auto">
                             <a href="" class="font-medium">اسلایدر صفحه اصلی بدنه چپ بالا </a>
@@ -898,19 +898,19 @@
                             </div>
                         </div>
                     </div>
-                    <div class="absolute left_top-0 text-white px-5 pb-6 z-10"> <span class="bg-theme-17 text-theme-11 px-2 py-1 rounded">{{$home_body_left_top_active->offer}} %</span> <span class="blog__category px-2 py-1 rounded">{{$home_body_left_top_active->tag}} </span> <a href="" class="block font-medium text-xl mt-3">{{$home_body_left_top_active->title}}</a> </div>
+                    <div class="absolute left_top-0 text-white px-5 pb-6 z-10"> <span class="bg-theme-17 text-theme-11 px-2 py-1 rounded">{{$home_sticky_top_active->offer}} %</span> <span class="blog__category px-2 py-1 rounded">{{$home_sticky_top_active->tag}} </span> <a href="" class="block font-medium text-xl mt-3">{{$home_sticky_top_active->title}}</a> </div>
                 </div>
                 <div class="p-5 text-gray-700">
                     @php
-                        echo $home_body_left_top_active->description;
+                        echo $home_sticky_top_active->description;
                     @endphp
                 </div>
                 <div class="flex items-center px-5 py-3 border-t border-gray-200">
                     <div class="intro-x flex mr-2">
                         <div class="intro-x w-8 h-8 image-fit">
-                            <img alt="{{$home_body_left_top_active->title}}" class="rounded-full border border-white zoom-in tooltip" src="{{str_replace('public','/storage',optional($home_body_left_top_active->gallery)->path)}}" title="selected">
+                            <img alt="{{$home_sticky_top_active->title}}" class="rounded-full border border-white zoom-in tooltip" src="{{str_replace('public','/storage',optional($home_sticky_top_active->gallery)->path)}}" title="selected">
                         </div>
-                        @foreach($home_body_left_top as $hhl)
+                        @foreach($home_sticky_top as $hhl)
                             @if(!$hhl->status)
                                 <div class="intro-x w-8 h-8 image-fit -ml-4">
                                     <img alt="{{$hhl->gallery->alt}}" class="rounded-full border border-white zoom-in tooltip" src="{{str_replace('public','/storage',optional($hhl->gallery)->path)}}" title="{{$hhl->title}}">

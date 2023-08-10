@@ -16,7 +16,6 @@
                                         <i class="fa-solid fa-house"></i>
                                     </a>
                                 </li>
-
                                 <li class="breadcrumb-item active">{{$product->name}}</li>
                             </ol>
                         </nav>
@@ -38,7 +37,13 @@
                                 <div class="row g-2">
                                     <div class="col-12">
                                         <div class="product-main-1 no-arrow">
-
+                                            <div>
+                                                <div class="slider-image">
+                                                    <img src="{{str_replace('public','/storage',optional($product->gallery)->path)}}"
+                                                         data-zoom-image="{{str_replace('public','/storage',optional($product->gallery)->path)}}"
+                                                         class="img-fluid image_zoom_cls-1 blur-up lazyload" alt="{{$product->gallery->alt}}">
+                                                </div>
+                                            </div>
                                             @foreach($product->galleries as $gallery)
                                             <div>
                                                 <div class="slider-image">
@@ -53,6 +58,12 @@
 
                                     <div class="col-12">
                                         <div class="bottom-slider-image left-slider no-arrow slick-top">
+                                            <div>
+                                                <div class="sidebar-image">
+                                                    <img src="{{str_replace('public','/storage',optional($product->gallery)->path)}}"
+                                                         class="img-fluid blur-up lazyload" alt="{{$product->gallery->alt}}">
+                                                </div>
+                                            </div>
                                             @foreach($product->galleries as $gallery)
                                             <div>
                                                 <div class="sidebar-image">
@@ -182,7 +193,7 @@
                                                     data-field="">
                                                 <i class="fa fa-minus" aria-hidden="true"></i>
                                             </button>
-                                            <input class="form-control input-number qty-input ProductQuantity" type="text"
+                                            <input max="3" class="form-control input-number qty-input ProductQuantity" type="number"
                                                    name="quantity" value="1" id="valueSingleProduct{{$product->id}}">
 
                                             <button type="button" class="qty-right-plus" data-type="plus" data-field="">
@@ -1462,7 +1473,7 @@
                                     <button type="button" class="qty-left-minus" data-type="minus" data-field="">
                                         <i class="fa fa-minus" aria-hidden="true"></i>
                                     </button>
-                                    <input class="form-control input-number qty-input ProductQuantity" type="text" name="quantity"
+                                    <input max="3" class="form-control input-number qty-input ProductQuantity" type="number" name="quantity"
                                            value="1">
                                     <button type="button" class="qty-right-plus" data-type="plus" data-field="">
                                         <i class="fa fa-plus" aria-hidden="true"></i>

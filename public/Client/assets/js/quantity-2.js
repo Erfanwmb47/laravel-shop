@@ -3,7 +3,8 @@
 ==========================**/
  $(".addcart-button").click(function () {
      $(this).next().addClass("open");
-     $(".add-to-cart-box .qty-input").val('1');
+     // $(".add-to-cart-box .qty-input").val('1');
+     $(this).parent().children().find("input[type='text']:first").val(1);
  });
 
  $('.add-to-cart-box').on('click', function () {
@@ -31,18 +32,19 @@
              $(".ProductQuantity").attr('value', currentVal - 1)
          }
      }
-
+     $(this).next().change();
 
  });
 
  $('.qty-right-plus').click(function () {
      if ($(this).prev().val() < 9) {
          $(this).prev().val(+$(this).prev().val() + 1);
-         $(this).prev().attr('value', +$(this).prev().val())
+         $(this).prev().attr('value', +$(this).prev().val());
       // exstra added by admin
          if ($(this).prev().hasClass('ProductQuantity')){
              $(".ProductQuantity").val(+$(this).prev().val())
              $(".ProductQuantity").attr('value', +$(this).prev().val())
          }
      }
+     $(this).prev().change();
  });

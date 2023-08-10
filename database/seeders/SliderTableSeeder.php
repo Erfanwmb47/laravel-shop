@@ -94,5 +94,27 @@ class SliderTableSeeder extends Seeder
             'created_at'=>now(),
             'updated_at'=>now(),
         ]);
+        DB::table('sliders')->insert([
+            'title' => 'اسلایدر چسبیده بدنه بالا',
+            'description' =>'کد تخفیفت رو از اینجا بردار',
+            'link' => '/',
+            'flag' => 'home_sticky_top',
+            'tag' => 'تخفیف',
+            'status' => '1',
+            'gallery_id' => Gallery::where('alt','home_sticky_top')->first()->id,
+            'created_at'=>now(),
+            'updated_at'=>now(),
+        ]);
+        DB::table('sliders')->insert([
+            'title' => 'اسلایدر چسبیده بدنه پایین',
+            'description' =>'کد تخفیفت رو از اینجا بردار',
+            'link' => '/',
+            'flag' => 'home_sticky_bottom',
+            'tag' => 'تخفیف',
+            'status' => '1',
+            'gallery_id' => Gallery::where('alt','home_sticky_bottom')->first()->id,
+            'created_at'=>now(),
+            'updated_at'=>now(),
+        ]);
     }
 }

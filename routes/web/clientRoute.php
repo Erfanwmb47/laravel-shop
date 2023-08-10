@@ -68,6 +68,7 @@ Route::get('/q',function (){
 
 Route::get('products',[ProductController::class,'index']);
 Route::get('products/{product}',[ProductController::class,'single'])->name('products.single');
+Route::post('/product/view/summery/',[ProductController::class,'summery']);
 
 
 Route::post('wishlist/add',[WishlistController::class,'store'])->name('wishlist.store');
@@ -82,4 +83,9 @@ Route::prefix('discount')->group(function (){
     Route::delete('/delete/{discount}',[DiscountController::class,'destroy'])->name('client.discount.delete');
 
 });
+
+Route::prefix('search')->group(function (){
+    //Route::get('',[]);
+});
+
 

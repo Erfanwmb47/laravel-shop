@@ -7,7 +7,6 @@ function checkoutNewAddress(){
             });
             $(".modal").modal("hide");
             $("#newAddressBox").remove();
-            console.log($('#dropbtnCounty').text());
             var temp = "<div class=\"col-xxl-6 col-lg-12 col-md-6 checkoutAddressSelect\" id=\"newAddressBox\" >\n" +
                 "                                                    <div class=\"delivery-address-box\">\n" +
                 "                                                        <div>\n" +
@@ -17,7 +16,7 @@ function checkoutNewAddress(){
                 "                                                            </div>\n" +
                 "\n" +
                 "                                                            <div class=\"label\">\n" +
-                "                                                                <label>خانه</label>\n" +
+                "                                                                <div class=\"pointer\" data-bs-toggle=\"modal\" data-bs-target=\"#newAddressModal\" id=\"editAddressButton\">ویرایش</div>\n" +
                 "                                                            </div>\n" +
                 "\n" +
                 "                                                            <ul class=\"delivery-address-detail\">\n" +
@@ -54,7 +53,6 @@ function checkoutNewAddress(){
 
 
 }
-
 function computePriceTransportation(event,province_id,county_id) {
 
     //
@@ -87,7 +85,6 @@ function computePriceTransportation(event,province_id,county_id) {
 
             document.getElementById('transportationsBox').innerHTML ="";
             res.transportations.forEach(function(transportation) {
-                console.log((Number(transportation.discountPrice)));
                 if(transportation.discountPrice){
                     var temp = "<div class=\"col-xxl-6\">\n" +
                         "                                                    <div class=\"delivery-option\">\n" +
@@ -184,7 +181,6 @@ document.getElementById('newAddressH3').classList.remove("active");
 function changeAddress() {
     if (document.getElementById('newAddressH3').classList[1] == 'active') {
         // $('#NewAddress').check()
-        console.log('hi');
         document.getElementById('newAddress').checked = 'true';
     }
     else {
@@ -207,7 +203,15 @@ function selectProvince(id,name){
     document.getElementById('myInputProvinceRequest').setAttribute('value',id);
     document.getElementById("myDropdownProvince").classList.toggle("showProvince");
     document.getElementById('dropbtnCounty').innerHTML = "انتخاب شهر";
+    document.getElementById('myInputCountyRequest').setAttribute('value','');
     document.getElementById('myInputCounty').setAttribute('value','');
+
+    if (! document.getElementById('myInputCountyRequest').value){
+        document.getElementById('dropbtnCounty').classList.add('border');
+        document.getElementById('dropbtnCounty').classList.add('border-danger');
+        document.getElementById('submitAddress').disabled = true;
+
+    }
     $.ajaxSetup({
         headers : {
             'X-CSRF-TOKEN' : document.head.querySelector('meta[name="csrf-token"]').content,
@@ -246,6 +250,10 @@ function selectCounty(id,name){
     document.getElementById('myInputCounty').setAttribute('value',name);
     document.getElementById('myInputCountyRequest').setAttribute('value',id);
     document.getElementById("myDropdownCounty").classList.toggle("showCounty");
+
+    document.getElementById('dropbtnCounty').classList.remove('border');
+    document.getElementById('dropbtnCounty').classList.remove('border-danger');
+    document.getElementById('submitAddress').disabled = false;
 }
 function filterFunctionProvince() {
     var input, filter, ul, li, a, i;

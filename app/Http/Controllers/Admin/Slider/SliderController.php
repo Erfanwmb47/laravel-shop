@@ -45,6 +45,10 @@ class SliderController extends AdminController
             'home_offer_3'=>Slider::whereFlag('home_offer_3')->get(),
             'home_offer_4_active'=>Slider::whereFlag('home_offer_4')->whereStatus(1)->first(),
             'home_offer_4'=>Slider::whereFlag('home_offer_4')->get(),
+            'home_sticky_top_active'=>Slider::whereFlag('home_sticky_top')->whereStatus(1)->first(),
+            'home_sticky_top'=>Slider::whereFlag('home_sticky_top')->get(),
+            'home_sticky_bottom_active'=>Slider::whereFlag('home_sticky_bottom')->whereStatus(1)->first(),
+            'home_sticky_bottom'=>Slider::whereFlag('home_sticky_bottom')->get(),
 
         ]);
 

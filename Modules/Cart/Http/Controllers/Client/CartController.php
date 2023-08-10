@@ -32,7 +32,6 @@ class CartController extends ClientController
 
         ]);
 
-
         if (Cart::has($product)){
             if(Cart::count($product) < $product->quantity) {
                 //shate mojozdi anbar

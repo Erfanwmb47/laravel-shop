@@ -169,6 +169,36 @@ class GalleryTableSeeder extends Seeder
             'created_at'=>now(),
             'updated_at'=>now(),
         ]);
+        DB::table('galleries')->insert([
+            'title' => 'اسلایدر چسبیده بدنه بالا',
+            'alt' =>'home_sticky_top',
+            'mime' => 'jpeg',
+            'path' => 'public/Image/Sliders/home_sticky_top.jpg',
+            'flag' => 'Sliders',
+            'size' => '1',
+            'created_at'=>now(),
+            'updated_at'=>now(),
+        ]);
+        DB::table('galleries')->insert([
+            'title' => 'اسلایدر چسبیده بدنه پایین',
+            'alt' =>'home_sticky_bottom',
+            'mime' => 'jpeg',
+            'path' => 'public/Image/Sliders/home_sticky_bottom.jpg',
+            'flag' => 'Sliders',
+            'size' => '1',
+            'created_at'=>now(),
+            'updated_at'=>now(),
+        ]);
+        DB::table('galleries')->insert([
+            'title' => 'مای',
+            'alt' =>'my',
+            'mime' => 'jpeg',
+            'path' => 'public/Image/product/my.jpg',
+            'flag' => 'Products',
+            'size' => '1',
+            'created_at'=>now(),
+            'updated_at'=>now(),
+        ]);
 
     }
 }

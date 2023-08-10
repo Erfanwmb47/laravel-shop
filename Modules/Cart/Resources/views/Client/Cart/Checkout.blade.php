@@ -98,7 +98,7 @@
                                     <div class="checkout-box">
                                         <div class="checkout-title">
                                             <h4>آدرس گیرنده</h4>
-                                            <button class="btn bg-dark text-white btn-sm fw-bold btn-animation proceed-btn " data-bs-toggle="modal" data-bs-target="#newAddress" id="newAddressButton">آدرس جدید</button>
+                                            <button class="btn bg-dark text-white btn-sm fw-bold btn-animation proceed-btn " data-bs-toggle="modal" data-bs-target="#newAddressModal" id="newAddressButton">آدرس جدید</button>
 
                                         </div>
 
@@ -615,7 +615,7 @@
             </div>
         </div>
         <!-- آدرس جدید Start -->
-        <div class="modal fade theme-modal" id="newAddress" tabindex="-1" aria-labelledby="exampleModalLabel2"
+        <div class="modal fade theme-modal" id="newAddressModal" tabindex="-1" aria-labelledby="exampleModalLabel2"
              aria-hidden="true">
             <div class="modal-dialog modal-lg modal-dialog-centered modal-fullscreen-sm-down">
                 <div class="modal-content">
@@ -639,7 +639,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-xxl-6 form-floating theme-form-floating dropdownAddress">
+                            <div class="col-xxl-6 form-floating theme-form-floating dropdownAddress" id="dropdownCountyAddress">
                                 <span onclick="showCounty()" class="form-control" id="dropbtnCounty">انتخاب شهر</span>
                                 <label for="dropbtnCounty"> شهر </label>
                                 <div id="myDropdownCounty" class="dropdown-content-address fom-control">
@@ -651,22 +651,20 @@
                             </div>
 
                             <div class="col-xxl-6">
-                                <form>
                                     <div class="form-floating theme-form-floating">
                                         <input class="form-control" type="tel" placeholder="کد پستی را وارد کنید" name="postalCode" id="postalCode"
                                                maxlength="10">
                                         <label class="right-0" for="postalCode">کد پستی</label>
                                     </div>
-                                </form>
                             </div>
                             <div class="col-xxl-6">
-                                <form>
+
                                     <div class="form-floating theme-form-floating">
                                         <input class="form-control" type="tel" placeholder="تلفن ثابت را وارد کنید" name="tel" id="tel"
                                                maxlength="10">
                                         <label class="right-0" for="tel">تلفن</label>
                                     </div>
-                                </form>
+
                             </div>
 
                             <div class="col-12">
@@ -683,7 +681,7 @@
                     <div class="modal-footer">
                         <button type="button" class="btn btn-animation btn-md fw-bold"
                                 data-bs-dismiss="modal">بستن</button>
-                        <button type="button" data-bs-dismiss="modal" onclick="checkoutNewAddress()"
+                        <button type="button" data-bs-dismiss="modal" onclick="checkoutNewAddress()" id="submitAddress" disabled
                                 class="btn theme-bg-color btn-md fw-bold text-light">ثبت آدرس</button>
                     </div>
                 </div>

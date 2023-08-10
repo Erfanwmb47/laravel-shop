@@ -61,6 +61,7 @@ class BrandController extends AdminController
 
         if ($request->get('selectedImage') == 'uploadedImage')
         {        $object= explode("/",$request->file('image')->getClientMimeType());
+            dd($object);
             $imagePath = $request->file('image')->storeAs('public/Image/Brands',$request->get('title') . '.'. $object[1]);
             $h=Gallery::query()->create([
                 'title' => $request->get('title'),

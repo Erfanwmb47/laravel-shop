@@ -5,6 +5,7 @@ namespace Modules\Cart\Http\Controllers\Client;
 
 use App\Http\Controllers\Admin\User\Address\AddressController;
 use App\Http\Controllers\Client\Cart\Exception;
+use App\Http\Controllers\Client\ClientController;
 use App\Http\Controllers\Controller;
 use App\Models\Address;
 use App\Models\Brand;
@@ -21,7 +22,7 @@ use Modules\Cart\Entities\Payment;
 use Modules\Cart\Helpers\Cart\Cart;
 use function PHPUnit\Framework\isNull;
 
-class PaymentController extends Controller
+class PaymentController extends ClientController
 {
     public function computePriceTransportation(Request $request)
     {
