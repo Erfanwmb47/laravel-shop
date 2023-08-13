@@ -723,6 +723,7 @@
                                             <a class="nav-link dropdown-toggle" href="/aboutUs"
                                                >درباره سینویا</a>
                                         </li>
+
                                     </ul>
                                 </div>
                             </div>
@@ -780,7 +781,9 @@
     </ul>
 </div>
 <!-- mobile fix menu end -->
-@yield('content')
+<div id="content">
+    @yield('content')
+</div>
 
 
 <!-- Footer Section Start -->

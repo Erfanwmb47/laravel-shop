@@ -13,6 +13,7 @@ use App\Http\Controllers\Client\Product\ProductController;
 use App\Http\Controllers\Client\Profile\OrderController;
 use App\Http\Controllers\Client\Profile\ProfileController;
 use App\Http\Controllers\Client\Profile\WishlistController;
+use App\Http\Controllers\Client\Shop\ShopController;
 use App\Http\Controllers\Stack\SmsController;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\Auth;
@@ -30,6 +31,7 @@ Route::domain($domain)->middleware('auth')->group(function (){
     Route::get('/',[ProfileController::class,'index'])->name('profile');
     //TODO حل مشکل لاگین دوباره
 
+        Route::post('/changeprofileimage',[ProfileController::class,'changeProfileImage'])->name('profile.changeProfileImage');
         Route::get('/security/twofactorauth', [ProfileController::class, 'TwofactorAuth'])->name('profile.twoFactorAuth');
         Route::post('/security/twofactorauth', [ProfileController::class, 'TwofactorAuthpost'])->name('profile.TwoFactorAuthPost');
         Route::get('/security/twofactorauth/phone', [ProfileController::class, 'getPhoneVerify'])->name('profile.2fa.phone');
@@ -84,8 +86,9 @@ Route::prefix('discount')->group(function (){
 
 });
 
-Route::prefix('search')->group(function (){
-    //Route::get('',[]);
+Route::prefix('search')->name('client.shop.')->group(function (){
+    Route::get('/',[ShopController::class,'index'])->name('index');
+    Route::post('/',[ShopController::class.'index']);
 });
 
 

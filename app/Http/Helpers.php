@@ -1,5 +1,7 @@
 <?php
 
+
+
 if (! function_exists('side_menu_active')){
      function side_menu_active($isroute,$setclass) {
          if (is_array($isroute)){
@@ -87,4 +89,13 @@ if (! function_exists('faNumber')){
         return $number;
     }
 
+}
+
+if (! function_exists('side_menu_profile_active')){
+    function side_menu_profile_active($segment) {
+        if (url()->current() == 'http://user.localhost:8000'.$segment){
+            return 'active';
+        }
+        return '';
+    }
 }

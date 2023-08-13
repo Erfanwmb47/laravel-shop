@@ -50,7 +50,6 @@ class ProductController extends ClientController
                 $array[$pa->name]=[$pa->pivot->value->value];
 
         }
-
         return response(['success'=> true,
             'product'=>$product,
             'attribute'=>$array,

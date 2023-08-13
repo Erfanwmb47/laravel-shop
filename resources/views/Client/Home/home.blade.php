@@ -453,7 +453,7 @@
                                                         data-field="" >
                                                     <i class="fa fa-minus" aria-hidden="true"></i>
                                                 </button>
-                                                <input class="form-control input-number qty-input " type="text" min="1" max="{{$product->maxOrder}}"
+                                                <input class="form-control input-number qty-input" readonly="readonly" type="text" min="1" max="{{$product->maxOrder}}"
                                                        name="quantity" value="@php echo (\Modules\Cart\Helpers\Cart\Cart::has($product) ) ? ($productInCart['quantity']) : '1' @endphp " id="valueSingleProductFloating{{$product->id}}"  data-maxOrder="{{$product->maxOrder}}" @if(\Modules\Cart\Helpers\Cart\Cart::has($product))data-cart="{{$productInCart['id']}}" @endif onchange="changeQuantityShop(event,'{{$product->id}}')">
                                                 <button type="button" class="qty-right-plus" data-type="plus"
                                                         data-field="" >

@@ -100,7 +100,6 @@ class ProductController extends AdminController
                 'flag' => 'Products',
                 'size' => $imageFileProduct[$i]->getSize()/1024
             ]);
-
             if($imageDefaultProduct ==
                 $imageFileProduct[$i]->getClientOriginalName()){
                 $product->update([

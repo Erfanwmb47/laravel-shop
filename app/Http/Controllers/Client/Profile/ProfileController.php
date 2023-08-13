@@ -6,12 +6,16 @@ use App\Http\Controllers\Client\ClientController;
 use App\Models\ActiveCode;
 use App\Models\Address;
 use App\Models\County;
+use App\Models\Gallery;
 use App\Models\Profile;
 use App\Models\Province;
+use App\Models\User;
 use App\Notifications\ActiveCodeNotification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
+use Morilog\Jalali\Jalalian;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class ProfileController extends ClientController
@@ -27,6 +31,9 @@ class ProfileController extends ClientController
         //dd($user);
         $addresses = address::query()->where('user_id',$user->id)->get();
        // dd($user);
+//        $defaultAddress = $user->addresses->firstWhere('default','1');
+//        $defaultCounty = $defaultAddress->county ;
+//        dd($defaultCounty);
 
            return view('Client.Profile.Index',[
                'user' => $user,
@@ -188,5 +195,27 @@ class ProfileController extends ClientController
             Alert::error('عملیات ناموفقی بود', 'اشتباهی پیش اومده لطفا دوباره امتحان کنید');
           }
         return redirect(route('profile.twoFactorAuth'));
+    }
+
+    public function changeprofileimage(Request $request)
+    {
+
+        $imagePath = $request->file('image')->storeAs('public/Image/Users',$request->file('image')->getClientOriginalName());
+        $object= explode("/",$request->file('image')->getClientMimeType());
+
+        $gallerynew=Gallery::query()->create([
+            'title' => $request->file('image')->getClientOriginalName(),
+            'alt' =>$request->file('image')->getClientOriginalName(),
+            'mime' => $object[1],
+            'flag' => 'users',
+            'path' => $imagePath,
+            'size' => $request->file('image')->getSize()/1024,
+            'created_at'=> Jalalian::now(),
+            'updated_at'=> Jalalian::now()
+        ]);
+
+        Auth::user()->update([
+           'gallery_id' => $gallerynew->id
+        ]);
     }
 }
