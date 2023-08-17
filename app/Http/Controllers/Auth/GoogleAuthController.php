@@ -24,11 +24,12 @@ class GoogleAuthController extends AuthController
 
     public function callback(Request $request)
     {
+
         try{
 
 
             $googleUser = Socialite::driver('google')->user();
-           // dd($googleUser);
+            //           dd($googleUser);
             //dd($googleUser);
             $user = User::where('email',$googleUser->email)->first();
             $username = str_replace('@gmail.com','',$googleUser->email);

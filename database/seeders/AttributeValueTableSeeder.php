@@ -36,5 +36,11 @@ class AttributeValueTableSeeder extends Seeder
             'attribute_id' => Attribute::whereName('نوع پوست')->first()->id,
             'value' => 'معمولی',
         ]);
+
+        DB::table('attribute_product')->insert([
+            'attribute_id' => 1,
+            'product_id' => 1,
+            'value_id' => 2,
+        ]);
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\order\OrderStatus;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
@@ -59,4 +60,10 @@ class Order extends Model
     {
         return $this->belongsToMany(Discount::class);
     }
+
+    public function status_history()
+    {
+     return $this->hasMany(OrderStatus::class);
+    }
+
 }

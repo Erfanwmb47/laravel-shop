@@ -3,13 +3,14 @@
 namespace App\Http\Controllers\Client\Profile;
 
 use App\Http\Controllers\Client\Cart\PaymentController;
+use App\Http\Controllers\Client\ClientController;
 use App\Http\Controllers\Controller;
 use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use function Symfony\Component\String\s;
 
-class OrderController extends Controller
+class OrderController extends ClientController
 {
     public function index(Request $request)
     {
@@ -19,12 +20,26 @@ class OrderController extends Controller
         ]);
     }
 
-    public function showDetails(Order $order)
+    public function showDetails(Request $request)
     {
-   // dd($order->user);
+
+
+        $order=Order::find($request->id);
         $this->authorize('view',$order);
 //        /$order=$order->latest('created_at');
-        return view('Client.Profile.Orders.detail',compact('order'));
+       $products =  $order->products->map(function ($item){
+           $item->brand = $item->brand->name;
+           $item->image = str_replace('public','/storage',$item->gallery->path);
+            return $item ;
+       });
+        return response(['success'=> true,
+            'products'=>$products,
+            'order'=>$order,
+            'address' =>$order->address,
+            'county' => $order->address->county->name,
+            'province' => $order->address->province->name,
+        ]);
+//        return view('Client.Profile.Orders.detail',compact('order'));
     }
 
     public function payment(Order $order)
@@ -33,5 +48,12 @@ class OrderController extends Controller
         $gatewayurl=PaymentController::payping(1123,$order);
         return redirect($gatewayurl);
 
+    }
+
+    public function tracking(Order $order)
+    {
+        return view('Client.Profile.Orders.tracking',[
+           'order' => $order
+        ]);
     }
 }

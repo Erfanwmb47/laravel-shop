@@ -25320,6 +25320,7 @@ header .offcanvas-backdrop {
     background: var(--theme-color2)
 }
 
+
 .user-dashboard-section .dashboard-right-sidebar .dashboard-order .order-contain .order-box .order-container .order-detail h6 {
     margin-top: 6px;
     font-size: calc(14px + (15 - 14) * ((100vw - 320px) / (1920 - 320)));
@@ -29373,7 +29374,7 @@ header .offcanvas-backdrop {
     -webkit-box-align: start;
     -ms-flex-align: start;
     align-items: flex-start;
-    text-align: left;
+    text-align: right;
     display: inline-block;
     -webkit-column-count: 2;
     -moz-column-count: 2;
@@ -29396,7 +29397,8 @@ header .offcanvas-backdrop {
 .product-section .right-box-contain .pickup-box .product-info .product-info-list-2 {
     display: -webkit-box;
     display: -ms-flexbox;
-    display: flex
+    display: flex;
+    flex-direction: row-reverse;
 }
 
 @media (max-width: 1500px) {
@@ -29476,7 +29478,7 @@ header .offcanvas-backdrop {
 }
 
 .product-section .right-box-contain .pickup-box .product-info .product-info-list li {
-    padding-left: 13px;
+    padding-right: 13px;
     width: 100%;
     font-size: calc(14px + (15 - 14) * ((100vw - 320px) / (1920 - 320)));
     position: relative;
@@ -29510,7 +29512,7 @@ header .offcanvas-backdrop {
     transform: translateY(-50%);
     width: 5px;
     height: 5px;
-    left: 0;
+    right: 0;
     background-color: #4a5568;
     border-radius: 100%
 }
@@ -30111,9 +30113,24 @@ header .offcanvas-backdrop {
 .flex{
     display: flex;
 }
+.flex-reverse{
+    display: flex;
+    flex-direction: row-reverse;
+}
+.flex-space-between{
+    display: flex;
+    justify-content: space-between;
+}
+
 .right-0{
     right: 0;
     left: unset;
+}
+.w-2{
+    width: 2rem;
+}
+.w-10{
+    width: 10rem;
 }
 .text-theme-1{
     color: #863A6F ;
@@ -30167,4 +30184,7 @@ fa-num{
     min-height: 4rem;
     border-radius: 4px;
     animation-delay: .06s;
+}
+.mh-200{
+    max-height: 200px;
 }

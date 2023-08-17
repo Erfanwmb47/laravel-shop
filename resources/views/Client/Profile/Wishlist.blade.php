@@ -116,5 +116,6 @@
 
     {{--    Add to Cart js --}}
     <script src="/Client/assets/js/Cart.js"></script>
+    <script src="/Client/assets/js/profile.js"></script>
 
 @endsection

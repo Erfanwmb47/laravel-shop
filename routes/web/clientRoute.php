@@ -42,7 +42,9 @@ Route::domain($domain)->middleware('auth')->group(function (){
 
         Route::get('orders',[OrderController::class,'index']);
         Route::post('orders',[OrderController::class,'index'])->name('profile.orders.index');
-        Route::get('orders/{order}',[OrderController::class,'showDetails'])->name('profile.orders.detail');
+//        Route::get('orders/{order}',[OrderController::class,'showDetails'])->name('profile.orders.detail');
+        Route::post('orders/detail',[OrderController::class,'showDetails'])->name('profile.orders.detail');
+        Route::get('orders/tracking/{order}',[OrderController::class,'tracking'])->name('profile.orders.tracking');
         Route::get('orders/{order}/payment',[OrderController::class,'payment'])->name('profile.orders.payment');
 });
 

@@ -21,7 +21,7 @@
                             <div class="profile-contain">
                                 <div class="profile-image">
                                     <div class="position-relative">
-                                        <img src="{{str_replace('public','/storage',$user->gallery->path)}}"
+                                        <img src="{{str_replace('public','/storage',optional(auth()->user()->gallery)->path)}}"
                                              class="blur-up lazyload update_img" alt="">
                                         <form action="{{route('profile.changeProfileImage')}}" method="post" name="upload_img" enctype="multipart/form-data" id="upload_img">
                                             @csrf
@@ -35,8 +35,8 @@
                                 </div>
 
                                 <div class="profile-name">
-                                    <h3>{{$user->username}}</h3>
-                                    <h6 class="text-content">{{$user->phone}}</h6>
+                                    <h3>{{auth()->user()->username}}</h3>
+                                    <h6 class="text-content">{{auth()->user()->phone}}</h6>
                                 </div>
                             </div>
                         </div>
@@ -52,9 +52,10 @@
                             </li>
 
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="pills-order-tab" data-bs-toggle="pill"
-                                        data-bs-target="#pills-order" type="button" role="tab" aria-controls="pills-order"
-                                        aria-selected="false"><i data-feather="shopping-bag"></i>سفارشات</button>
+                                <a href="{{route('profile.orders.index')}}">
+                                <button class="nav-link {{side_menu_profile_active('/orders')}}" id="pills-order-tab">
+                                    <i data-feather="shopping-bag"></i>سفارشات</button>
+                                </a>
                             </li>
                             <li class="nav-item" role="presentation">
                                 <a href="{{route('profile.wishlist.index')}}">
@@ -102,3 +103,4 @@
     </section>
     <!-- User Dashboard Section End -->
 @endsection
+

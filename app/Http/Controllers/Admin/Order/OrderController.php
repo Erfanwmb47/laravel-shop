@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin\Order;
 use App\Http\Controllers\Admin\AdminController;
 use App\Models\County;
 use App\Models\Order;
+use App\Models\order\OrderStatus;
 use App\Models\Payment;
 use App\Models\Province;
 use App\Models\Transportation;
@@ -163,10 +164,17 @@ class OrderController extends AdminController
     {
         try {
             $order=Order::find($request->order_id);
+            OrderStatus::create([
+                'order_id'=>$order->id,
+                'before_status'=> $order->status,
+                'after_status'=>$request->status,
+                'created_at'=>now()
+            ]);
+
             $order->update(['status' => $request->status]);
             return response(['status'=> 'success','order'=>$request->order_id,'payment_status'=>$request->status]);
         }catch (\Exception $exception){
-            return response(['status' => 'error'],404 );
+            return response(['status' => $exception],404 );
 
         }
        // dd($request);

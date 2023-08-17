@@ -99,3 +99,54 @@ if (! function_exists('side_menu_profile_active')){
         return '';
     }
 }
+
+// profile order status
+
+if (! function_exists('profile_order_status')){
+    function profile_order_status($status) {
+        if($status =='unpaid'){
+            return ['پرداخت نشده','','سفارش شما همچنان در انتظار پرداخت است '];
+        }
+        else if ($status =='paid'){
+            return ['پرداخت شده','success-bg','سفارش شما در وضعیت پرداخت شده قرار دارد و به زودی وارد مرحله آماده سازی میشود'];
+        }
+        else if ($status =='preparation'){
+            return ['در حال آماده سازی','success-bg','سفارش شما در حال آماده سازی است و پس از آن ارسال خواهد شد'];
+        }
+        else if ($status =='posted'){
+            return ['ارسال شده','success-bg','سفارش ما ارسال شده است و به زودی به دست شما خواهد رسید'];
+        }
+        else if ($status =='received'){
+            return ['دریافت شده','success-bg','ممنون از این که سینویا را برای خرید خود انتخاب کردید'];
+        }
+        else if ($status =='canceled'){
+            return ['لغو شده','','سفارش توسط مشتری لغو شده است '];
+        }
+        return '';
+    }
+}
+
+if (! function_exists('tracking_order_status')){
+    function tracking_order_status($status) {
+        if($status =='unpaid'){
+            return ['پرداخت نشده','',''];
+        }
+        else if ($status =='paid'){
+            return ['پرداخت شده','success-bg','سفارش شما در وضعیت پرداخت شده قرار دارد و به زودی وارد مرحله آماده سازی میشود'];
+        }
+        else if ($status =='preparation'){
+            return ['در حال آماده سازی','success-bg','سفارش شما در حال آماده سازی است و پس از آن ارسال خواهد شد'];
+        }
+        else if ($status =='posted'){
+            return ['ارسال شده','success-bg','سفارش ما ارسال شده است و به زودی به دست شما خواهد رسید'];
+        }
+        else if ($status =='received'){
+            return ['دریافت شده','success-bg','ممنون از این که سینویا را برای خرید خود انتخاب کردید'];
+        }
+        else if ($status =='canceled'){
+            return ['لغو شده','','سفارش توسط مشتری لغو شده است '];
+        }
+        return '';
+    }
+}
+

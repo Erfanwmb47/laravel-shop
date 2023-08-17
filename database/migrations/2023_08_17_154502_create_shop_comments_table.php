@@ -13,19 +13,19 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('comments', function (Blueprint $table) {
+        Schema::create('shop_comments', function (Blueprint $table) {
             $table->id()->autoIncrement()->unique();
-            $table->bigInteger('comment_id')->default(0);
             $table->foreignid('user_id')->constrained()->onDelete('cascade');
-            $table->bigInteger('commentable_id');
-            $table->string('commentable_type');
+            $table->foreignid('product_id')->constrained()->onDelete('cascade');
             $table->text('text');
-            $table->enum('approved',['allow','deny'])->default('deny');
-            $table->integer('like')->unsigned()->default('0');
-            $table->integer('disLike')->unsigned()->default('0');
+            $table->json('positive')->nullable();
+            $table->json('negative')->nullable();
+            $table->boolean('status')->default('0');
+            $table->softDeletes();
             $table->timestamps();
         });
-    }
+
+        }
 
     /**
      * Reverse the migrations.
@@ -34,6 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('comments');
+        Schema::dropIfExists('shop_comments');
     }
 };

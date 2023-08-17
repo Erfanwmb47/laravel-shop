@@ -13,6 +13,7 @@ class ProductController extends ClientController
 {
     public function index()
     {
+
         $products = Product::latest()->paginate(20);
         return view('Client.Products.Index',[
             'products' => $products
@@ -21,6 +22,16 @@ class ProductController extends ClientController
 
     public function single(Product $product)
     {
+        $array=[];
+        foreach ($product->attributes as $pa){
+            if(array_key_exists($pa->name,$array))
+                array_push($array[$pa->name],$pa->pivot->value->value);
+
+            else
+                $array[$pa->name]=[$pa->pivot->value->value];
+
+        }
+
             $this->seo()
                 ->setTitle($product->name . 'محصول ')
                 ->setDescription($product->description)
@@ -31,7 +42,8 @@ class ProductController extends ClientController
           //  dd($product->attributes->first()->values);
 
             return view('Client.Products.Single',[
-                'product' => $product
+                'product' => $product,
+                'attributes' => $array
             ]);
     }
 

@@ -14,6 +14,7 @@ use App\Notifications\ActiveCodeNotification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
 use Morilog\Jalali\Jalalian;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -199,23 +200,33 @@ class ProfileController extends ClientController
 
     public function changeprofileimage(Request $request)
     {
-
-        $imagePath = $request->file('image')->storeAs('public/Image/Users',$request->file('image')->getClientOriginalName());
         $object= explode("/",$request->file('image')->getClientMimeType());
 
-        $gallerynew=Gallery::query()->create([
-            'title' => $request->file('image')->getClientOriginalName(),
-            'alt' =>$request->file('image')->getClientOriginalName(),
-            'mime' => $object[1],
-            'flag' => 'users',
-            'path' => $imagePath,
-            'size' => $request->file('image')->getSize()/1024,
-            'created_at'=> Jalalian::now(),
-            'updated_at'=> Jalalian::now()
-        ]);
+        if (!Auth::user()->gallery)
+        {        $imagePath = $request->file('image')->storeAs('public/Image/Users',Auth::user()->username.'.'.$object[1]);
+            $gallerynew=Gallery::query()->create([
+                'title' => Auth::user()->username,
+                'alt' => 'profile '.Auth::user()->username,
+                'mime' => $object[1],
+                'flag' => 'users',
+                'path' => $imagePath,
+                'size' => $request->file('image')->getSize()/1024,
+                'created_at'=> Jalalian::now(),
+                'updated_at'=> Jalalian::now()
+            ]);
+            Auth::user()->update([
+                'gallery_id' => $gallerynew->id
+            ]);
+        }else{
+            Storage::delete(Auth::user()->gallery->path);
+            $imagePath = $request->file('image')->storeAs('public/Image/Users',Auth::user()->username.'.'.$object[1]);
+            Auth::user()->gallery->update([
+                 'path' => $imagePath,
+                 'size' => $request->file('image')->getSize()/1024,
+                 'mime' => $object[1]
+            ]);
 
-        Auth::user()->update([
-           'gallery_id' => $gallerynew->id
-        ]);
+        }
+        return response()->json(['status' => 'success']);
     }
 }

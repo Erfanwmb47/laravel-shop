@@ -54,7 +54,6 @@ function checkoutNewAddress(){
 
 }
 function computePriceTransportation(event,province_id,county_id) {
-
     //
     $.ajaxSetup({
         headers : {
@@ -86,6 +85,7 @@ function computePriceTransportation(event,province_id,county_id) {
             document.getElementById('transportationsBox').innerHTML ="";
             res.transportations.forEach(function(transportation) {
                 if(transportation.discountPrice){
+                    console.log(Number(transportation.totalPrice) - Number(transportation.discountPrice))
                     var temp = "<div class=\"col-xxl-6\">\n" +
                         "                                                    <div class=\"delivery-option\">\n" +
                         "                                                        <div class=\"delivery-category\">\n" +
@@ -93,7 +93,7 @@ function computePriceTransportation(event,province_id,county_id) {
                         "                                                                <div\n" +
                         "                                                                    class=\"form-check custom-form-check hide-check-box\">\n" +
                         "                                                                    <input class=\"form-check-input\" type=\"radio\"\n" +
-                        "                                                                           name=\"transportation\" id=\"transportation"+transportation.id+"\" data-price=\""+(Number(transportation.totalPrice) - Number(transportation.discountPrice))+"\" value=\""+transportation.id+"\" onchange=\"finalCost(this)\" checked>\n" +
+                        "                                                                           name=\"transportation\" id=\"transportation"+transportation.id+"\" data-price=\""+(Number(transportation.totalPrice) - Number(transportation.discountPrice))+"\" value=\""+transportation.id+"\" onchange=\"finalCost(this)\" >\n" +
                         "                                                                    <label class=\"form-check-label\"\n" +
                         "                                                                           for=\"standard\">\n"+transportation.name+"</label>\n" +
                         "                                                                    <img class=\"mx-2 rounded\" src=\""+transportation.image+"\" alt=\"transportation"+transportation.name+"\" style=\"width: 30px;\">\n" +
@@ -116,7 +116,7 @@ function computePriceTransportation(event,province_id,county_id) {
                         "                                                                <div\n" +
                         "                                                                    class=\"form-check custom-form-check hide-check-box\">\n" +
                         "                                                                    <input class=\"form-check-input\" type=\"radio\"\n" +
-                        "                                                                           name=\"transportation\" id=\"transportation"+transportation.id+"\" data-price=\""+(Number(transportation.totalPrice) - Number(transportation.discountPrice))+"\" value=\""+transportation.id+"\" onchange=\"finalCost(this)\" checked>\n" +
+                        "                                                                           name=\"transportation\" id=\"transportation"+transportation.id+"\" data-price=\""+(Number(transportation.totalPrice))+"\" value=\""+transportation.id+"\" onchange=\"finalCost(this)\" >\n" +
                         "                                                                    <label class=\"form-check-label\"\n" +
                         "                                                                           for=\"standard\">\n"+transportation.name+"</label>\n" +
                         "                                                                    <img class=\"mx-2 rounded\" src=\""+transportation.image+"\" alt=\"transportation"+transportation.name+"\" style=\"width: 30px;\">\n" +
@@ -146,9 +146,9 @@ function finalCost(res){
 
     // console.log(formatter.format($(res).attr('data-price')));
 
-    var x = document.getElementById('totalPrice').innerText;
+    var x = document.getElementById('totalPrice').getAttribute('data-price');
     if(res.checked) {
-        document.getElementById('finalTransportationCost').innerText = formatter.format($(res).attr('data-price')) +"تومان";
+        document.getElementById('finalTransportationCost').innerText = formatter.format($(res).attr('data-price')) + " تومان ";
         document.getElementById('finalCost').innerText = formatter.format(Number($(res).attr('data-price')) + Number(x)) + "تومان";
 
     }

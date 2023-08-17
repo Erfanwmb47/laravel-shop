@@ -34,5 +34,6 @@ class ProductTableSeeder extends Seeder
             'brand_id' => Brand::find(1)->id,
             'user_id' => 1
         ]);
+
     }
 }

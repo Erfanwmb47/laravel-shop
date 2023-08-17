@@ -210,12 +210,11 @@
                                     @endif
                                 </div>
 
-                                <div class="buy-box">
-                                    <a href="wishlist.html">
-                                        <i data-feather="heart"></i>
+                                <div class="buy-box" id="wishlistSingleProduct" onclick="addWishlistSingle(event,{{$product->id}})">
+                                    <a href="javascript:;" >
+                                        <i class=" text-danger fa fa-heart-o"></i>
                                         <span>افزودن به علاقه مندی ها</span>
                                     </a>
-
                                 </div>
 
                                 <div class="pickup-box">
@@ -229,13 +228,13 @@
                                     </div>
 
                                     <div class="product-info">
-                                        <ul class="product-info-list product-info-list-2">
-                                            <li>Type : <a href="javascript:void(0)">Black Forest</a></li>
-                                            <li>SKU : <a href="javascript:void(0)">SDFVW65467</a></li>
-                                            <li>MFG : <a href="javascript:void(0)">Jun 4, 2022</a></li>
-                                            <li>Stock : <a href="javascript:void(0)">2 Items Left</a></li>
-                                            <li>Tags : <a href="javascript:void(0)">Cake,</a> <a
-                                                    href="javascript:void(0)">Backery</a></li>
+                                        <ul class="product-info-list product-info-list-2 flex-reverse">
+                                            @foreach($attributes as $value=>$key)
+                                            <li class="">{{$value}} : <a href="javascript:void(0)">@foreach($key as $k)
+                                                                                              {{$k}}
+                                                                                              @if(!$loop->last), @endif
+                                            @endforeach</a></li>
+                                            @endforeach
                                         </ul>
                                     </div>
                                 </div>
@@ -436,53 +435,9 @@
 
                                                 <div class="col-xl-6">
                                                     <div class="review-title">
-                                                        <h4 class="fw-500">Add a review</h4>
+                                                        <h6 class="fw-500">شما هم درباره این کالا دیدگاه ثبت کنید</h6>
                                                     </div>
-
-                                                    <div class="row g-4">
-                                                        <div class="col-md-6">
-                                                            <div class="form-floating theme-form-floating">
-                                                                <input type="text" class="form-control" id="name"
-                                                                       placeholder="Name">
-                                                                <label for="name">Your Name</label>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="col-md-6">
-                                                            <div class="form-floating theme-form-floating">
-                                                                <input type="email" class="form-control" id="email"
-                                                                       placeholder="Email Address">
-                                                                <label for="email">Email Address</label>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="col-md-6">
-                                                            <div class="form-floating theme-form-floating">
-                                                                <input type="url" class="form-control" id="website"
-                                                                       placeholder="Website">
-                                                                <label for="website">Website</label>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="col-md-6">
-                                                            <div class="form-floating theme-form-floating">
-                                                                <input type="url" class="form-control" id="review1"
-                                                                       placeholder="Give your review a title">
-                                                                <label for="review1">Review Title</label>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="col-12">
-                                                            <div class="form-floating theme-form-floating">
-                                                                <textarea class="form-control"
-                                                                          placeholder="Leave a comment here"
-                                                                          id="floatingTextarea2"
-                                                                          style="height: 150px"></textarea>
-                                                                <label for="floatingTextarea2">Write Your
-                                                                    Comment</label>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                                        <span data-bs-toggle="modal" data-bs-target="#createComment" class="btn w-50 border border-2 border-danger text-center pointer">ثبت نظر جدید</span>
                                                 </div>
 
                                                 <div class="col-12">
@@ -1492,6 +1447,71 @@
             </div>
         </div>
     </div>
+    <!-- ثبت نظر Start -->
+    <div class="modal fade theme-modal" id="createComment" tabindex="-1" aria-labelledby="exampleModalLabel2"
+         aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered modal-fullscreen-sm-down">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel2">ثبت نظر</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+                <div class="modal-body" id="orderDetailTable">
+                    <div id="collapseThree" class="accordion-collapse collapse show"
+                         aria-labelledby="headingThree">
+                        <div class="accordion-body">
+                            <div class="range-slider">
+                                <input type="text" hidden="hidden" class="js-range-rate" value="">
+                            </div>
+                        </div>
+                        <div>
+                            <input type="radio" name="rate" value="1">
+                            <input type="radio" name="rate" value="2">
+                            <input type="radio" name="rate" value="3">
+                            <input type="radio" name="rate" value="4">
+                            <input type="radio" name="rate" value="5">
+                        </div>
+                    </div>
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <div class="form-floating theme-form-floating">
+                                <input type="text" class="form-control" id="name"
+                                       placeholder="Name">
+                                <label for="name">عنوان نظر </label>
+                            </div>
+                        </div>
+                        <div id="attributes" data-attributes = "{{json_encode(\App\Models\Attribute::all()->pluck('name'))}}"></div>
+                        <div class="mt-5 grid-cols-12 grid">
+                            <div class="col-span-12" id="attribute_section">
+
+                            </div>
+                            <div class="col-span-12">
+                                <button class="button text-white bg-theme-1 shadow-md w-full mt-3" type="button" id="add_product_attribute">ویژگی جدید</button>
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                            <div class="form-floating theme-form-floating">
+                                                                <textarea class="form-control"
+                                                                          placeholder="Leave a comment here"
+                                                                          id="floatingTextarea2"
+                                                                          style="height: 150px"></textarea>
+                                <label for="floatingTextarea2">Write Your
+                                    Comment</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-animation btn-md fw-bold"
+                            data-bs-dismiss="modal">بستن</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ثبت نظر End -->
     <!-- Sticky Cart Box End -->
 @endsection
 
@@ -1529,5 +1549,7 @@
 
     {{--    Add to Cart js --}}
     <script src="/Client/assets/js/Cart.js"></script>
+    <script src="/Client/assets/js/Wishlist.js"></script>
+    <script src="/Client/assets/js/comment.js"></script>
 
 @endsection
