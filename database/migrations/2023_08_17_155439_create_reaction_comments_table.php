@@ -15,10 +15,9 @@ return new class extends Migration
     {
         Schema::create('reaction_comments', function (Blueprint $table) {
             $table->id()->autoIncrement()->unique();
-            $table->foreignid('comment_id')->constrained()->onDelete('cascade');
+            $table->foreignid('shop_comment_id')->constrained()->onDelete('cascade');
             $table->foreignid('user_id')->constrained()->onDelete('cascade');
             $table->enum('reaction',['like','dislike']);
-            $table->softDeletes();
             $table->timestamps();
         });
     }

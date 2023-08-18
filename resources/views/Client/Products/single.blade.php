@@ -251,7 +251,7 @@
                             <div class="product-section-box">
                                 <ul class="nav nav-tabs custom-nav" id="myTab" role="tablist">
                                     <li class="nav-item" role="presentation">
-                                        <button class="nav-link active" id="description-tab" data-bs-toggle="tab"
+                                        <button class="nav-link " id="description-tab" data-bs-toggle="tab"
                                                 data-bs-target="#description" type="button" role="tab"
                                                 aria-controls="description" aria-selected="true">توضیحات</button>
                                     </li>
@@ -269,14 +269,14 @@
                                     </li>
 
                                     <li class="nav-item" role="presentation">
-                                        <button class="nav-link" id="review-tab" data-bs-toggle="tab"
+                                        <button class="nav-link active" id="review-tab" data-bs-toggle="tab"
                                                 data-bs-target="#review" type="button" role="tab" aria-controls="review"
                                                 aria-selected="false">نظرات</button>
                                     </li>
                                 </ul>
 
                                 <div class="tab-content custom-tab" id="myTabContent">
-                                    <div class="tab-pane fade show active" id="description" role="tabpanel"
+                                    <div class="tab-pane fade show " id="description" role="tabpanel"
                                          aria-labelledby="description-tab">
                                         <div class="product-description">
                                             <div class="nav-desh">
@@ -332,286 +332,146 @@
                                         </div>
                                     </div>
 
-                                    <div class="tab-pane fade" id="review" role="tabpanel" aria-labelledby="review-tab">
+                                    <div class="tab-pane fade active" id="review" role="tabpanel" aria-labelledby="review-tab">
                                         <div class="review-box">
                                             <div class="row g-4">
                                                 <div class="col-xl-6">
                                                     <div class="review-title">
-                                                        <h4 class="fw-500">Customer reviews</h4>
-                                                    </div>
-
-                                                    <div class="d-flex">
-                                                        <div class="product-rating">
-                                                            <ul class="rating">
-                                                                <li>
-                                                                    <i data-feather="star" class="fill"></i>
-                                                                </li>
-                                                                <li>
-                                                                    <i data-feather="star" class="fill"></i>
-                                                                </li>
-                                                                <li>
-                                                                    <i data-feather="star" class="fill"></i>
-                                                                </li>
-                                                                <li>
-                                                                    <i data-feather="star"></i>
-                                                                </li>
-                                                                <li>
-                                                                    <i data-feather="star"></i>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                        <h6 class="ms-3">4.2 Out Of 5</h6>
-                                                    </div>
-
-                                                    <div class="rating-box">
-                                                        <ul>
-                                                            <li>
-                                                                <div class="rating-list">
-                                                                    <h5>5 Star</h5>
-                                                                    <div class="progress">
-                                                                        <div class="progress-bar" role="progressbar"
-                                                                             style="width: 68%" aria-valuenow="100"
-                                                                             aria-valuemin="0" aria-valuemax="100">
-                                                                            68%
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </li>
-
-                                                            <li>
-                                                                <div class="rating-list">
-                                                                    <h5>4 Star</h5>
-                                                                    <div class="progress">
-                                                                        <div class="progress-bar" role="progressbar"
-                                                                             style="width: 67%" aria-valuenow="100"
-                                                                             aria-valuemin="0" aria-valuemax="100">
-                                                                            67%
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </li>
-
-                                                            <li>
-                                                                <div class="rating-list">
-                                                                    <h5>3 Star</h5>
-                                                                    <div class="progress">
-                                                                        <div class="progress-bar" role="progressbar"
-                                                                             style="width: 42%" aria-valuenow="100"
-                                                                             aria-valuemin="0" aria-valuemax="100">
-                                                                            42%
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </li>
-
-                                                            <li>
-                                                                <div class="rating-list">
-                                                                    <h5>2 Star</h5>
-                                                                    <div class="progress">
-                                                                        <div class="progress-bar" role="progressbar"
-                                                                             style="width: 30%" aria-valuenow="100"
-                                                                             aria-valuemin="0" aria-valuemax="100">
-                                                                            30%
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </li>
-
-                                                            <li>
-                                                                <div class="rating-list">
-                                                                    <h5>1 Star</h5>
-                                                                    <div class="progress">
-                                                                        <div class="progress-bar" role="progressbar"
-                                                                             style="width: 24%" aria-valuenow="100"
-                                                                             aria-valuemin="0" aria-valuemax="100">
-                                                                            24%
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-xl-6">
-                                                    <div class="review-title">
+                                                        @if(empty($commentUser))
                                                         <h6 class="fw-500">شما هم درباره این کالا دیدگاه ثبت کنید</h6>
+                                                        @endif
                                                     </div>
-                                                        <span data-bs-toggle="modal" data-bs-target="#createComment" class="btn w-50 border border-2 border-danger text-center pointer">ثبت نظر جدید</span>
+                                                   @auth
+                                                       @if(empty($commentUser))
+                                                            <span id="addComment" data-bs-toggle="modal" data-bs-target="#createComment" class="btn w-50 border border-2 border-danger text-center pointer">ثبت نظر جدید</span>
+                                                        @endif
+                                                    @endauth
+                                                    @guest
+                                                        <a href="{{route('login')}}" class="btn w-50 border border-2 border-danger text-center pointer">ثبت نظر جدید</a>
+                                                    @endguest
                                                 </div>
 
                                                 <div class="col-12">
                                                     <div class="review-title">
-                                                        <h4 class="fw-500">Customer questions & answers</h4>
+                                                        <h4 class="fw-500">نظرات کاربران</h4>
                                                     </div>
 
                                                     <div class="review-people">
                                                         <ul class="review-list">
-                                                            <li>
-                                                                <div class="people-box">
-                                                                    <div>
-                                                                        <div class="people-image">
-                                                                            <img src="../assets/images/review/1.jpg"
-                                                                                 class="img-fluid blur-up lazyload"
-                                                                                 alt="">
-                                                                        </div>
-                                                                    </div>
-
-                                                                    <div class="people-comment">
-                                                                        <a class="name"
-                                                                           href="javascript:void(0)">Tracey</a>
-                                                                        <div class="date-time">
-                                                                            <h6 class="text-content">14 Jan, 2022 at
-                                                                                12.58 AM</h6>
-
-                                                                            <div class="product-rating">
-                                                                                <ul class="rating">
-                                                                                    <li>
-                                                                                        <i data-feather="star"
-                                                                                           class="fill"></i>
-                                                                                    </li>
-                                                                                    <li>
-                                                                                        <i data-feather="star"
-                                                                                           class="fill"></i>
-                                                                                    </li>
-                                                                                    <li>
-                                                                                        <i data-feather="star"
-                                                                                           class="fill"></i>
-                                                                                    </li>
-                                                                                    <li>
-                                                                                        <i data-feather="star"></i>
-                                                                                    </li>
-                                                                                    <li>
-                                                                                        <i data-feather="star"></i>
-                                                                                    </li>
-                                                                                </ul>
+                                                            @if(!empty($commentUser))
+                                                                <li class="rounded">
+                                                                    <div class="people-box  @if($commentUser->status == 0) bg-comment-status-0 @endif">
+                                                                        <div>
+                                                                            <div class="people-image">
+                                                                                <img src="{{str_replace('public','/storage',optional($commentUser->user->gallery)->path)}}"
+                                                                                     class="img-fluid blur-up lazyload"
+                                                                                     alt="">
                                                                             </div>
                                                                         </div>
 
-                                                                        <div class="reply">
-                                                                            <p>Icing cookie carrot cake chocolate cake
-                                                                                sugar plum jelly-o danish. Dragée dragée
-                                                                                shortbread tootsie roll croissant muffin
-                                                                                cake I love gummi bears. Candy canes ice
-                                                                                cream caramels tiramisu marshmallow cake
-                                                                                shortbread candy canes cookie.<a
-                                                                                    href="javascript:void(0)">Reply</a>
-                                                                            </p>
+                                                                        <div class="people-comment">
+                                                                            <a class="name"
+                                                                               href="javascript:void(0)">{{$commentUser->title}}</a>
+                                                                            <div class="date-time">
+                                                                                <h6 class="text-content">{{jdate($commentUser->created_at)->ago()}}
+                                                                                @if($commentUser->status == 0)
+                                                                                        <span class="">(در انتظار تایید نظر شما)  </span>
+                                                                                @endif
+                                                                                </h6>
+
+                                                                                <div class="product-rating">
+                                                                                    <ul class="rating">
+                                                                                        @php
+                                                                                            $rate = $commentUser->rate;
+                                                                                        @endphp
+                                                                                        @for($i =0;$i<5;$i++)
+                                                                                        <li>
+                                                                                            <i data-feather="star" class="@if($rate-- >0) fill @endif"></i>
+                                                                                        </li>
+
+                                                                                        @endfor
+                                                                                    </ul>
+                                                                                    <ul>
+
+                                                                                    </ul>
+                                                                                </div>
+                                                                            </div>
+
+                                                                            <div class="reply">
+                                                                                <p>{{$commentUser->text}}
+                                                                                    <a href="javascript:;">
+                                                                                        <i data-feather="thumbs-up" ></i>
+                                                                                        <i data-feather="thumbs-down" ></i>
+                                                                                    </a>
+                                                                                </p>
+                                                                            </div>
+
                                                                         </div>
                                                                     </div>
-                                                                </div>
-                                                            </li>
-
-                                                            <li>
-                                                                <div class="people-box">
-                                                                    <div>
-                                                                        <div class="people-image">
-                                                                            <img src="../assets/images/review/2.jpg"
-                                                                                 class="img-fluid blur-up lazyload"
-                                                                                 alt="">
-                                                                        </div>
-                                                                    </div>
-
-                                                                    <div class="people-comment">
-                                                                        <a class="name"
-                                                                           href="javascript:void(0)">Olivia</a>
-                                                                        <div class="date-time">
-                                                                            <h6 class="text-content">01 May, 2022 at
-                                                                                08.31 AM</h6>
-                                                                            <div class="product-rating">
-                                                                                <ul class="rating">
-                                                                                    <li>
-                                                                                        <i data-feather="star"
-                                                                                           class="fill"></i>
-                                                                                    </li>
-                                                                                    <li>
-                                                                                        <i data-feather="star"
-                                                                                           class="fill"></i>
-                                                                                    </li>
-                                                                                    <li>
-                                                                                        <i data-feather="star"
-                                                                                           class="fill"></i>
-                                                                                    </li>
-                                                                                    <li>
-                                                                                        <i data-feather="star"></i>
-                                                                                    </li>
-                                                                                    <li>
-                                                                                        <i data-feather="star"></i>
-                                                                                    </li>
-                                                                                </ul>
+                                                                </li>
+                                                            @endif
+                                                            @foreach($comments as $comment)
+                                                                <li comment-id="{{$comment->id}}">
+                                                                    <div class="people-box">
+                                                                        <div>
+                                                                            <div class="people-image">
+                                                                                <img src="{{str_replace('public','/storage',optional($comment->user->gallery)->path)}}"
+                                                                                     class="img-fluid blur-up lazyload"
+                                                                                     alt="">
                                                                             </div>
                                                                         </div>
 
-                                                                        <div class="reply">
-                                                                            <p>Tootsie roll cake danish halvah powder
-                                                                                Tootsie roll candy marshmallow cookie
-                                                                                brownie apple pie pudding brownie
-                                                                                chocolate bar. Jujubes gummi bears I
-                                                                                love powder danish oat cake tart
-                                                                                croissant.<a
-                                                                                    href="javascript:void(0)">Reply</a>
-                                                                            </p>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </li>
+                                                                        <div class="people-comment">
+                                                                            <a class="name"
+                                                                               href="javascript:void(0)">{{$comment->title}}</a>
+                                                                            <div class="date-time">
+                                                                                <h6 class="text-content">{{jdate($comment->created_at)->ago()}}</h6>
 
-                                                            <li>
-                                                                <div class="people-box">
-                                                                    <div>
-                                                                        <div class="people-image">
-                                                                            <img src="../assets/images/review/3.jpg"
-                                                                                 class="img-fluid blur-up lazyload"
-                                                                                 alt="">
-                                                                        </div>
-                                                                    </div>
+                                                                                <div class="product-rating">
+                                                                                    <ul class="rating">
+                                                                                        @php
+                                                                                            $rate = $comment->rate;
+                                                                                        @endphp
+                                                                                        @for($i =0;$i<5;$i++)
+                                                                                            <li>
+                                                                                                <i data-feather="star" class="@if($rate-- >0) fill @endif"></i>
+                                                                                            </li>
 
-                                                                    <div class="people-comment">
-                                                                        <a class="name"
-                                                                           href="javascript:void(0)">Gabrielle</a>
-                                                                        <div class="date-time">
-                                                                            <h6 class="text-content">21 May, 2022 at
-                                                                                05.52 PM</h6>
+                                                                                        @endfor
+                                                                                    </ul>
+                                                                                </div>
+                                                                            </div>
 
-                                                                            <div class="product-rating">
-                                                                                <ul class="rating">
-                                                                                    <li>
-                                                                                        <i data-feather="star"
-                                                                                           class="fill"></i>
-                                                                                    </li>
-                                                                                    <li>
-                                                                                        <i data-feather="star"
-                                                                                           class="fill"></i>
-                                                                                    </li>
-                                                                                    <li>
-                                                                                        <i data-feather="star"
-                                                                                           class="fill"></i>
-                                                                                    </li>
-                                                                                    <li>
-                                                                                        <i data-feather="star"></i>
-                                                                                    </li>
-                                                                                    <li>
-                                                                                        <i data-feather="star"></i>
-                                                                                    </li>
-                                                                                </ul>
+                                                                            <div class="reply">
+                                                                                <p>{{$comment->text}}
+                                                                                    @auth
+                                                                                    <a href="javascript:;">
+                                                                                        <i class="fa @if(array_key_exists($comment->id,$commentReaction) && $commentReaction[$comment->id] == 'like')fa-thumbs-up @else fa-thumbs-o-up @endif" id="like"></i>
+                                                                                        <span>{{$comment->like}}</span>
+
+                                                                                        <i class="fa  fa-flip-horizontal @if(array_key_exists($comment->id,$commentReaction) && $commentReaction[$comment->id] == 'dislike')fa-thumbs-down @else fa-thumbs-o-down @endif" id="dislike" ></i>
+                                                                                        <span>{{$comment->dislike}}</span>
+                                                                                    </a>
+                                                                                    @endauth
+                                                                                    @guest
+                                                                                        <a href="javascript:;">
+                                                                                            <i class="fa fa-thumbs-o-up " ></i>
+                                                                                            <span>{{$comment->like}}</span>
+
+                                                                                            <i class="fa fa-thumbs-o-down fa-flip-horizontal"  ></i>
+                                                                                            <span>{{$comment->dislike}}</span>
+
+                                                                                        </a>
+                                                                                    @endguest
+                                                                                </p>
                                                                             </div>
                                                                         </div>
-
-                                                                        <div class="reply">
-                                                                            <p>Biscuit chupa chups gummies powder I love
-                                                                                sweet pudding jelly beans. Lemon drops
-                                                                                marzipan apple pie gingerbread macaroon
-                                                                                croissant cotton candy pastry wafer.
-                                                                                Carrot cake halvah I love tart caramels
-                                                                                pudding icing chocolate gummi bears.
-                                                                                Gummi bears danish cotton candy muffin
-                                                                                marzipan caramels awesome feel. <a
-                                                                                    href="javascript:void(0)">Reply</a>
-                                                                            </p>
-                                                                        </div>
                                                                     </div>
-                                                                </div>
-                                                            </li>
+                                                                </li>
+                                                            @endforeach
+                                                            @if($comments->count() == 0 && empty($commentUser))
+                                                                <p>نظری در باره این محصول وجود ندارد</p>
+                                                            @endif
                                                         </ul>
                                                     </div>
                                                 </div>
@@ -1458,6 +1318,8 @@
                         <i class="fa-solid fa-xmark"></i>
                     </button>
                 </div>
+                <form method="post" id="commentSend" action="{{route('comment.send')}}">
+                    @csrf
                 <div class="modal-body" id="orderDetailTable">
                     <div id="collapseThree" class="accordion-collapse collapse show"
                          aria-labelledby="headingThree">
@@ -1467,47 +1329,57 @@
                             </div>
                         </div>
                         <div>
-                            <input type="radio" name="rate" value="1">
-                            <input type="radio" name="rate" value="2">
-                            <input type="radio" name="rate" value="3">
-                            <input type="radio" name="rate" value="4">
-                            <input type="radio" name="rate" value="5">
+                            <label for="rate1">عالی</label>
+                            <input type="radio" name="rate" value="1" id="rate1">
+                            <label for="rate2">خوب</label>
+                            <input type="radio" name="rate" value="2" id="rate2">
+                            <label for="rate3">متوسط</label>
+                            <input type="radio" name="rate" value="3" id="rate3" checked>
+                            <label for="rate4">ضعیف</label>
+                            <input type="radio" name="rate" value="4" id="rate4">
+                            <label for="rate5">خیلی ضعیف</label>
+                            <input type="radio" name="rate" value="5" id="rate5">
                         </div>
                     </div>
+                    <input hidden="hidden" value="{{$product->id}}" readonly name="product_id">
                     <div class="row g-4">
                         <div class="col-md-6">
                             <div class="form-floating theme-form-floating">
-                                <input type="text" class="form-control" id="name"
+                                <input type="text" class="form-control" id="name" name="title"
                                        placeholder="Name">
                                 <label for="name">عنوان نظر </label>
                             </div>
                         </div>
-                        <div id="attributes" data-attributes = "{{json_encode(\App\Models\Attribute::all()->pluck('name'))}}"></div>
-                        <div class="mt-5 grid-cols-12 grid">
-                            <div class="col-span-12" id="attribute_section">
-
-                            </div>
-                            <div class="col-span-12">
-                                <button class="button text-white bg-theme-1 shadow-md w-full mt-3" type="button" id="add_product_attribute">ویژگی جدید</button>
+                        <div class="col-md-6">
+                            <div class="form-floating theme-form-floating">
+                                <input type="text" class="form-control" id="name" name="positive"
+                                       placeholder="Name">
+                                <label for="name">نکات مثبت </label>
                             </div>
                         </div>
-
+                        <div class="col-md-6">
+                            <div class="form-floating theme-form-floating">
+                                <input type="text" class="form-control" id="name" name="negative"
+                                       placeholder="Name">
+                                <label for="name">نکات منفی </label>
+                            </div>
+                        </div>
                         <div class="col-12">
                             <div class="form-floating theme-form-floating">
-                                                                <textarea class="form-control"
+                                                                <textarea class="form-control" name="text"
                                                                           placeholder="Leave a comment here"
                                                                           id="floatingTextarea2"
                                                                           style="height: 150px"></textarea>
-                                <label for="floatingTextarea2">Write Your
-                                    Comment</label>
+                                <label for="floatingTextarea2">نظر شما</label>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-animation btn-md fw-bold"
-                            data-bs-dismiss="modal">بستن</button>
+                    <button type="submit" class="btn btn-animation btn-md fw-bold"
+                            data-bs-dismiss="modal">ثبت نظر</button>
                 </div>
+                </form>
             </div>
         </div>
     </div>
@@ -1551,5 +1423,6 @@
     <script src="/Client/assets/js/Cart.js"></script>
     <script src="/Client/assets/js/Wishlist.js"></script>
     <script src="/Client/assets/js/comment.js"></script>
+    <script src="/Client/assets/js/like.js"></script>
 
 @endsection

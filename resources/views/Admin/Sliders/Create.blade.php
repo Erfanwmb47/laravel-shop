@@ -9,25 +9,16 @@
 @section('content')
     <div class="pos intro-y grid grid-cols-14 gap-6 mt-5">
         <div class="col-span-14 lg:col-span-12">
-            <h0 class="intro-y text-lg font-medium mt-10 flex">
-                ایجاد اسلایدر جدید            </h0>
+            <h1 class="intro-y text-lg font-medium mt-10 flex">
+                ایجاد اسلایدر جدید            </h1>
             <p class="intro-y text-xs font-medium  flex mb-7 " style="color: #4a5568">برای ایجاد اسلایدر جدید فیلد های مورد نظر را پر کرده و در نهایت اطلاعات را ذخیره کنید</p>
             <hr>
         </div>
         {{--Begin new Category--}}
-
         <div class="col-span-14 lg:col-span-12">
             <form action="{{route('sliders.store')}}" method="post" enctype="multipart/form-data">
                 @csrf
-                <div class="intro-y pr-3">
-                    <div class="box p-4">
-                        <div class="pos__tabs nav-tabs justify-center flex">
-                            <a data-toggle="tab" data-target="#Specifications" href="javascript:;" class="flex-3 py-2 rounded-md text-center active">مشخصات کلی</a>
-                            <a data-toggle="tab" data-target="#description" href="javascript:;" class="flex-3 py-2 rounded-md text-center">توضیحات</a>
-                            <a data-toggle="tab" data-target="#image" href="javascript:;" class="flex-3 py-2 rounded-md text-center">عکس اسلایدر</a>
-                        </div>
-                    </div>
-                </div>
+                
                 <div class="tab-content">
                     <div class="tab-content__pane active" id="Specifications" >
                         <div class="pos__ticket box p-4 mt-5">
@@ -94,7 +85,6 @@
                 </div>
             </form>
         </div>
-
     </div>
 @endsection
 @section('js')
@@ -102,7 +92,7 @@
     <script src="/Admin/js/SliderFlagSelect.js"> </script>
 @endsection
 
-@component('Admin.Layout.Layout-1')
+@component('Admin.Layout.Layout1')
     @slot('breadcrump')
         <div class="-intro-x breadcrumb ml-auto hidden sm:flex">
             <a  class="" disabled >ایجاد اسلایدر</a>

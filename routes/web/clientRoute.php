@@ -13,6 +13,7 @@ use App\Http\Controllers\Client\Product\ProductController;
 use App\Http\Controllers\Client\Profile\OrderController;
 use App\Http\Controllers\Client\Profile\ProfileController;
 use App\Http\Controllers\Client\Profile\WishlistController;
+use App\Http\Controllers\Client\ReactionCommentController;
 use App\Http\Controllers\Client\Shop\ShopController;
 use App\Http\Controllers\Stack\SmsController;
 use App\Providers\RouteServiceProvider;
@@ -67,7 +68,7 @@ Route::domain(parse_url(config('app.url'),PHP_URL_HOST))->group(function (){
 });
 Route::get('/q',function (){
     Auth::loginUsingId(1);
-    return redirect()->intended(RouteServiceProvider::HOME);
+    return back();
 });
 
 Route::get('products',[ProductController::class,'index']);
@@ -78,7 +79,14 @@ Route::post('/product/view/summery/',[ProductController::class,'summery']);
 Route::post('wishlist/add',[WishlistController::class,'store'])->name('wishlist.store');
 Route::delete('wishlist/destroy',[WishlistController::class,'destroy'])->name('wishlist.destroy');
 
-Route::post('comments',[CommentController::class,'comment'])->name('send.comment');
+Route::prefix('comment')->name('comment.')->group(function (){
+    Route::post('send',[CommentController::class,'send'])->name('send');
+    Route::delete('delete',[CommentController::class,'delete'])->name('delete');
+        Route::prefix('reaction')->name('reaction.')->group(function (){
+            Route::post('like',[ReactionCommentController::class,'like'])->name('like');
+            Route::post('dislike',[ReactionCommentController::class,'dislike'])->name('dislike');
+        });
+});
 
 
 

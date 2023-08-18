@@ -5,9 +5,12 @@ namespace App\Http\Controllers\Client\Product;
 use App\Http\Controllers\Client\ClientController;
 use App\Http\Controllers\Controller;
 use App\Models\Product;
+use App\Models\Shop\ReactionComment;
 use App\ProductAttributeValue;
 use Artesaos\SEOTools\Facades\OpenGraph;
 use Illuminate\Http\Request;
+use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Auth;
 
 class ProductController extends ClientController
 {
@@ -23,6 +26,10 @@ class ProductController extends ClientController
     public function single(Product $product)
     {
         $array=[];
+        $comment_reaction=[];
+        $commentUser=new Collection();
+
+
         foreach ($product->attributes as $pa){
             if(array_key_exists($pa->name,$array))
                 array_push($array[$pa->name],$pa->pivot->value->value);
@@ -38,12 +45,27 @@ class ProductController extends ClientController
             ;
             $this->seo()->opengraph()->setTitle($product->name);
            // OpenGraph::setTitle('سایت ما هستش');
+            if(Auth::check())
+            {
+                $commentUser=$product->comments->where('user_id','=',Auth::id());
+                $t=Auth::user()->reaction()->whereHas('shop_comment',function ($query)use ($product){
+                    return $query->where('product_id',$product->id);
+                });
+                foreach ($t->get() as $k){
+                    $comment_reaction[$k->shop_comment_id]=$k->reaction;
+                }
+            }
 
-          //  dd($product->attributes->first()->values);
+
+
+//            dd($comment_reaction[2]);
 
             return view('Client.Products.Single',[
                 'product' => $product,
-                'attributes' => $array
+                'attributes' => $array,
+                'comments'=>$product->comments->where('status','=','1')->diff($commentUser),
+                'commentUser'=> $commentUser->count()==1 ? $commentUser[0] : [],
+                'commentReaction' => $comment_reaction
             ]);
     }
 

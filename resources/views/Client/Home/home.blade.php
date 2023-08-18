@@ -412,7 +412,7 @@
                                     </ul>
                                 </div>
                                 <div class="product-detail">
-                                    <a href="product-left-thumbnail.html">
+                                    <a href="{{route('products.single',$product)}}">
                                         <h6 class="name">
                                             {{$product->name}}
                                         </h6>

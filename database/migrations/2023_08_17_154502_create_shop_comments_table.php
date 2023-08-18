@@ -17,7 +17,12 @@ return new class extends Migration
             $table->id()->autoIncrement()->unique();
             $table->foreignid('user_id')->constrained()->onDelete('cascade');
             $table->foreignid('product_id')->constrained()->onDelete('cascade');
+            $table->bigInteger('like')->unsigned()->default(0);
+            $table->bigInteger('dislike')->unsigned()->default(0);
+            $table->unique(['product_id','user_id']);
+            $table->text('title');
             $table->text('text');
+            $table->tinyInteger('rate')->unsigned();
             $table->json('positive')->nullable();
             $table->json('negative')->nullable();
             $table->boolean('status')->default('0');

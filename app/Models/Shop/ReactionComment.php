@@ -10,14 +10,13 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class ReactionComment extends Model
 {
     use HasFactory;
-    use SoftDeletes;
     protected $fillable=[
-        'comment_id',
+        'shop_comment_id',
         'user_id',
         'reaction',
     ];
 
-    public function comment()
+    public function shop_comment()
     {
         return $this->belongsTo(ShopComment::class);
     }

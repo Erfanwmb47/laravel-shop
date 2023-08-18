@@ -16,7 +16,11 @@ class ShopComment extends Model
     protected $fillable=[
         'user_id',
         'product_id',
+        'like',
+        'dislike',
+        'title',
         'text',
+        'rate',
         'status',
         'positive',
         'negative'
