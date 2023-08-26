@@ -272,11 +272,19 @@ $(window).on("load resize", function () {
 /*=====================
    13. Wishlist Js
    ==========================*/
-$(".notifi-wishlist").on("click", function () {
-    $.notify({
+$(".notifi-wishlist").on("click", function (event) {
+    var massage = ''
+    var title = ''
+
+    event.target.classList.contains('fa-heart') ?
+        (massage = 'محصول مورد نظر از لیست علاقه مندی حذف شد',title='ما رو دور ننداز :(')
+        :
+        (massage = 'محصول مورد نظر به لیست علاقه مندی اضافه شد',title='به به پس میخوای بخریش :)')
+
+        $.notify({
         icon: "fa fa-check",
-        title: "Success!",
-        message: "Item Successfully added in wishlist",
+        title: title,
+        message: massage,
     }, {
         element: "body",
         position: null,
@@ -300,8 +308,8 @@ $(".notifi-wishlist").on("click", function () {
         template: '<div data-notify="container" class="col-xxl-3 col-lg-5 col-md-6 col-sm-7 col-12 alert alert-{0}" role="alert">' +
             '<button type="button" aria-hidden="true" class="btn-close" data-notify="dismiss"></button>' +
             '<span data-notify="icon"></span> ' +
-            '<span data-notify="title">{1}</span> ' +
-            '<span data-notify="message">{2}</span>' +
+            '<span  data-notify="title">{1}</span> ' +
+            '<span data-notify="message" class="text-black-50">{2}</span>' +
             '<div class="progress" data-notify="progressbar">' +
             '<div class="progress-bar progress-bar-info progress-bar-{0}" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;"></div>' +
             "</div>" +
@@ -452,3 +460,4 @@ $(".bg-overlay").click(function () {
 $(".checkoutAddressSelect").click(function (){
     $(this).find('input').first().prop('checked', true);
 });
+

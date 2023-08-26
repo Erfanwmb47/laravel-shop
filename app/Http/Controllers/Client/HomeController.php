@@ -8,28 +8,33 @@ use App\Models\Category;
 use App\Models\Product;
 use App\Models\Slider;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends ClientController
 {
-    public function index(Request $request)
 
+    public function banner(string $title)
     {
-//        dd(session('cart.discount'));
-        $this->seo()->setTitle('فروشگاه اینترنتی');
-       // dd()
+        $tmp=Slider::whereFlag($title)->whereStatus(1)->first();
+      return  ['path'=> !!$tmp ? $tmp->gallery->path : '/Client/assets/images/banner/default/'.$title.'.jpg','title'=>!! $tmp ? $tmp->title : $title.'_default','description'=>!!$tmp ? $tmp->description : ''];
+    }
+    public function index(Request $request)
+    {
+        $this->seo()->setTitle('فروشگاه اینترنتی سینویا');
         return view('Client.Home.home',[
-            'home_header_left'=>Slider::whereFlag('home_header_left')->whereStatus(1)->first(),
-            'home_header_right'=>Slider::whereFlag('home_header_right')->whereStatus(1)->first(),
-            'home_main_top'=>Slider::whereFlag('home_main_top')->whereStatus(1)->first(),
-            'home_offer_1'=>Slider::whereFlag('home_offer_1')->whereStatus(1)->first(),
-            'home_offer_2'=>Slider::whereFlag('home_offer_2')->whereStatus(1)->first(),
-            'home_offer_3'=>Slider::whereFlag('home_offer_3')->whereStatus(1)->first(),
-            'home_offer_4'=>Slider::whereFlag('home_offer_4')->whereStatus(1)->first(),
-            'home_sticky_top'=>Slider::whereFlag('home_sticky_top')->whereStatus(1)->first(),
-            'home_sticky_bottom'=>Slider::whereFlag('home_sticky_bottom')->whereStatus(1)->first(),
-            'home_body_middle'=>Slider::whereFlag('home_body_middle')->whereStatus(1)->first(),
-            'home_body_bottom'=>Slider::whereFlag('home_body_bottom')->whereStatus(1)->first(),
-            'offerProducts' => Product::latest()->take(8)->get()
+            'user_wishlist'         =>Auth::check() ? Auth::user()->wishlists->pluck('product_id')->toArray() : [] ,
+            'home_header_left'      =>$this->banner('home_header_left'),
+            'home_header_right'     =>$this->banner('home_header_right'),
+            'home_main_top'         =>$this->banner('home_main_top'),
+            'home_offer_1'          =>$this->banner('home_offer_1'),
+            'home_offer_2'          =>$this->banner('home_offer_2'),
+            'home_offer_3'          =>$this->banner('home_offer_3'),
+            'home_offer_4'          =>$this->banner('home_offer_4'),
+            'home_sticky_top'       =>$this->banner('home_sticky_top'),
+            'home_sticky_bottom'    =>$this->banner('home_sticky_bottom'),
+            'home_body_middle'      =>$this->banner('home_body_middle'),
+            'home_body_bottom'      =>$this->banner('home_body_bottom'),
+            'offerProducts'         => Product::latest()->take(8)->get()
         ]);
     }
 }

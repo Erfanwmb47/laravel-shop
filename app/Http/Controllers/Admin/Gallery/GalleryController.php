@@ -22,12 +22,22 @@ class GalleryController extends AdminController
     public function index(Request $request)
     {
 
+       if (empty($request->query())){
+           return view('Admin.Galleries.Index',[
+               'galleries'=>$this->PaginatePagez(Gallery::query()->latest(),$request,['title','alt','mime','flag'],[]),
+               'flag'=>$this->flag
+           ]);
+       }else{
+           $query=$request->query()['flag'];
+           return view('Admin.Galleries.Index',[
+               'galleries'=>$this->PaginatePagez(Gallery::query()->whereIn('flag',$query)->latest(),$request,['title','alt','mime','flag'],[]),
+               'flag'=>$this->flag
+           ]);
+       }
+
         //session()->forget('errors');
        // $request->session()->regenerate();
-        return view('Admin.Galleries.Index',[
-            'galleries'=>$this->PaginatePagez(Gallery::query()->latest(),$request,['title','alt','mime','flag'],[]),
-            'flag'=>$this->flag
-        ]);
+
     }
 
     /**

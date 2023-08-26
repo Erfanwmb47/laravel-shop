@@ -157,7 +157,7 @@
 
                                         <td class="save-remove">
                                             <h4 class="table-title text-content">عمل</h4>
-                                            <a class="save notifi-wishlist" href="javascript:void(0)">ذخیره در علاقه مندی</a>
+{{--                                            <a class="save notifi-wishlist" href="javascript:void(0)">علاقه مندی</a>--}}
                                             <a class="remove close_button" href="javascript:void(0)" onclick="deleteItemFromCart(event,'{{$cart['id']}}')">حذف</a>
                                         </td>
                                      </tr>

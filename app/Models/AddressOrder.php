@@ -10,6 +10,7 @@ class AddressOrder extends Model
 {
     use HasFactory;
     protected $table='address_order';
+    protected $guarded = [];
 
     public function county(){
         return $this->belongsTo(County::class);

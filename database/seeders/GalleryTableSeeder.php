@@ -189,6 +189,16 @@ class GalleryTableSeeder extends Seeder
             'created_at'=>now(),
             'updated_at'=>now(),
         ]);
+        DB::table('galleries')->insert([
+            'title' => 'مای',
+            'alt' =>'my',
+            'mime' => 'jpeg',
+            'path' => 'public/Image/product/my.jpg',
+            'flag' => 'Products',
+            'size' => '1',
+            'created_at'=>now(),
+            'updated_at'=>now(),
+        ]);
 
     }
 }

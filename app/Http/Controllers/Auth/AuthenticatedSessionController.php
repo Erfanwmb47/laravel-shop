@@ -27,6 +27,12 @@ class AuthenticatedSessionController extends AuthController
     public function create()
     {
         session()->forget(['register-sms','sms.user_id']);
+        $this->seo()
+            ->setTitle('ورود')
+            ->setDescription('ورود به سایت سینویا')
+        ;
+        $this->seo()->opengraph()->setTitle('ورود کاربر سایت سینویا');
+
         return view('auth.login');
     }
 

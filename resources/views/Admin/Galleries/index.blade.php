@@ -20,25 +20,34 @@
                     <a href="" class="flex-reverse-start items-center px-3 py-2 mt-2 rounded-md"> <i class="w-4 h-4 ml-2" data-feather="trash"></i> سطل آشغال </a>
                 </div>
                 <div class="border-t border-gray-200 mt-5 pt-5 ">
-                    <a href="" class="flex-reverse-start items-center px-3 py-2 rounded-md">
+                    <a href="{{route('galleries.index').'?flag[]=categories'}}" class="flex-reverse-start items-center px-3 py-2 rounded-md">
                         <div class="w-2 h-2 bg-theme-11 rounded-full ml-3"></div>
                         دسته بندی
                     </a>
-                    <a href="" class="flex-reverse-start items-center px-3 py-2 mt-2 rounded-md">
+                    <a href="{{route('galleries.index').'?flag[]=brands'}}" class="flex-reverse-start items-center px-3 py-2 mt-2 rounded-md">
                         <div class="w-2 h-2 bg-theme-9 rounded-full ml-3"></div>
                         برند ها
                     </a>
-                    <a href="" class="flex-reverse-start items-center px-3 py-2 mt-2 rounded-md">
+                    <a href="{{route('galleries.index').'?flag[]=countries'}}" class="flex-reverse-start items-center px-3 py-2 mt-2 rounded-md">
+                        <div class="w-2 h-2 bg-theme-9 rounded-full ml-3"></div>
+                        کشور ها
+                    </a>
+                    <a href="{{route('galleries.index').'?flag[]=users'}}" class="flex-reverse-start items-center px-3 py-2 mt-2 rounded-md">
                         <div class="w-2 h-2 bg-theme-12 rounded-full ml-3"></div>
                         کاربران
                     </a>
-                    <a href="" class="flex-reverse-start items-center px-3 py-2 mt-2 rounded-md">
+                    <a href="{{route('galleries.index').'?flag[]=products'}}" class="flex-reverse-start items-center px-3 py-2 mt-2 rounded-md">
                         <div class="w-2 h-2 bg-theme-11 rounded-full ml-3"></div>
                         محصولات
                     </a>
-                    <a href="" class="flex-reverse-start items-center px-3 py-2 mt-2 rounded-md">
+                    <a href="{{route('galleries.index').'?flag[]=sliders'}}" class="flex-reverse-start items-center px-3 py-2 mt-2 rounded-md">
                         <div class="w-2 h-2 bg-theme-6 rounded-full ml-3"></div>
                         اسلایدر ها
+                    </a>
+                    <a href="{{route('galleries.index').'?flag[]=Transportations
+                        &flag[]=PaymentGateways&flag[]=Uncategorized'}}" class="flex-reverse-start items-center px-3 py-2 mt-2 rounded-md">
+                        <div class="w-2 h-2 bg-theme-6 rounded-full ml-3"></div>
+                        سایر
                     </a>
                     <a href="" class="flex-reverse-start items-center px-3 py-2 mt-2 rounded-md"> <i class="w-4 h-4 ml-2" data-feather="plus"></i> Add New Label </a>
                 </div>

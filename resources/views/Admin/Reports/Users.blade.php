@@ -238,7 +238,7 @@
 {{--                    <div class="intro-y">--}}
 {{--                        <div class="box px-4 py-4 mb-3 flex items-center zoom-in">--}}
 {{--                            <div class="w-10 h-10 flex-none image-fit rounded-md overflow-hidden">--}}
-{{--                                <img alt="Midone Tailwind HTML Admin Template" src="/Admin/images/profile-10.jpg">--}}
+{{--                                <img alt="Midone Tailwind HTML Admin Template" src="/Admin/images/profile-home_sticky_top.jpg">--}}
 {{--                            </div>--}}
 {{--                            <div class="mr-4 ml-auto">--}}
 {{--                                <div class="font-medium">Tom Cruise</div>--}}

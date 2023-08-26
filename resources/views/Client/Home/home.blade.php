@@ -2,58 +2,58 @@
 
 
 @section('content')
-    <!-- Home Section Start -->
-    <section class="home-section pt-2">
-        <div class="container-fluid-lg">
-            <div class="row g-4">
-                <div class="col-xl-9 col-lg-8">
-
-                    @if(isset($home_header_right))
-                        <a href="{{route('home')}}">
-                    <div class="home-contain h-100">
-                         <img src="{{str_replace('public','/storage',optional($home_header_right->gallery)->path)}}" class="bg-img blur-up lazyload" alt="">
-{{--                        <div class="home-detail p-center-left w-75 position-relative mend-auto">--}}
-{{--                            <div>--}}
-{{--                                <h6>{{$home_header_right->tag}} <span>{{$home_header_right->offer}}% Off</span></h6>--}}
-{{--                                <h1 class="w-75 text-uppercase poster-1">{{$home_header_right->title}} <span--}}
-{{--                                        class="daily">{{$home_header_right->title}}</span></h1>--}}
-{{--                                <p class="w-58 d-none d-sm-block">--}}
-{{--                                    @php--}}
-{{--                                        echo $home_header_right->description--}}
-{{--                                    @endphp--}}
-{{--                                </p>--}}
-{{--                                <button onclick="location.href = '{{$home_header_right->link}}';"--}}
-{{--                                        class="btn btn-animation mt-xxl-4 mt-2 home-button mend-auto">Shop Now <i--}}
-{{--                                        class="fa-solid fa-right-long ms-2 icon"></i>--}}
-{{--                                </button>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-                    </div>
-                        </a>
-                    @else
-                        <div class="home-contain h-100">
-                            <img src="/Client/assets/images/veg-2/banner/1.jpg" class="bg-img blur-up lazyload" alt="">
-{{--                            <div class="home-detail p-center-left w-75 position-relative mend-auto">--}}
-{{--                                <div>--}}
-{{--                                    <h6>Exclusive offer <span>30% Off</span></h6>--}}
-{{--                                    <h1 class="w-75 text-uppercase poster-1">Stay home & delivered your <span--}}
-{{--                                            class="daily">Daily Needs</span></h1>--}}
-{{--                                    <p class="w-58 d-none d-sm-block">Many organizations have issued official--}}
-{{--                                        statements encouraging people to reduce their intake of sugary drinks.</p>--}}
-{{--                                    <button onclick="location.href = 'shop-left-sidebar.html';"--}}
-{{--                                            class="btn btn-animation mt-xxl-4 mt-2 home-button mend-auto">Shop Now <i--}}
-{{--                                            class="fa-solid fa-right-long ms-2 icon"></i></button>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-                        </div>
-                    @endif
+    {{--Loader section Start--}}
+        <section class="container-fluid-lg   fullpage-skleton-loader row loading align-content-start justify-content-around">
+                <div class="col-md-8 col-lg-8 rounded sliderLoading" style="height: 25rem;"></div>
+                <div class="col-md-3 col-lg-3 h-10  rounded sliderLoading" style="height: 25rem;"></div>
+                <div class="col-md-12 col-lg-12 mh-100 justify-content-evenly  rounded row mt-4 w-100 " >
+                    <div class="col-md-1 col-lg-1 col-sm-5 square-10  rounded sliderLoading mt-2"></div>
+                    <div class="col-md-1 col-lg-1 col-sm-5 square-10  rounded sliderLoading mt-2"></div>
+                    <div class="col-md-1 col-lg-1 col-sm-5 square-10  rounded sliderLoading mt-2"></div>
+                    <div class="col-md-1 col-lg-1 col-sm-5 square-10  rounded sliderLoading mt-2"></div>
+                    <div class="col-md-1 col-lg-1 col-sm-5 square-10  rounded sliderLoading mt-2"></div>
+                    <div class="col-md-1 col-lg-1 col-sm-5 square-10  rounded sliderLoading mt-2"></div>
+                    <div class="col-md-1 col-lg-1 col-sm-5 square-10  rounded sliderLoading mt-2"></div>
+                    <div class="col-md-1 col-lg-1 col-sm-5 square-10  rounded sliderLoading mt-2"></div>
+                </div>
+                <div class="col-md-12 col-lg-12 justify-content-evenly  rounded  mt-4 sliderLoading  " style="width: 90%;height: 8rem">
+                </div>
+            <div class="col-md-12 col-lg-12 mh-100 justify-content-evenly rounded row mt-4 w-100">
+                <div class="col-md-6 col-lg-2 col-sm-12   rounded sliderLoading mt-2"></div>
+                <div class="col-md-6 col-lg-2 col-sm-12   rounded sliderLoading mt-2"></div>
+                <div class="col-md-6 col-lg-2 col-sm-12   rounded sliderLoading mt-2"></div>
+                <div class="col-md-6 col-lg-2 col-sm-12   rounded sliderLoading mt-2"></div>
+            </div>
+            <div class="col-md-12 col-lg-12 justify-content-evenly rounded row mt-4 w-100" style="height: 250px">
+                <div class="col-md-8 col-lg-8 col-sm-12  h-75 rounded mt-2 row justify-content-evenly">
+                    <div class="col-md-2 col-lg-2 col-sm-5   rounded sliderLoading mt-2" style="height: 50px;"></div>
+                    <div class="col-md-2 col-lg-2 col-sm-5   rounded sliderLoading mt-2" style="height: 50px;"></div>
+                    <div class="col-md-2 col-lg-2 col-sm-5   rounded sliderLoading mt-2" style="height: 50px;"></div>
+                    <div class="col-md-2 col-lg-2 col-sm-5   rounded sliderLoading mt-2" style="height: 50px;"></div>
+                </div>
+                <div class="col-md-3 col-lg-3 col-sm-12 hidden-loader rounded sliderLoading mt-2">
 
                 </div>
+            </div>
 
-                <div class="col-xl-3 col-lg-4 d-lg-inline-block d-none ratio_156">
-                    @if(isset($home_header_left))
-                    <div class="home-contain h-100">
-                        <a href="{{route('home')}}"><img src="{{str_replace('public','/storage',optional($home_header_left->gallery)->path)}}" class="bg-img blur-up lazyload" alt=""></a>
+        </section>
+    {{--Loader section End--}}
+
+
+    <!-- Home Section Start -->
+    <section class="home-section pt-2">
+        <div class="container-fluid-lg ">
+            <div class="row g-4">
+                <div class="col-xl-9 col-lg-8 ">
+                        <a href="{{route('home')}}">
+                    <div class="home-contain h-100 ">
+                         <img src="{{str_replace('public','/storage',$home_header_right['path'])}}" class="bg-img blur-up lazyload " alt="{{$home_header_right['title']}}">
+                    </div>
+                        </a>
+                </div>
+                <div class="col-xl-3 col-lg-4 d-lg-inline-block d-none ratio_156 ">
+                    <div class="home-contain h-100 ">
+                        <a href="{{route('home')}}"><img src="{{str_replace('public','/storage',$home_header_left['path'])}}" class="bg-img blur-up lazyload " alt="{{$home_header_left['title']}}"></a>
 {{--                        <div class="home-detail p-top-left home-p-sm w-75">--}}
 {{--                            <div>--}}
 {{--                                <h2 class="mt-0 text-danger">{{$home_header_left->offer}}% <span class="discount text-title">OFF</span>--}}
@@ -69,27 +69,13 @@
 {{--                            </div>--}}
 {{--                        </div>--}}
                     </div>
-                    @else
-                        <div class="home-contain h-100">
-                            <img src="../assets/images/veg-2/banner/2.jpg" class="bg-img blur-up lazyload" alt="">
-                            <div class="home-detail p-top-left home-p-sm w-75">
-                                <div>
-                                    <h2 class="mt-0 text-danger">45% <span class="discount text-title">OFF</span>
-                                    </h2>
-                                    <h3 class="theme-color">Real Refresement</h3>
-                                    <h5 class="text-content">Only this week, Don't miss..</h5>
-                                    <a href="shop-left-sidebar.html" class="shop-button">Shop Now <i
-                                            class="fa-solid fa-right-long ms-2"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    @endif
-
                 </div>
             </div>
         </div>
     </section>
     <!-- Home Section End -->
+
+
 
     <!-- Category Section Start -->
     <section>
@@ -98,16 +84,18 @@
                 <div class="col-12">
 
                     @if(isset($categories))
-                    <div class="slider-9">
+                    <div class="slider-9 ">
                         @foreach($categories as $category)
-                        <div>
-                            <a href="shop-left-sidebar.html" class="category-box category-box-2 category-dark">
-                                <div>
-                                    <img src="{{str_replace('public','/storage',optional($category->gallery)->path)}}" class="blur-up lazyload" alt="">
+                            @if(!$category->category_id)
+                        <div class="categoryImage" >
+                            <a href="shop-left-sidebar.html" class="category-box category-box-2 category-dark ">
+                                <div class="">
+                                    <img src="{{str_replace('public','/storage',optional($category->gallery)->path)}}" class="blur-up lazyload " alt="">
                                     <h5>{{$category->name}}</h5>
                                 </div>
                             </a>
                         </div>
+                            @endif
                         @endforeach
                     </div>
                     @else
@@ -115,7 +103,7 @@
                             <div>
                                 <a href="shop-left-sidebar.html" class="category-box category-box-2 category-dark">
                                     <div>
-                                        <img src="../assets/svg/2/1.svg" class="blur-up lazyload" alt="">
+                                        <img src="/Client/assets/svg/2/1.svg" class="blur-up lazyload" alt="">
                                         <h5>Cake</h5>
                                     </div>
                                 </a>
@@ -125,7 +113,7 @@
                                 <a href="shop-left-sidebar.html" class="category-box category-box-2 category-dark"
                                    data-wow-delay="0.2s">
                                     <div>
-                                        <img src="../assets/svg/2/2.svg" class="blur-up lazyload" alt="">
+                                        <img src="/Client/assets/svg/2/2.svg" class="blur-up lazyload" alt="">
                                         <h5>Sandwich</h5>
                                     </div>
                                 </a>
@@ -135,7 +123,7 @@
                                 <a href="shop-left-sidebar.html" class="category-box category-box-2 category-dark"
                                    data-wow-delay="0.3s">
                                     <div>
-                                        <img src="../assets/svg/2/3.svg" class="blur-up lazyload" alt="">
+                                        <img src="/Client/assets/svg/2/3.svg" class="blur-up lazyload" alt="">
                                         <h5>Cookies</h5>
                                     </div>
                                 </a>
@@ -145,7 +133,7 @@
                                 <a href="shop-left-sidebar.html" class="category-box category-box-2 category-dark"
                                    data-wow-delay="0.4s">
                                     <div>
-                                        <img src="../assets/svg/2/4.svg" class="blur-up lazyload" alt="">
+                                        <img src="/Client/assets/svg/2/4.svg" class="blur-up lazyload" alt="">
                                         <h5>Pie</h5>
                                     </div>
                                 </a>
@@ -155,7 +143,7 @@
                                 <a href="shop-left-sidebar.html" class="category-box category-box-2 category-dark"
                                    data-wow-delay="0.5s">
                                     <div>
-                                        <img src="../assets/svg/2/5.svg" class="blur-up lazyload" alt="">
+                                        <img src="/Client/assets/svg/2/5.svg" class="blur-up lazyload" alt="">
                                         <h5>Bread</h5>
                                     </div>
                                 </a>
@@ -165,7 +153,7 @@
                                 <a href="shop-left-sidebar.html" class="category-box category-box-2 category-dark"
                                    data-wow-delay="0.6s">
                                     <div>
-                                        <img src="../assets/svg/2/6.svg" class="blur-up lazyload" alt="">
+                                        <img src="/Client/assets/svg/2/6.svg" class="blur-up lazyload" alt="">
                                         <h5>Biscuits</h5>
                                     </div>
                                 </a>
@@ -175,7 +163,7 @@
                                 <a href="shop-left-sidebar.html" class="category-box category-box-2 category-dark"
                                    data-wow-delay="0.7s">
                                     <div>
-                                        <img src="../assets/svg/2/7.svg" class="blur-up lazyload" alt="">
+                                        <img src="/Client/assets/svg/2/7.svg" class="blur-up lazyload" alt="">
                                         <h5>Bagel</h5>
                                     </div>
                                 </a>
@@ -185,7 +173,7 @@
                                 <a href="shop-left-sidebar.html" class="category-box category-box-2 category-dark"
                                    data-wow-delay="0.8s">
                                     <div>
-                                        <img src="../assets/svg/2/8.svg" class="blur-up lazyload" alt="">
+                                        <img src="/Client/assets/svg/2/8.svg" class="blur-up lazyload" alt="">
                                         <h5>Croissant</h5>
                                     </div>
                                 </a>
@@ -195,7 +183,7 @@
                                 <a href="shop-left-sidebar.html" class="category-box category-box-2 category-dark"
                                    data-wow-delay="0.9s">
                                     <div>
-                                        <img src="../assets/svg/2/9.svg" class="blur-up lazyload" alt="">
+                                        <img src="/Client/assets/svg/2/9.svg" class="blur-up lazyload" alt="">
                                         <h5>Cupcake</h5>
                                     </div>
                                 </a>
@@ -210,40 +198,25 @@
     </section>
     <!-- Category Section End -->
 
+
     <!-- Discount Section Start -->
     <section>
         <div class="container-fluid-lg">
             <div class="row">
                 <div class="col-12">
-                    @if(isset($home_main_top))
                     <div class="banner-contain hover-effect">
-                        <img src="{{str_replace('public' , '/storage',$home_main_top->gallery->path)}}" class="bg-img blur-up lazyload" alt="{{$home_main_top->gallery->alt}}">
+                        <img src="{{str_replace('public' , '/storage',$home_main_top['path'])}}" class="bg-img blur-up lazyload" alt="{{$home_main_top['title']}}">
                         <div class="banner-details p-center p-sm-4 p-3 text-white text-center">
                             <div>
                                 <h3 class="lh-base fw-bold text-black-50">
                                     @php
-                                        echo $home_main_top->description;
+                                        echo $home_main_top['description'];
                                     @endphp
                                 </h3>
                                 <h6 class="coupon-code code-2">کد تخفیف : GROCERY1920</h6>
                             </div>
                         </div>
                     </div>
-                    @else
-                    <div class="banner-contain hover-effect">
-                            <img src="{{str_replace('public' , '/storage',$home_main_top->gallery->path)}}" class="bg-img blur-up lazyload" alt="">
-                            <div class="banner-details p-center p-sm-4 p-3 text-white text-center">
-                                <div>
-                                    <h3 class="lh-base fw-bold text-white">
-                                        Get $3 Cashback! Min Order of $30
-                                    </h3>
-                                    <h6 class="coupon-code code-2">Use Code : GROCERY1920</h6>
-                                </div>
-                            </div>
-                        </div>
-                    @endif
-
-
                 </div>
             </div>
         </div>
@@ -251,14 +224,13 @@
     <!-- Discount Section End -->
 
     <!-- Banner Section Start -->
-    @if(isset($home_offer_1))
+
     <section class="ratio_60">
         <div class="container-fluid-lg">
             <div class="row g-3">
-                @if(isset($home_offer_1))
                 <div class="col-xxl-3 col-sm-6">
                     <a href="shop-left-sidebar.html" class="banner-contain-2 hover-effect">
-                        <img src="{{str_replace('public' , '/storage',$home_offer_1->gallery->path)}}" class="bg-img blur-up lazyload" alt="">
+                        <img src="{{str_replace('public' , '/storage',$home_offer_1['path'])}}" class="bg-img blur-up lazyload" alt="{{$home_offer_1['title']}}">
 {{--                        <div class="banner-detail p-top-left">--}}
 {{--                            <div>--}}
 {{--                                <div class="banner-detail-box mb-md-3 mb-1">--}}
@@ -270,11 +242,9 @@
 {{--                        </div>--}}
                     </a>
                 </div>
-                @endif
-                @if(isset($home_offer_2))
                 <div class="col-xxl-3 col-sm-6">
                     <a href="shop-left-sidebar.html" class="banner-contain-2 hover-effect">
-                        <img src="{{str_replace('public' , '/storage',$home_offer_2->gallery->path)}}" class="bg-img blur-up lazyload" alt="">
+                        <img src="{{str_replace('public' , '/storage',$home_offer_2['path'])}}" class="bg-img blur-up lazyload" alt="{{$home_offer_2['title']}}">
 {{--                        <div class="banner-detail p-top-left">--}}
 {{--                            <div>--}}
 {{--                                <div class="banner-detail-box mb-md-3 mb-1">--}}
@@ -286,11 +256,9 @@
 {{--                        </div>--}}
                     </a>
                 </div>
-                @endif
-                @if(isset($home_offer_3))
                 <div class="col-xxl-3 col-sm-6">
                     <a href="shop-left-sidebar.html" class="banner-contain-2 hover-effect">
-                        <img src="{{str_replace('public' , '/storage',$home_offer_3->gallery->path)}}" class="bg-img blur-up lazyload" alt="">
+                        <img src="{{str_replace('public' , '/storage',$home_offer_3['path'])}}" class="bg-img blur-up lazyload" alt="{{$home_offer_3['title']}}">
 {{--                        <div class="banner-detail p-top-left">--}}
 {{--                            <div>--}}
 {{--                                <div class="banner-detail-box mb-md-3 mb-1">--}}
@@ -302,11 +270,9 @@
 {{--                        </div>--}}
                     </a>
                 </div>
-                @endif
-                @if(isset($home_offer_4))
                 <div class="col-xxl-3 col-sm-6">
                     <a href="shop-left-sidebar.html" class="banner-contain-2 hover-effect">
-                        <img src="{{str_replace('public' , '/storage',$home_offer_4->gallery->path)}}" class="bg-img blur-up lazyload" alt="">
+                        <img src="{{str_replace('public' , '/storage',$home_offer_4['path'])}}" class="bg-img blur-up lazyload" alt="{{$home_offer_4['title']}}">
 {{--                        <div class="banner-detail p-top-left">--}}
 {{--                            <div>--}}
 {{--                                <div class="banner-detail-box mb-md-3 mb-1">--}}
@@ -318,12 +284,10 @@
 {{--                        </div>--}}
                     </a>
                 </div>
-                @endif
-
             </div>
         </div>
     </section>
-    @endif
+
     <!-- Banner Section End -->
 
     <!-- Product Section Start -->
@@ -383,15 +347,15 @@
                     <div class="product-box-slider-2 no-arrow">
                         @foreach($offerProducts as $product)
                         <div>
-                            <div class="product-box product-box-bg wow fadeInUp">
-                                <div class="product-image">
-                                    <a href="product-left-thumbnail.html">
-                                        <img src="{{str_replace('public','/storage',$product->gallery->path)}}"
-                                             class="img-fluid blur-up lazyload" alt="">
+                            <div class="product-box product-box-bg wow fadeInUp ">
+                                <div class="product-image " >
+                                    <a href="{{route('products.single',$product)}}" target=”_blank”>
+                                        <img  src="{{str_replace('public','/storage',$product->gallery->path)}}"
+                                             class="img-fluid blur-up lazyload " alt="">
                                     </a>
                                     <ul class="product-option">
-                                        <li data-bs-toggle="tooltip" data-bs-placement="top" title="View">
-                                            <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#view">
+                                        <li data-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده">
+                                            <a href="javascript:;" onclick="viewproduct(event,{{$product->id}})" data-bs-toggle="modal" data-bs-target="#view">
                                                 <i data-feather="eye"></i>
                                             </a>
                                         </li>
@@ -402,21 +366,21 @@
                                             </a>
                                         </li>
 
-                                        <li data-bs-toggle="tooltip" data-bs-placement="top" title="Wishlist">
-                                            <a href="wishlist.html" class="notifi-wishlist">
-                                                <i data-feather="heart"></i>
+                                        <li >
+                                            <a href="javascript:;" class="notifi-wishlist" @if(in_array($product->id,$user_wishlist)) onclick="deleteWishlistShop(event,'{{$product->id}}')" @else onclick="addWishlistShop(event,'{{$product->id}}')" @endif>
+                                                <i class="fa text-danger @if(in_array($product->id,$user_wishlist)) fa-heart  @else fa-heart-o @endif" aria-hidden="true"></i>
                                             </a>
                                         </li>
                                     </ul>
                                 </div>
                                 <div class="product-detail">
-                                    <a href="product-left-thumbnail.html">
+                                    <a href="{{route('products.single',$product)}}">
                                         <h6 class="name">
                                             {{$product->name}}
                                         </h6>
                                     </a>
 
-                                    <h5 class="sold text-content">
+                                    <h5 class="sold text-content ">
                                         @if($product->offer)
                                         <span class="theme-color price">{{faNumber(number_format($product->price - ($product->price*$product->offer/100)))}}
                                             <object data="/Client/assets/svg/toman.svg" width="20" height="20"> </object>
@@ -434,48 +398,33 @@
                                     </h5>
 
                                     <div class="product-rating mt-2">
-                                        <ul class="rating">
-                                            <li>
-                                                <i data-feather="star" class="fill"></i>
-                                            </li>
-                                            <li>
-                                                <i data-feather="star" class="fill"></i>
-                                            </li>
-                                            <li>
-                                                <i data-feather="star" class="fill"></i>
-                                            </li>
-                                            <li>
-                                                <i data-feather="star" class="fill"></i>
-                                            </li>
-                                            <li>
-                                                <i data-feather="star"></i>
-                                            </li>
-                                        </ul>
-                                            <h6 class="theme-color">در سبد خرید</h6>
-
+                                        @if(\Modules\Cart\Helpers\Cart\Cart::has($product))
+                                            @php $productInCart =  \Modules\Cart\Helpers\Cart\Cart::get($product)@endphp
+{{--                                            <h6 class="theme-color"><i class="fa fa-shopping-cart" aria-hidden="true"></i>در سبد شما </h6>--}}
+                                        @endif
                                     </div>
-
                                     <div class="add-to-cart-box bg-white">
-                                        <button class="btn btn-add-cart addcart-button" onclick="addCartlistShop(event,{{$product->id}},1,true)">Add
+                                        <button class="btn btn-add-cart addcart-button" onclick="addCartlistShop(event,{{$product->id}},1,true)">افزودن
                                             <span class="add-icon bg-light-orange">
                                                 <i class="fa-solid fa-plus"></i>
                                             </span>
                                         </button>
-                                        <div class="cart_qty qty-box">
+                                        <div class="cart_qty qty-box @if(\Modules\Cart\Helpers\Cart\Cart::has($product))open @endif">
                                             <div class="input-group">
                                                 <button type="button" class="qty-left-minus" data-type="minus"
-                                                        data-field="" onclick="addCartlistShop(event,{{$product->id}},null,true)">
+                                                        data-field="" >
                                                     <i class="fa fa-minus" aria-hidden="true"></i>
                                                 </button>
-                                                <input class="form-control input-number qty-input ProductQuantity" type="text"
-                                                       name="quantity" value="1" id="valueSingleProductFloating{{$product->id}}">
+                                                <input class="form-control input-number qty-input" readonly="readonly" type="text" min="1" max="{{$product->maxOrder}}"
+                                                       name="quantity" value="@php echo (\Modules\Cart\Helpers\Cart\Cart::has($product) ) ? ($productInCart['quantity']) : '1' @endphp " id="valueSingleProductFloating{{$product->id}}"  data-maxOrder="{{$product->maxOrder}}" @if(\Modules\Cart\Helpers\Cart\Cart::has($product))data-cart="{{$productInCart['id']}}" @endif onchange="changeQuantityShop(event,'{{$product->id}}')">
                                                 <button type="button" class="qty-right-plus" data-type="plus"
-                                                        data-field="" onclick="addCartlistShop(event,{{$product->id}},null,true)">
+                                                        data-field="" >
                                                     <i class="fa fa-plus" aria-hidden="true"></i>
                                                 </button>
                                             </div>
                                         </div>
                                     </div>
+
                                 </div>
                             </div>
 
@@ -1777,9 +1726,8 @@
                 <div class="col-xxl-3 col-xl-4 d-none d-xl-block">
                     <div class="position-sticky top-0">
                         <div class="ratio_209 rounded wow fadeIn">
-                            @if(isset($home_sticky_top))
                             <div class="banner-contain-2 rounded hover-effect">
-                                <img src="{{str_replace('public','/storage',$home_sticky_top->gallery->path)}}" class="bg-img blur-up lazyload" alt="">
+                                <img src="{{str_replace('public','/storage',$home_sticky_top['path'])}}" class="bg-img blur-up lazyload" alt="{{$home_sticky_top['title']}}">
 {{--                                <div class="banner-detail p-top-left">--}}
 {{--                                    <div>--}}
 {{--                                        <h6 class="text-uppercase theme-color fw-500">{{$home_sticky_top->tag}}</h6>--}}
@@ -1806,40 +1754,13 @@
 {{--                                    </div>--}}
 {{--                                </div>--}}
                             </div>
-                            @else
-                            <div class="banner-contain-2 rounded hover-effect">
-                                    <img src="../assets/images/cake/banner/10.jpg" class="bg-img blur-up lazyload" alt="">
-                                    <div class="banner-detail p-top-left">
-                                        <div>
-                                            <h6 class="text-uppercase theme-color fw-500">seafood</h6>
-                                            <h3 class="text-uppercase">
-                                                special <span class="brand-name">brand</span>
-                                            </h3>
-                                            <p class="text-content fw-500 mt-3 lh-lg">Special offer on the discount very
-                                                hungry cake and sweets</p>
 
-                                            <div class="banner-detail-box banner-detail-box-2 mb-md-3 mb-1">
-                                                <h4 class="text-uppercase">up to</h4>
-                                                <h2 class="mt-2">50%</h2>
-                                                <h3 class="text-uppercase">off</h3>
-                                            </div>
-
-                                            <div>
-                                                <button onclick="location.href = 'shop-left-sidebar.html';"
-                                                        class="btn text-white btn-md mt-xxl-4 mt-2 home-button mend-auto theme-bg-color">Shop
-                                                    Now<i class="fa-solid fa-right-long icon ms-2"></i>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            @endif
 
                         </div>
 
                         <div class="ratio_125 section-t-space wow fadeIn">
                             <div class="banner-contain-2 rounded hover-effect">
-                                <img src="{{str_replace('public','/storage',$home_sticky_bottom->gallery->path)}}" class="bg-img blur-up lazyload" alt="">
+                                <img src="{{str_replace('public','/storage',$home_sticky_bottom['path'])}}" class="bg-img blur-up lazyload" alt="{{$home_sticky_bottom['title']}}">
 {{--                                <div class="banner-detail p-top-left">--}}
 {{--                                    <div>--}}
 {{--                                        <h6 class="text-uppercase theme-color fw-500">Freash Every Day!</h6>--}}
@@ -1892,95 +1813,9 @@
         <div class="container-fluid-lg">
             <div class="row">
                 <div class="col-12">
-                    @if(isset($home_main_middle))
                     <div class="home-contain hover-effect">
-                        <img src="{{str_replace('public','/storage',$home_main_middle->gallery->path)}}" class="bg-img blur-up lazyload" alt="">
-{{--                        <div class="home-detail p-center position-relative text-center">--}}
-{{--                            <div>--}}
-{{--                                <h3 class="text-danger text-uppercase fw-bold mb-0 text-center">--}}
-{{--                                    {{$home_main_middle->title}}--}}
-{{--                                </h3>--}}
-{{--                                <h2 class="theme-color  fw-normal mb-0 super-sale text-center">--}}
-{{--                                    {{$home_main_middle->tag}}--}}
-{{--                                </h2>--}}
-{{--                                <h2 class="home-name text-uppercase"></h2>--}}
-{{--                                <h3 class=" fw-normal text-content text-center">--}}
-{{--                                    @php--}}
-{{--                                        echo $home_main_middle->description--}}
-{{--                                    @endphp--}}
-{{--                                </h3>--}}
-{{--                                <ul class="social-icon">--}}
-{{--                                    <li>--}}
-{{--                                        <a href="https://www.instagram.com/">--}}
-{{--                                            <i class="fa-brands fa-instagram"></i>--}}
-{{--                                        </a>--}}
-{{--                                    </li>--}}
-
-{{--                                    <li>--}}
-{{--                                        <a href="https://www.facebook.com/">--}}
-{{--                                            <i class="fa-brands fa-facebook-f"></i>--}}
-{{--                                        </a>--}}
-{{--                                    </li>--}}
-
-{{--                                    <li>--}}
-{{--                                        <a href="https://twitter.com/">--}}
-{{--                                            <i class="fa-brands fa-twitter"></i>--}}
-{{--                                        </a>--}}
-{{--                                    </li>--}}
-
-{{--                                    <li>--}}
-{{--                                        <a href="https://www.whatsapp.com/">--}}
-{{--                                            <i class="fa-brands fa-whatsapp"></i>--}}
-{{--                                        </a>--}}
-{{--                                    </li>--}}
-{{--                                </ul>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
+                        <img src="{{str_replace('public','/storage',$home_body_middle['path'])}}" class="bg-img blur-up lazyload" alt="{{$home_body_middle['title']}}">
                     </div>
-                    @else
-                    <div class="home-contain hover-effect">
-                            <img src="../assets/images/cake/banner/11.jpg" class="bg-img blur-up lazyload" alt="">
-                            <div class="home-detail p-center position-relative text-center">
-                                <div>
-                                    <h3 class="text-danger text-uppercase fw-bold mb-0">
-                                        limited Time Offer
-                                    </h3>
-                                    <h2 class="theme-color text-pacifico fw-normal mb-0 super-sale text-center">
-                                        Super
-                                    </h2>
-                                    <h2 class="home-name text-uppercase">sale</h2>
-                                    <h3 class="text-pacifico fw-normal text-content text-center">
-                                        www.fastkart.com
-                                    </h3>
-                                    <ul class="social-icon">
-                                        <li>
-                                            <a href="https://www.instagram.com/">
-                                                <i class="fa-brands fa-instagram"></i>
-                                            </a>
-                                        </li>
-
-                                        <li>
-                                            <a href="https://www.facebook.com/">
-                                                <i class="fa-brands fa-facebook-f"></i>
-                                            </a>
-                                        </li>
-
-                                        <li>
-                                            <a href="https://twitter.com/">
-                                                <i class="fa-brands fa-twitter"></i>
-                                            </a>
-                                        </li>
-
-                                        <li>
-                                            <a href="https://www.whatsapp.com/">
-                                                <i class="fa-brands fa-whatsapp"></i>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    @endif
                 </div>
             </div>
         </div>
@@ -2480,6 +2315,23 @@
         </div>
     </section>
     <!-- Newsletter Section End -->
+    <!-- Quick View Modal Box Start -->
+    <div class="modal fade theme-modal view-modal" id="view" tabindex="-1" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-xl modal-fullscreen-sm-down">
+            <div class="modal-content">
+                <div class="modal-header p-0">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+                <div class="modal-body" id="modal-body-view">
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Quick View Modal Box End -->
 @endsection
 
 @section('js')
@@ -2488,6 +2340,8 @@
 
     {{--    Slick js--}}
     <script src="/Client/assets/js/bootstrap/bootstrap-notify.min.js"></script>
+    <script src="/Client/assets/js/slick/slick.js"></script>
+    <script src="/Client/assets/js/slick/custom_slick.js"></script>
 
     <!-- Auto Height Js -->
     <script src="/Client/assets/js/auto-height.js"></script>
@@ -2510,4 +2364,26 @@
 
     {{--    Add to Cart js --}}
     <script src="/Client/assets/js/Cart.js"></script>
+
+    <script src="/Client/assets/js/home.js"></script>
+{{--    <script>--}}
+{{--        const lazyImages = document.querySelectorAll(".imageLoading");--}}
+{{--        // Create a new Intersection Observer--}}
+{{--        const observer = new IntersectionObserver((entries, observer) => {--}}
+{{--            entries.forEach((entry) => {--}}
+{{--                if (entry.isIntersecting) {--}}
+{{--                    // Load the image when it comes into the viewport--}}
+{{--                    entry.target.src = entry.target.dataset.src;--}}
+{{--                    observer.unobserve(entry.target); // Unobserve the image after it's loaded--}}
+{{--                }--}}
+{{--            });--}}
+{{--        });--}}
+{{--        // Observe each lazy image--}}
+{{--        lazyImages.forEach((image) => {--}}
+{{--            observer.observe(image);--}}
+{{--            console.log(image);--}}
+{{--            image.classList.remove('imageLoading')--}}
+{{--            image.parentElement.classList.remove('loading')--}}
+{{--        });--}}
+{{--    </script>--}}
 @endsection

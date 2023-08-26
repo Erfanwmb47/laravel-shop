@@ -24,6 +24,11 @@ class BrandController extends AdminController
     public function index(Request $request)
 
     {
+        $this->seo()
+            ->setTitle('برندها')
+            ->setDescription('برندهای سایت سینویا')
+        ;
+        $this->seo()->opengraph()->setTitle('برندها');
 
         AdminLog::InsertLog(Auth::user(),'brand','seen');
 
@@ -41,6 +46,12 @@ class BrandController extends AdminController
      */
     public function create()
     {
+        $this->seo()
+            ->setTitle('ایجاد برند جدید')
+            ->setDescription('برند جدید سایت سینویا')
+        ;
+        $this->seo()->opengraph()->setTitle('برند جدید');
+
         return view('Admin.Brands.Create',[
             'brands' => Brand::all(),
             'countries' => Country::all(),
@@ -61,6 +72,7 @@ class BrandController extends AdminController
 
         if ($request->get('selectedImage') == 'uploadedImage')
         {        $object= explode("/",$request->file('image')->getClientMimeType());
+            dd($object);
             $imagePath = $request->file('image')->storeAs('public/Image/Brands',$request->get('title') . '.'. $object[1]);
             $h=Gallery::query()->create([
                 'title' => $request->get('title'),

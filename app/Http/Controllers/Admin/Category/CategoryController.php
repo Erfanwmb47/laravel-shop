@@ -20,6 +20,11 @@ class CategoryController extends AdminController
      */
     public function index()
     {
+        $this->seo()
+            ->setTitle('دسته بندی')
+            ->setDescription('دسته بندی سایت سینویا')
+        ;
+        $this->seo()->opengraph()->setTitle('دسته بندی');
            return view('Admin.Categories.Index', [
                'categories' => Category::all(),
                'categorySelected' => '0',
@@ -35,6 +40,11 @@ class CategoryController extends AdminController
      */
     public function create()
     {
+        $this->seo()
+            ->setTitle('ایجاد دسته بندی جدید')
+            ->setDescription('دسته بندی جدید سایت سینویا')
+        ;
+        $this->seo()->opengraph()->setTitle('دسته بندی جدید');
         return view('Admin.Categories.Create',[
 
             'categories' => Category::all(),

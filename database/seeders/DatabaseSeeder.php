@@ -40,6 +40,9 @@ class DatabaseSeeder extends Seeder
             PaymentGatewayTableSeeder::class,
             BrandTableSeeder::class,
             SliderTableSeeder::class,
+            ProductTableSeeder::class,
+            AttributeTableSeeder::class,
+            AttributeValueTableSeeder::class
         ]);
     }
 }

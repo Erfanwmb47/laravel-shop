@@ -18,6 +18,11 @@ class RegisteredUserController extends AuthController
      */
     public function create()
     {
+        $this->seo()
+            ->setTitle('عضویت')
+            ->setDescription('عضویت در سایت سینویا')
+        ;
+        $this->seo()->opengraph()->setTitle('عضویت در سایت سینویا');
         return view('auth.register');
     }
 

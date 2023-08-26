@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Gallery;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -23,7 +24,7 @@ class TransportationTableSeeder extends Seeder
             'factor_volume' => '25',
             'const_distance' => '10',
             'cost' => '20000',
-            'gallery_id' => '13',
+            'gallery_id' => Gallery::whereTitle('post')->first()->id,
         ]);
         DB::table('transportations')->insert([
             'name' => 'اسنپ',
@@ -33,7 +34,7 @@ class TransportationTableSeeder extends Seeder
             'factor_volume' => '25',
             'const_distance' => '10',
             'cost' => '20000',
-            'gallery_id' => '14',
+            'gallery_id' =>Gallery::whereTitle('snapp')->first()->id,
         ]);
     }
 }

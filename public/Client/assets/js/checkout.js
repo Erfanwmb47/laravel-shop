@@ -7,7 +7,6 @@ function checkoutNewAddress(){
             });
             $(".modal").modal("hide");
             $("#newAddressBox").remove();
-            console.log($('#dropbtnCounty').text());
             var temp = "<div class=\"col-xxl-6 col-lg-12 col-md-6 checkoutAddressSelect\" id=\"newAddressBox\" >\n" +
                 "                                                    <div class=\"delivery-address-box\">\n" +
                 "                                                        <div>\n" +
@@ -17,7 +16,7 @@ function checkoutNewAddress(){
                 "                                                            </div>\n" +
                 "\n" +
                 "                                                            <div class=\"label\">\n" +
-                "                                                                <label>خانه</label>\n" +
+                "                                                                <div class=\"pointer\" data-bs-toggle=\"modal\" data-bs-target=\"#newAddressModal\" id=\"editAddressButton\">ویرایش</div>\n" +
                 "                                                            </div>\n" +
                 "\n" +
                 "                                                            <ul class=\"delivery-address-detail\">\n" +
@@ -54,9 +53,7 @@ function checkoutNewAddress(){
 
 
 }
-
 function computePriceTransportation(event,province_id,county_id) {
-
     //
     $.ajaxSetup({
         headers : {
@@ -87,8 +84,8 @@ function computePriceTransportation(event,province_id,county_id) {
 
             document.getElementById('transportationsBox').innerHTML ="";
             res.transportations.forEach(function(transportation) {
-                console.log((Number(transportation.discountPrice)));
                 if(transportation.discountPrice){
+                    console.log(Number(transportation.totalPrice) - Number(transportation.discountPrice))
                     var temp = "<div class=\"col-xxl-6\">\n" +
                         "                                                    <div class=\"delivery-option\">\n" +
                         "                                                        <div class=\"delivery-category\">\n" +
@@ -96,7 +93,7 @@ function computePriceTransportation(event,province_id,county_id) {
                         "                                                                <div\n" +
                         "                                                                    class=\"form-check custom-form-check hide-check-box\">\n" +
                         "                                                                    <input class=\"form-check-input\" type=\"radio\"\n" +
-                        "                                                                           name=\"transportation\" id=\"transportation"+transportation.id+"\" data-price=\""+(Number(transportation.totalPrice) - Number(transportation.discountPrice))+"\" value=\""+transportation.id+"\" onchange=\"finalCost(this)\" checked>\n" +
+                        "                                                                           name=\"transportation\" id=\"transportation"+transportation.id+"\" data-price=\""+(Number(transportation.totalPrice) - Number(transportation.discountPrice))+"\" value=\""+transportation.id+"\" onchange=\"finalCost(this)\" >\n" +
                         "                                                                    <label class=\"form-check-label\"\n" +
                         "                                                                           for=\"standard\">\n"+transportation.name+"</label>\n" +
                         "                                                                    <img class=\"mx-2 rounded\" src=\""+transportation.image+"\" alt=\"transportation"+transportation.name+"\" style=\"width: 30px;\">\n" +
@@ -119,7 +116,7 @@ function computePriceTransportation(event,province_id,county_id) {
                         "                                                                <div\n" +
                         "                                                                    class=\"form-check custom-form-check hide-check-box\">\n" +
                         "                                                                    <input class=\"form-check-input\" type=\"radio\"\n" +
-                        "                                                                           name=\"transportation\" id=\"transportation"+transportation.id+"\" data-price=\""+(Number(transportation.totalPrice) - Number(transportation.discountPrice))+"\" value=\""+transportation.id+"\" onchange=\"finalCost(this)\" checked>\n" +
+                        "                                                                           name=\"transportation\" id=\"transportation"+transportation.id+"\" data-price=\""+(Number(transportation.totalPrice))+"\" value=\""+transportation.id+"\" onchange=\"finalCost(this)\" >\n" +
                         "                                                                    <label class=\"form-check-label\"\n" +
                         "                                                                           for=\"standard\">\n"+transportation.name+"</label>\n" +
                         "                                                                    <img class=\"mx-2 rounded\" src=\""+transportation.image+"\" alt=\"transportation"+transportation.name+"\" style=\"width: 30px;\">\n" +
@@ -149,26 +146,33 @@ function finalCost(res){
 
     // console.log(formatter.format($(res).attr('data-price')));
 
-    var x = document.getElementById('totalPrice').innerText;
+    var x = document.getElementById('totalPrice').getAttribute('data-price');
     if(res.checked) {
-        document.getElementById('finalTransportationCost').innerText = formatter.format($(res).attr('data-price')) +"تومان";
+        document.getElementById('finalTransportationCost').innerText = formatter.format($(res).attr('data-price')) + " تومان ";
         document.getElementById('finalCost').innerText = formatter.format(Number($(res).attr('data-price')) + Number(x)) + "تومان";
 
     }
 };
 
-
+$('#dropdownCountyAddress').css('pointer-events','none');
 // تایید شرایط و ضوابط
-// $("body").mouseover(function(){
-//     if ($('input[name=address]:checked').length > 0 && $('input[name=paymentGateway]:checked').length > 0 && $('input[name=transportation]:checked').length > 0 && $('input[name=policyChecked]:checked').length == 1 ) {
-//         document.getElementById('checkoutSubmitButton').removeAttribute('style');
-//         document.getElementById('checkoutSubmitButton').removeAttribute('disabled');
-//     }
-//     else {
-//         document.getElementById('checkoutSubmitButton').style.backgroundColor = '#7f8a9a';
-//         document.getElementById('checkoutSubmitButton').setAttribute('disabled','disabled');
-//     }
-// });
+$("body").mouseover(function(){
+    if ($('input[name=address]:checked').length > 0 &&
+        $('input[name=paymentGateway]:checked').length > 0 &&
+        $('input[name=transportation]:checked').length > 0 &&
+        $('input[name=policyChecked]:checked').length == 1 &&
+        $("input[name='recipient_name']").val() !== "" &&
+        $("input[name='recipient_phone']").val() !== "") {
+        document.getElementById('submitOrder').removeAttribute('style');
+        document.getElementById('submitOrder').removeAttribute('disabled');
+        document.getElementById('submitOrder').nextElementSibling.style.display = "none";
+    }
+    else {
+        document.getElementById('submitOrder').style.backgroundColor = '#7f8a9a';
+        document.getElementById('submitOrder').setAttribute('disabled','disabled');
+        document.getElementById('submitOrder').nextElementSibling.style.display = "block";
+    }
+});
 
 // مودال تغییر آدرس و آدرس جدید
 
@@ -184,7 +188,6 @@ document.getElementById('newAddressH3').classList.remove("active");
 function changeAddress() {
     if (document.getElementById('newAddressH3').classList[1] == 'active') {
         // $('#NewAddress').check()
-        console.log('hi');
         document.getElementById('newAddress').checked = 'true';
     }
     else {
@@ -194,6 +197,7 @@ function changeAddress() {
 }
 /* When the user clicks on the button,
         toggle between hiding and showing the dropdown content */
+
 function showProvince() {
     document.getElementById("myDropdownProvince").classList.toggle("showProvince");
 }
@@ -207,7 +211,15 @@ function selectProvince(id,name){
     document.getElementById('myInputProvinceRequest').setAttribute('value',id);
     document.getElementById("myDropdownProvince").classList.toggle("showProvince");
     document.getElementById('dropbtnCounty').innerHTML = "انتخاب شهر";
+    document.getElementById('myInputCountyRequest').setAttribute('value','');
     document.getElementById('myInputCounty').setAttribute('value','');
+
+    if (! document.getElementById('myInputCountyRequest').value){
+        document.getElementById('dropbtnCounty').classList.add('border');
+        document.getElementById('dropbtnCounty').classList.add('border-danger');
+        document.getElementById('submitAddress').disabled = true;
+
+    }
     $.ajaxSetup({
         headers : {
             'X-CSRF-TOKEN' : document.head.querySelector('meta[name="csrf-token"]').content,
@@ -231,6 +243,7 @@ function selectProvince(id,name){
             //  location.reload();
             document.getElementById('countiesList').innerHTML ="";
             res.counties.forEach(addCounty);
+            $('#dropdownCountyAddress').removeAttr('style');
 
         }
     });
@@ -246,6 +259,10 @@ function selectCounty(id,name){
     document.getElementById('myInputCounty').setAttribute('value',name);
     document.getElementById('myInputCountyRequest').setAttribute('value',id);
     document.getElementById("myDropdownCounty").classList.toggle("showCounty");
+
+    document.getElementById('dropbtnCounty').classList.remove('border');
+    document.getElementById('dropbtnCounty').classList.remove('border-danger');
+    document.getElementById('submitAddress').disabled = false;
 }
 function filterFunctionProvince() {
     var input, filter, ul, li, a, i;

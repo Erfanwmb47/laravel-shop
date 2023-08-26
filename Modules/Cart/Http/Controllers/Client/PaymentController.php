@@ -5,6 +5,7 @@ namespace Modules\Cart\Http\Controllers\Client;
 
 use App\Http\Controllers\Admin\User\Address\AddressController;
 use App\Http\Controllers\Client\Cart\Exception;
+use App\Http\Controllers\Client\ClientController;
 use App\Http\Controllers\Controller;
 use App\Models\Address;
 use App\Models\Brand;
@@ -21,7 +22,7 @@ use Modules\Cart\Entities\Payment;
 use Modules\Cart\Helpers\Cart\Cart;
 use function PHPUnit\Framework\isNull;
 
-class PaymentController extends Controller
+class PaymentController extends ClientController
 {
     public function computePriceTransportation(Request $request)
     {
@@ -105,10 +106,10 @@ class PaymentController extends Controller
 //sdsd
         $address_string=AddressController::addressToString($address);
 
-
+//        dd($address);
         //dd(json_encode($address_string));
         $order=auth()->user()->order()->create([
-           'address'=>json_encode($address_string),
+//           'address'=>json_encode($address_string),
            'transportation_id'=> $request->transportation,
            'transportation_cost' => $PriceTransportation,
            'final_cost'=>$this->TotalCartCost()+$PriceTransportation,
@@ -120,7 +121,12 @@ class PaymentController extends Controller
            'cart_cost'=>$c1=$this->TotalCartCost(),
             //TODO masale score user
             'score'=>$c1/100,
-
+        ]);
+        $order->address()->create([
+           'province_id' => $address->province->id,
+            'county_id' => $address->county->id,
+            'postalCode' => $address->postalCode,
+            'detail' => $address->detail
         ]);
         $order->products()->attach($orderIteams);
         $order->discount()->attach(Discount::whereCode(session('cart.discount'))->first());
@@ -139,7 +145,6 @@ class PaymentController extends Controller
 
     public function createNewAddress(Request $request)
     {
-
         $province_id=$request->province_id;
         $county_id=$request->county_id;
         $postalCode=$request->postalCode;

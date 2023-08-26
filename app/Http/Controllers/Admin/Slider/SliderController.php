@@ -167,13 +167,12 @@ class SliderController extends AdminController
 
         $s1 = $slider;
         $slider->delete();
-        if (!!$s1->status){
-            Slider::whereFlag($s1->flag)->firstOrFail()->update([
-               'status' => 1
-            ]);
-        }
+
+        $nextSlider=Slider::whereFlag($s1->flag)->where('status',0)->first();
+        if (!!$nextSlider ) $nextSlider->update(['status'=>1]);
+        else
         toast('اسلایدر مورد نظر حذف شد','success');
-        return back();
+        return redirect(route('admin.slider.index'));
     }
 
     public function select(Slider $slider)

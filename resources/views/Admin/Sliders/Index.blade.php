@@ -114,6 +114,11 @@
                                         <button href="" class="intro-x w-8 h-8 flex items-center justify-center rounded-full bg-theme-1 text-white ml-2 tooltip" title="انتخاب"> <i data-feather="mouse-pointer" class="w-3 h-3"></i> </button>
                                     </form>
                                 @endif
+                                <form action="{{route('sliders.destroy',$slider)}}" method="post">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button href="" class="intro-x w-8 h-8 flex items-center justify-center rounded-full bg-theme-6 text-white ml-2 tooltip" title="حذف"> <i data-feather="trash" class="w-3 h-3"></i> </button>
+                                </form>
                             </div>
                             <div class="px-5 pt-3 pb-5 border-t border-gray-200">
                                 <div class="w-full flex items-center mt-3">
@@ -249,14 +254,14 @@
                     <img alt="Midone Tailwind HTML Admin Template" class="rounded-t-md" src="{{str_replace('public','/storage',optional($home_main_top_active->gallery)->path)}}">
                     <div class="absolute w-full flex items-center px-5 pt-6 z-10">
                         <div class="ml-3 text-white mr-auto">
-                            <a href="" class="font-medium">اسلایدر صفحه اصلی بدنه بالا</a>
+                            <a href="" class="font-medium">اسلایدر بدنه بالا</a>
                             <div class="text-xs">1600 * 138 </div>
                         </div>
                         <div class="dropdown relative ml-3">
                             <a href="javascript:;" class="blog__action dropdown-toggle w-8 h-8 flex items-center justify-center rounded-full"> <i data-feather="more-vertical" class="w-4 h-4 text-white"></i> </a>
                             <div class="dropdown-box mt-8 absolute w-40 top-0 right-0 z-20">
                                 <div class="dropdown-box__content box p-2">
-                                    <a href="javascript:;" class="flex items-center block p-2 transition duration-300 ease-in-out bg-white hover:bg-gray-200 rounded-md" data-toggle="modal" data-target="#home_header_right_modal"> <i data-feather="edit-2" class="w-4 h-4 mr-2"></i> لیست اسلایدر ها </a>
+                                    <a href="javascript:;" class="flex items-center block p-2 transition duration-300 ease-in-out bg-white hover:bg-gray-200 rounded-md" data-toggle="modal" data-target="#home_main_top_modal"> <i data-feather="edit-2" class="w-4 h-4 mr-2"></i> لیست اسلایدر ها </a>
                                     <a href="" class="flex items-center block p-2 transition duration-300 ease-in-out bg-white hover:bg-gray-200 rounded-md"> <i data-feather="trash" class="w-4 h-4 mr-2"></i> Delete Post </a>
                                 </div>
                             </div>
@@ -292,14 +297,14 @@
                 <div class="px-5 pt-3 pb-5 border-t border-gray-200">
                     <div class="w-full flex items-center mt-3">
                         <div class="flex-1 relative text-gray-700">
-                            <input disabled type="text" class="input w-full rounded-full bg-gray-200 pr-10 placeholder-theme-13" placeholder="{{$home_header_right_active->link}}">
+                            <input disabled type="text" class="input w-full rounded-full bg-gray-200 pr-10 placeholder-theme-13" placeholder="{{$home_main_top_active->link}}">
                             <i data-feather="link" class="w-4 h-4 absolute my-auto inset-y-0 mr-3 right-0"></i>
                         </div>
                     </div>
 
                 </div>
             </div>
-            <div class="modal" id="home_header_right_modal">
+            <div class="modal" id="home_main_top_modal">
                 <div class="modal__content modal__content--xl p-10 text-center ">
                     <div class="intro-y grid grid-cols-12 gap-6 mt-5 rtl">
                         <!-- BEGIN: Blog Layout -->
@@ -331,6 +336,11 @@
                                             <button href="" class="intro-x w-8 h-8 flex items-center justify-center rounded-full bg-theme-1 text-white ml-2 tooltip" title="انتخاب"> <i data-feather="mouse-pointer" class="w-3 h-3"></i> </button>
                                         </form>
                                     @endif
+                                    <form action="{{route('sliders.destroy',$slider)}}" method="post">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button href="" class="intro-x w-8 h-8 flex items-center justify-center rounded-full bg-theme-6 text-white ml-2 tooltip" title="حذف"> <i data-feather="trash" class="w-3 h-3"></i> </button>
+                                    </form>
                                 </div>
                                 <div class="px-5 pt-3 pb-5 border-t border-gray-200">
                                     <div class="w-full flex items-center mt-3">
@@ -362,7 +372,7 @@
                             <a href="javascript:;" class="blog__action dropdown-toggle w-8 h-8 flex items-center justify-center rounded-full"> <i data-feather="more-vertical" class="w-4 h-4 text-white"></i> </a>
                             <div class="dropdown-box mt-8 absolute w-40 top-0 right-0 z-20">
                                 <div class="dropdown-box__content box p-2">
-                                    <a href="javascript:;" class="flex items-center block p-2 transition duration-300 ease-in-out bg-white hover:bg-gray-200 rounded-md" data-toggle="modal" data-target="#home_header_right_modal"> <i data-feather="edit-2" class="w-4 h-4 mr-2"></i> لیست اسلایدر ها </a>
+                                    <a href="javascript:;" class="flex items-center block p-2 transition duration-300 ease-in-out bg-white hover:bg-gray-200 rounded-md" data-toggle="modal" data-target="#home_offer_1_modal"> <i data-feather="edit-2" class="w-4 h-4 mr-2"></i> لیست اسلایدر ها </a>
                                     <a href="" class="flex items-center block p-2 transition duration-300 ease-in-out bg-white hover:bg-gray-200 rounded-md"> <i data-feather="trash" class="w-4 h-4 mr-2"></i> Delete Post </a>
                                 </div>
                             </div>
@@ -398,18 +408,18 @@
                 <div class="px-5 pt-3 pb-5 border-t border-gray-200">
                     <div class="w-full flex items-center mt-3">
                         <div class="flex-1 relative text-gray-700">
-                            <input disabled type="text" class="input w-full rounded-full bg-gray-200 pr-10 placeholder-theme-13" placeholder="{{$home_header_right_active->link}}">
+                            <input disabled type="text" class="input w-full rounded-full bg-gray-200 pr-10 placeholder-theme-13" placeholder="{{$home_offer_1_active->link}}">
                             <i data-feather="link" class="w-4 h-4 absolute my-auto inset-y-0 mr-3 right-0"></i>
                         </div>
                     </div>
 
                 </div>
             </div>
-            <div class="modal" id="home_header_right_modal">
+            <div class="modal" id="home_offer_1_modal">
                 <div class="modal__content modal__content--xl p-10 text-center ">
                     <div class="intro-y grid grid-cols-12 gap-6 mt-5 rtl">
                         <!-- BEGIN: Blog Layout -->
-                        @foreach($home_header_right as $slider)
+                        @foreach($home_offer_1 as $slider)
                             <div class="intro-y col-span-12 md:col-span-6 xl:col-span-6 box @if($slider->status) border-theme-42 @endif">
                                 <div class="p-5">
                                     <div class="h-40 xxl:h-56 image-fit">
@@ -437,6 +447,11 @@
                                             <button href="" class="intro-x w-8 h-8 flex items-center justify-center rounded-full bg-theme-1 text-white ml-2 tooltip" title="انتخاب"> <i data-feather="mouse-pointer" class="w-3 h-3"></i> </button>
                                         </form>
                                     @endif
+                                    <form action="{{route('sliders.destroy',$slider)}}" method="post">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button href="" class="intro-x w-8 h-8 flex items-center justify-center rounded-full bg-theme-6 text-white ml-2 tooltip" title="حذف"> <i data-feather="trash" class="w-3 h-3"></i> </button>
+                                    </form>
                                 </div>
                                 <div class="px-5 pt-3 pb-5 border-t border-gray-200">
                                     <div class="w-full flex items-center mt-3">
@@ -468,7 +483,7 @@
                                 <a href="javascript:;" class="blog__action dropdown-toggle w-8 h-8 flex items-center justify-center rounded-full"> <i data-feather="more-vertical" class="w-4 h-4 text-white"></i> </a>
                                 <div class="dropdown-box mt-8 absolute w-40 top-0 right-0 z-20">
                                     <div class="dropdown-box__content box p-2">
-                                        <a href="javascript:;" class="flex items-center block p-2 transition duration-300 ease-in-out bg-white hover:bg-gray-200 rounded-md" data-toggle="modal" data-target="#home_header_right_modal"> <i data-feather="edit-2" class="w-4 h-4 mr-2"></i> لیست اسلایدر ها </a>
+                                        <a href="javascript:;" class="flex items-center block p-2 transition duration-300 ease-in-out bg-white hover:bg-gray-200 rounded-md" data-toggle="modal" data-target="#home_offer_2_modal"> <i data-feather="edit-2" class="w-4 h-4 mr-2"></i> لیست اسلایدر ها </a>
                                         <a href="" class="flex items-center block p-2 transition duration-300 ease-in-out bg-white hover:bg-gray-200 rounded-md"> <i data-feather="trash" class="w-4 h-4 mr-2"></i> Delete Post </a>
                                     </div>
                                 </div>
@@ -504,18 +519,18 @@
                     <div class="px-5 pt-3 pb-5 border-t border-gray-200">
                         <div class="w-full flex items-center mt-3">
                             <div class="flex-1 relative text-gray-700">
-                                <input disabled type="text" class="input w-full rounded-full bg-gray-200 pr-10 placeholder-theme-13" placeholder="{{$home_header_right_active->link}}">
+                                <input disabled type="text" class="input w-full rounded-full bg-gray-200 pr-10 placeholder-theme-13" placeholder="{{$home_offer_2_active->link}}">
                                 <i data-feather="link" class="w-4 h-4 absolute my-auto inset-y-0 mr-3 right-0"></i>
                             </div>
                         </div>
 
                     </div>
                 </div>
-                <div class="modal" id="home_header_right_modal">
+                <div class="modal" id="home_offer_2_modal">
                     <div class="modal__content modal__content--xl p-10 text-center ">
                         <div class="intro-y grid grid-cols-12 gap-6 mt-5 rtl">
                             <!-- BEGIN: Blog Layout -->
-                            @foreach($home_header_right as $slider)
+                            @foreach($home_offer_2 as $slider)
                                 <div class="intro-y col-span-12 md:col-span-6 xl:col-span-6 box @if($slider->status) border-theme-42 @endif">
                                     <div class="p-5">
                                         <div class="h-40 xxl:h-56 image-fit">
@@ -543,6 +558,11 @@
                                                 <button href="" class="intro-x w-8 h-8 flex items-center justify-center rounded-full bg-theme-1 text-white ml-2 tooltip" title="انتخاب"> <i data-feather="mouse-pointer" class="w-3 h-3"></i> </button>
                                             </form>
                                         @endif
+                                        <form action="{{route('sliders.destroy',$slider)}}" method="post">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button href="" class="intro-x w-8 h-8 flex items-center justify-center rounded-full bg-theme-6 text-white ml-2 tooltip" title="حذف"> <i data-feather="trash" class="w-3 h-3"></i> </button>
+                                        </form>
                                     </div>
                                     <div class="px-5 pt-3 pb-5 border-t border-gray-200">
                                         <div class="w-full flex items-center mt-3">
@@ -574,7 +594,7 @@
                                 <a href="javascript:;" class="blog__action dropdown-toggle w-8 h-8 flex items-center justify-center rounded-full"> <i data-feather="more-vertical" class="w-4 h-4 text-white"></i> </a>
                                 <div class="dropdown-box mt-8 absolute w-40 top-0 right-0 z-20">
                                     <div class="dropdown-box__content box p-2">
-                                        <a href="javascript:;" class="flex items-center block p-2 transition duration-300 ease-in-out bg-white hover:bg-gray-200 rounded-md" data-toggle="modal" data-target="#home_header_right_modal"> <i data-feather="edit-2" class="w-4 h-4 mr-2"></i> لیست اسلایدر ها </a>
+                                        <a href="javascript:;" class="flex items-center block p-2 transition duration-300 ease-in-out bg-white hover:bg-gray-200 rounded-md" data-toggle="modal" data-target="#home_offer_3_modal"> <i data-feather="edit-2" class="w-4 h-4 mr-2"></i> لیست اسلایدر ها </a>
                                         <a href="" class="flex items-center block p-2 transition duration-300 ease-in-out bg-white hover:bg-gray-200 rounded-md"> <i data-feather="trash" class="w-4 h-4 mr-2"></i> Delete Post </a>
                                     </div>
                                 </div>
@@ -610,18 +630,18 @@
                     <div class="px-5 pt-3 pb-5 border-t border-gray-200">
                         <div class="w-full flex items-center mt-3">
                             <div class="flex-1 relative text-gray-700">
-                                <input disabled type="text" class="input w-full rounded-full bg-gray-200 pr-10 placeholder-theme-13" placeholder="{{$home_header_right_active->link}}">
+                                <input disabled type="text" class="input w-full rounded-full bg-gray-200 pr-10 placeholder-theme-13" placeholder="{{$home_offer_3_active->link}}">
                                 <i data-feather="link" class="w-4 h-4 absolute my-auto inset-y-0 mr-3 right-0"></i>
                             </div>
                         </div>
 
                     </div>
                 </div>
-                <div class="modal" id="home_header_right_modal">
+                <div class="modal" id="home_offer_3_modal">
                     <div class="modal__content modal__content--xl p-10 text-center ">
                         <div class="intro-y grid grid-cols-12 gap-6 mt-5 rtl">
                             <!-- BEGIN: Blog Layout -->
-                            @foreach($home_header_right as $slider)
+                            @foreach($home_offer_3 as $slider)
                                 <div class="intro-y col-span-12 md:col-span-6 xl:col-span-6 box @if($slider->status) border-theme-42 @endif">
                                     <div class="p-5">
                                         <div class="h-40 xxl:h-56 image-fit">
@@ -649,6 +669,11 @@
                                                 <button href="" class="intro-x w-8 h-8 flex items-center justify-center rounded-full bg-theme-1 text-white ml-2 tooltip" title="انتخاب"> <i data-feather="mouse-pointer" class="w-3 h-3"></i> </button>
                                             </form>
                                         @endif
+                                        <form action="{{route('sliders.destroy',$slider)}}" method="post">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button href="" class="intro-x w-8 h-8 flex items-center justify-center rounded-full bg-theme-6 text-white ml-2 tooltip" title="حذف"> <i data-feather="trash" class="w-3 h-3"></i> </button>
+                                        </form>
                                     </div>
                                     <div class="px-5 pt-3 pb-5 border-t border-gray-200">
                                         <div class="w-full flex items-center mt-3">
@@ -680,7 +705,7 @@
                                 <a href="javascript:;" class="blog__action dropdown-toggle w-8 h-8 flex items-center justify-center rounded-full"> <i data-feather="more-vertical" class="w-4 h-4 text-white"></i> </a>
                                 <div class="dropdown-box mt-8 absolute w-40 top-0 right-0 z-20">
                                     <div class="dropdown-box__content box p-2">
-                                        <a href="javascript:;" class="flex items-center block p-2 transition duration-300 ease-in-out bg-white hover:bg-gray-200 rounded-md" data-toggle="modal" data-target="#home_header_right_modal"> <i data-feather="edit-2" class="w-4 h-4 mr-2"></i> لیست اسلایدر ها </a>
+                                        <a href="javascript:;" class="flex items-center block p-2 transition duration-300 ease-in-out bg-white hover:bg-gray-200 rounded-md" data-toggle="modal" data-target="#home_offer_4_modal"> <i data-feather="edit-2" class="w-4 h-4 mr-2"></i> لیست اسلایدر ها </a>
                                         <a href="" class="flex items-center block p-2 transition duration-300 ease-in-out bg-white hover:bg-gray-200 rounded-md"> <i data-feather="trash" class="w-4 h-4 mr-2"></i> Delete Post </a>
                                     </div>
                                 </div>
@@ -716,18 +741,18 @@
                     <div class="px-5 pt-3 pb-5 border-t border-gray-200">
                         <div class="w-full flex items-center mt-3">
                             <div class="flex-1 relative text-gray-700">
-                                <input disabled type="text" class="input w-full rounded-full bg-gray-200 pr-10 placeholder-theme-13" placeholder="{{$home_header_right_active->link}}">
+                                <input disabled type="text" class="input w-full rounded-full bg-gray-200 pr-10 placeholder-theme-13" placeholder="{{$home_offer_4_active->link}}">
                                 <i data-feather="link" class="w-4 h-4 absolute my-auto inset-y-0 mr-3 right-0"></i>
                             </div>
                         </div>
 
                     </div>
                 </div>
-                <div class="modal" id="home_header_right_modal">
+                <div class="modal" id="home_offer_4_modal">
                     <div class="modal__content modal__content--xl p-10 text-center ">
                         <div class="intro-y grid grid-cols-12 gap-6 mt-5 rtl">
                             <!-- BEGIN: Blog Layout -->
-                            @foreach($home_header_right as $slider)
+                            @foreach($home_offer_4 as $slider)
                                 <div class="intro-y col-span-12 md:col-span-6 xl:col-span-6 box @if($slider->status) border-theme-42 @endif">
                                     <div class="p-5">
                                         <div class="h-40 xxl:h-56 image-fit">
@@ -755,6 +780,11 @@
                                                 <button href="" class="intro-x w-8 h-8 flex items-center justify-center rounded-full bg-theme-1 text-white ml-2 tooltip" title="انتخاب"> <i data-feather="mouse-pointer" class="w-3 h-3"></i> </button>
                                             </form>
                                         @endif
+                                        <form action="{{route('sliders.destroy',$slider)}}" method="post">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button href="" class="intro-x w-8 h-8 flex items-center justify-center rounded-full bg-theme-6 text-white ml-2 tooltip" title="حذف"> <i data-feather="trash" class="w-3 h-3"></i> </button>
+                                        </form>
                                     </div>
                                     <div class="px-5 pt-3 pb-5 border-t border-gray-200">
                                         <div class="w-full flex items-center mt-3">
@@ -786,7 +816,7 @@
                             <a href="javascript:;" class="blog__action dropdown-toggle w-8 h-8 flex items-center justify-center rounded-full"> <i data-feather="more-vertical" class="w-4 h-4 text-white"></i> </a>
                             <div class="dropdown-box mt-8 absolute w-40 top-0 right-0 z-20">
                                 <div class="dropdown-box__content box p-2">
-                                    <a href="javascript:;" class="flex items-center block p-2 transition duration-300 ease-in-out bg-white hover:bg-gray-200 rounded-md" data-toggle="modal" data-target="#home_header_right_modal"> <i data-feather="edit-2" class="w-4 h-4 mr-2"></i> لیست اسلایدر ها </a>
+                                    <a href="javascript:;" class="flex items-center block p-2 transition duration-300 ease-in-out bg-white hover:bg-gray-200 rounded-md" data-toggle="modal" data-target="#home_sticky_bottom_modal"> <i data-feather="edit-2" class="w-4 h-4 mr-2"></i> لیست اسلایدر ها </a>
                                     <a href="" class="flex items-center block p-2 transition duration-300 ease-in-out bg-white hover:bg-gray-200 rounded-md"> <i data-feather="trash" class="w-4 h-4 mr-2"></i> Delete Post </a>
                                 </div>
                             </div>
@@ -822,18 +852,18 @@
                 <div class="px-5 pt-3 pb-5 border-t border-gray-200">
                     <div class="w-full flex items-center mt-3">
                         <div class="flex-1 relative text-gray-700">
-                            <input disabled type="text" class="input w-full rounded-full bg-gray-200 pr-10 placeholder-theme-13" placeholder="{{$home_header_right_active->link}}">
+                            <input disabled type="text" class="input w-full rounded-full bg-gray-200 pr-10 placeholder-theme-13" placeholder="{{$home_sticky_bottom_active->link}}">
                             <i data-feather="link" class="w-4 h-4 absolute my-auto inset-y-0 mr-3 right-0"></i>
                         </div>
                     </div>
 
                 </div>
             </div>
-            <div class="modal" id="home_header_right_modal">
+            <div class="modal" id="home_sticky_bottom_modal">
                 <div class="modal__content modal__content--xl p-10 text-center ">
                     <div class="intro-y grid grid-cols-12 gap-6 mt-5 rtl">
                         <!-- BEGIN: Blog Layout -->
-                        @foreach($home_header_right as $slider)
+                        @foreach($home_sticky_bottom as $slider)
                             <div class="intro-y col-span-12 md:col-span-6 xl:col-span-6 box @if($slider->status) border-theme-42 @endif">
                                 <div class="p-5">
                                     <div class="h-40 xxl:h-56 image-fit">
@@ -861,6 +891,11 @@
                                             <button href="" class="intro-x w-8 h-8 flex items-center justify-center rounded-full bg-theme-1 text-white ml-2 tooltip" title="انتخاب"> <i data-feather="mouse-pointer" class="w-3 h-3"></i> </button>
                                         </form>
                                     @endif
+                                    <form action="{{route('sliders.destroy',$slider)}}" method="post">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button href="" class="intro-x w-8 h-8 flex items-center justify-center rounded-full bg-theme-6 text-white ml-2 tooltip" title="حذف"> <i data-feather="trash" class="w-3 h-3"></i> </button>
+                                    </form>
                                 </div>
                                 <div class="px-5 pt-3 pb-5 border-t border-gray-200">
                                     <div class="w-full flex items-center mt-3">
@@ -885,20 +920,20 @@
                     <img alt="Midone Tailwind HTML Admin Template" class="rounded-t-md" src="{{str_replace('public','/storage',optional($home_sticky_top_active->gallery)->path)}}">
                     <div class="absolute w-full flex items-center px-5 pt-6 z-10">
                         <div class="ml-3 text-white mr-auto">
-                            <a href="" class="font-medium">اسلایدر صفحه اصلی بدنه چپ بالا </a>
-                            <div class="text-xs">376 * 792 </div>
+                            <a href="" class="font-medium">اسلایدر صفحه اصلی بدنه پایین </a>
+                            <div class="text-xs">376 * 231 </div>
                         </div>
-                        <div class="dropdown relative ml-3">
+                        <div class="dropdown relative ml-3" >
                             <a href="javascript:;" class="blog__action dropdown-toggle w-8 h-8 flex items-center justify-center rounded-full"> <i data-feather="more-vertical" class="w-4 h-4 text-white"></i> </a>
                             <div class="dropdown-box mt-8 absolute w-40 top-0 right-0 z-20">
                                 <div class="dropdown-box__content box p-2">
-                                    <a href="javascript:;" class="flex items-center block p-2 transition duration-300 ease-in-out bg-white hover:bg-gray-200 rounded-md" data-toggle="modal" data-target="#home_header_right_modal"> <i data-feather="edit-2" class="w-4 h-4 mr-2"></i> لیست اسلایدر ها </a>
+                                    <a href="javascript:;" class="flex items-center block p-2 transition duration-300 ease-in-out bg-white hover:bg-gray-200 rounded-md" data-toggle="modal" data-target="#home_sticky_top_modal"> <i data-feather="edit-2" class="w-4 h-4 mr-2"></i> لیست اسلایدر ها </a>
                                     <a href="" class="flex items-center block p-2 transition duration-300 ease-in-out bg-white hover:bg-gray-200 rounded-md"> <i data-feather="trash" class="w-4 h-4 mr-2"></i> Delete Post </a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="absolute left_top-0 text-white px-5 pb-6 z-10"> <span class="bg-theme-17 text-theme-11 px-2 py-1 rounded">{{$home_sticky_top_active->offer}} %</span> <span class="blog__category px-2 py-1 rounded">{{$home_sticky_top_active->tag}} </span> <a href="" class="block font-medium text-xl mt-3">{{$home_sticky_top_active->title}}</a> </div>
+                    <div class="absolute bottom-0 text-white px-5 pb-6 z-10"> <span class="bg-theme-17 text-theme-11 px-2 py-1 rounded">{{$home_sticky_top_active->offer}} %</span> <span class="blog__category px-2 py-1 rounded">{{$home_sticky_top_active->tag}} </span> <a href="" class="block font-medium text-xl mt-3">{{$home_sticky_top_active->title}}</a> </div>
                 </div>
                 <div class="p-5 text-gray-700">
                     @php
@@ -928,18 +963,18 @@
                 <div class="px-5 pt-3 pb-5 border-t border-gray-200">
                     <div class="w-full flex items-center mt-3">
                         <div class="flex-1 relative text-gray-700">
-                            <input disabled type="text" class="input w-full rounded-full bg-gray-200 pr-10 placeholder-theme-13" placeholder="{{$home_header_right_active->link}}">
+                            <input disabled type="text" class="input w-full rounded-full bg-gray-200 pr-10 placeholder-theme-13" placeholder="{{$home_sticky_top_active->link}}">
                             <i data-feather="link" class="w-4 h-4 absolute my-auto inset-y-0 mr-3 right-0"></i>
                         </div>
                     </div>
 
                 </div>
             </div>
-            <div class="modal" id="home_header_right_modal">
+            <div class="modal" id="home_sticky_top_modal">
                 <div class="modal__content modal__content--xl p-10 text-center ">
                     <div class="intro-y grid grid-cols-12 gap-6 mt-5 rtl">
                         <!-- BEGIN: Blog Layout -->
-                        @foreach($home_header_right as $slider)
+                        @foreach($home_sticky_top as $slider)
                             <div class="intro-y col-span-12 md:col-span-6 xl:col-span-6 box @if($slider->status) border-theme-42 @endif">
                                 <div class="p-5">
                                     <div class="h-40 xxl:h-56 image-fit">
@@ -984,6 +1019,7 @@
             </div>
             @endif
         @endif
+
         <!-- END: Blog Layout -->
     </div>
 @endsection

@@ -4,6 +4,8 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
+use App\Models\Shop\ReactionComment;
+use App\Models\Shop\ShopComment;
 use App\Notifications\ResetPasswordNotification ;
 
 use App\Notifications\VerifyEmailNotification;
@@ -152,5 +154,15 @@ class User extends Authenticatable implements MustVerifyEmail
     public function discounts()
     {
         return $this->belongsToMany(Discount::class);
+    }
+
+    public function reaction()
+    {
+        return $this->hasMany(ReactionComment::class);
+    }
+
+    public function shop_comments()
+    {
+        return $this->hasMany(ShopComment::class);
     }
 }

@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->id()->autoIncrement()->unique();
             $table->string('name','32')->unique();
+//            $table->string('slug','64')->unique();
             $table->string('nickName','64')->nullable();
             $table->integer('price')->unsigned()->nullable();
             $table->integer('UPC')->unique()->unsigned();
@@ -24,7 +25,8 @@ return new class extends Migration
             $table->integer('quantity')->nullable()->unsigned()->default(0);
             $table->integer('maxOrder')->nullable()->unsigned();
             $table->integer('offer')->nullable()->unsigned();
-            $table->integer('averageRate',)->nullable()->unsigned();
+            $table->integer('sumRate',)->default(0)->unsigned();
+            $table->integer('countRate',)->default(0)->unsigned();
             $table->string('abstract','256')->nullable();
             $table->text('description')->nullable();
             $table->string('meta','64')->nullable();

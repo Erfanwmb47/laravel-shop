@@ -13,6 +13,8 @@ use App\Http\Controllers\Client\Product\ProductController;
 use App\Http\Controllers\Client\Profile\OrderController;
 use App\Http\Controllers\Client\Profile\ProfileController;
 use App\Http\Controllers\Client\Profile\WishlistController;
+use App\Http\Controllers\Client\ReactionCommentController;
+use App\Http\Controllers\Client\Shop\ShopController;
 use App\Http\Controllers\Stack\SmsController;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\Auth;
@@ -30,17 +32,23 @@ Route::domain($domain)->middleware('auth')->group(function (){
     Route::get('/',[ProfileController::class,'index'])->name('profile');
     //TODO حل مشکل لاگین دوباره
 
+        Route::post('/changeprofileimage',[ProfileController::class,'changeProfileImage'])->name('profile.changeProfileImage');
         Route::get('/security/twofactorauth', [ProfileController::class, 'TwofactorAuth'])->name('profile.twoFactorAuth');
         Route::post('/security/twofactorauth', [ProfileController::class, 'TwofactorAuthpost'])->name('profile.TwoFactorAuthPost');
         Route::get('/security/twofactorauth/phone', [ProfileController::class, 'getPhoneVerify'])->name('profile.2fa.phone');
         Route::post('/security/twofactorauth/phone', [ProfileController::class, 'postPhoneVerify']);
+        Route::get('/edit', [ProfileController::class, 'edit'])->name('profile.edit');
+        Route::patch('{user}', [ProfileController::class, 'update'])->name('profile.update');
+        Route::post('/setusername/{user}', [ProfileController::class, 'setUsername'])->name('profile.setUsername');
 
         Route::get('wishlist',[WishlistController::class,'index']);
         Route::post('wishlist',[WishlistController::class,'index'])->name('profile.wishlist.index');
 
         Route::get('orders',[OrderController::class,'index']);
         Route::post('orders',[OrderController::class,'index'])->name('profile.orders.index');
-        Route::get('orders/{order}',[OrderController::class,'showDetails'])->name('profile.orders.detail');
+//        Route::get('orders/{order}',[OrderController::class,'showDetails'])->name('profile.orders.detail');
+        Route::post('orders/detail',[OrderController::class,'showDetails'])->name('profile.orders.detail');
+        Route::get('orders/tracking/{order}',[OrderController::class,'tracking'])->name('profile.orders.tracking');
         Route::get('orders/{order}/payment',[OrderController::class,'payment'])->name('profile.orders.payment');
 });
 
@@ -63,17 +71,29 @@ Route::domain(parse_url(config('app.url'),PHP_URL_HOST))->group(function (){
 });
 Route::get('/q',function (){
     Auth::loginUsingId(1);
-    return redirect()->intended(RouteServiceProvider::HOME);
+    return back();
+});
+Route::get('/a',function (){
+    Auth::loginUsingId(2);
+    return back();
 });
 
 Route::get('products',[ProductController::class,'index']);
 Route::get('products/{product}',[ProductController::class,'single'])->name('products.single');
+Route::post('/product/view/summery/',[ProductController::class,'summery']);
 
 
 Route::post('wishlist/add',[WishlistController::class,'store'])->name('wishlist.store');
 Route::delete('wishlist/destroy',[WishlistController::class,'destroy'])->name('wishlist.destroy');
 
-Route::post('comments',[CommentController::class,'comment'])->name('send.comment');
+Route::prefix('comment')->name('comment.')->group(function (){
+    Route::post('send',[CommentController::class,'send'])->name('send');
+    Route::delete('delete',[CommentController::class,'delete'])->name('delete');
+        Route::prefix('reaction')->name('reaction.')->group(function (){
+            Route::post('like',[ReactionCommentController::class,'like'])->name('like');
+            Route::post('dislike',[ReactionCommentController::class,'dislike'])->name('dislike');
+        });
+});
 
 
 
@@ -82,4 +102,10 @@ Route::prefix('discount')->group(function (){
     Route::delete('/delete/{discount}',[DiscountController::class,'destroy'])->name('client.discount.delete');
 
 });
+
+Route::prefix('search')->name('client.shop.')->group(function (){
+    Route::get('/',[ShopController::class,'index'])->name('index');
+    Route::post('/',[ShopController::class.'index']);
+});
+
 

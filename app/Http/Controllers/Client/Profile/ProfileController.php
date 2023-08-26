@@ -6,12 +6,17 @@ use App\Http\Controllers\Client\ClientController;
 use App\Models\ActiveCode;
 use App\Models\Address;
 use App\Models\County;
+use App\Models\Gallery;
 use App\Models\Profile;
 use App\Models\Province;
+use App\Models\User;
 use App\Notifications\ActiveCodeNotification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
+use Morilog\Jalali\Jalalian;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class ProfileController extends ClientController
@@ -27,6 +32,9 @@ class ProfileController extends ClientController
         //dd($user);
         $addresses = address::query()->where('user_id',$user->id)->get();
        // dd($user);
+//        $defaultAddress = $user->addresses->firstWhere('default','1');
+//        $defaultCounty = $defaultAddress->county ;
+//        dd($defaultCounty);
 
            return view('Client.Profile.Index',[
                'user' => $user,
@@ -80,7 +88,15 @@ class ProfileController extends ClientController
      */
     public function edit(Profile $profile)
     {
-        //
+        $user = Auth::user();
+        $addresses = address::query()->where('user_id',$user->id)->get();
+        return view('Client.Profile.edit',[
+            'user' => $user,
+            'addresses' => $addresses,
+            'province'=> Province::all(),
+            'county'=> County::all(),
+            'roles' => $user->role_id,
+        ]);
     }
 
     /**
@@ -90,9 +106,23 @@ class ProfileController extends ClientController
      * @param  \App\Models\Profile  $profile
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Profile $profile)
+    public function update(Request $request, User $user)
     {
-        //
+//        dd($request,$user);
+        $validated = $request->validate([
+           'firstName' => 'required|max:255',
+           'lastName' => 'required|max:255',
+            'sex' => 'required'
+        ]);
+        $user->update([
+           'firstName' => $validated['firstName'],
+           'lastName' => $request->lastName,
+            'sex' => $request->sex,
+            'description' => $request->description
+        ]);
+
+        response()->json(['status' => 'success']);
+
     }
 
     /**
@@ -189,4 +219,49 @@ class ProfileController extends ClientController
           }
         return redirect(route('profile.twoFactorAuth'));
     }
+
+    public function changeprofileimage(Request $request)
+    {
+        $object= explode("/",$request->file('image')->getClientMimeType());
+
+        if (!Auth::user()->gallery)
+        {        $imagePath = $request->file('image')->storeAs('public/Image/Users',Auth::user()->username.'.'.$object[1]);
+            $gallerynew=Gallery::query()->create([
+                'title' => Auth::user()->username,
+                'alt' => 'profile '.Auth::user()->username,
+                'mime' => $object[1],
+                'flag' => 'users',
+                'path' => $imagePath,
+                'size' => $request->file('image')->getSize()/1024,
+                'created_at'=> Jalalian::now(),
+                'updated_at'=> Jalalian::now()
+            ]);
+            Auth::user()->update([
+                'gallery_id' => $gallerynew->id
+            ]);
+        }else{
+            Storage::delete(Auth::user()->gallery->path);
+            $imagePath = $request->file('image')->storeAs('public/Image/Users',Auth::user()->username.'.'.$object[1]);
+            Auth::user()->gallery->update([
+                 'path' => $imagePath,
+                 'size' => $request->file('image')->getSize()/1024,
+                 'mime' => $object[1]
+            ]);
+
+        }
+        return response()->json(['status' => 'success']);
+    }
+
+    public function setUsername(Request $request , User $user)
+    {
+        $validated = $request->validate([
+           'username' => 'required'
+        ]);
+        $user->update([
+           'username' => $request->username
+        ]);
+
+        return response(['success' => 'با موفقیت ویرایش شد ']) ;
+    }
+
 }

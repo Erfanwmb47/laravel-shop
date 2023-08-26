@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Shop\ShopComment;
 use App\ProductAttributeValue;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -22,7 +23,8 @@ class Product extends Model
         'quantity' ,
         'maxOrder'  ,
         'offer' ,
-        'averageRate',
+        'sumRate',
+        'countRate',
         'abstract',
         'description' ,
         'property' ,
@@ -44,7 +46,7 @@ class Product extends Model
 
     }
     public function comments(){
-        return $this->morphMany(Comment::class,'commentable');
+        return $this->hasMany(ShopComment::class);
     }
 
     public function categories(){
