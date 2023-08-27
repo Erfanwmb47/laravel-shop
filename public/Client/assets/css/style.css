@@ -8247,7 +8247,7 @@ header .onhover-category-list .onhover-category-box ul li::after {
     top: 50%;
     -webkit-transform: translateY(-50%);
     transform: translateY(-50%);
-    left: 0;
+    right: 0;
     width: 5px;
     height: 5px;
     background-color: #4a5568;
@@ -8255,7 +8255,7 @@ header .onhover-category-list .onhover-category-box ul li::after {
 }
 
 header .onhover-category-list .onhover-category-box ul li a {
-    margin-left: 13px
+    margin-right: 13px
 }
 
 header .header-top {
