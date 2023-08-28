@@ -20,6 +20,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use Modules\Cart\Entities\Payment;
 use Modules\Cart\Helpers\Cart\Cart;
+use RealRashid\SweetAlert\Facades\Alert;
 use function PHPUnit\Framework\isNull;
 
 class PaymentController extends ClientController
@@ -231,21 +232,25 @@ class PaymentController extends ClientController
         $token = config('services.payping.token');
 
         $payment = new \PayPing\Payment($token);
-
+        $finalStatus = $payment->verify($request->refid ,1040);
         try {//inja mabalghe
             $amount=$paymentRecord->order->final_cost;
-            if($payment->verify($request->refid ,1040)){
+            if($finalStatus[0] == 'success'){
                 $paymentRecord->update(['status'=>1]);
                 $paymentRecord->order()->update(['status'=> 'paid']);
-                toast('خرید شما با موفقیت انجام شد','success');
-                //TODO redirect be safhe paradkht bara kharid movafagh
+                toast($finalStatus[1],'success');
 
+
+                //TODO redirect be safhe paradkht bara kharid movafagh
                 return redirect(route('home'));
 
             }else{
-                return redirect(route('home'));
+//                Alert::error($finalStatus[1]->getMessage(), 'ناموفق');
+//                return redirect(route('home'));
+                return view('cart::Client.Cart.orderFailed',[
+                    'finalStatus' => $finalStatus[1]
+                ]);
                 //TODO redirect be safhe paradkht bara kharid na movafagh
-                toast('خرید شما با موفقیت انجام نشد','error');
             }
 
         }

@@ -704,6 +704,11 @@
     -webkit-animation: rotate 35s linear both infinite;
     animation: rotate 35s linear both infinite
 }
+.breadscrumb-section .breadscrumb-order .order-box .order-image .times__background {
+    fill: red;
+    -webkit-animation: rotate 35s linear both infinite;
+    animation: rotate 35s linear both infinite
+}
 
 .breadscrumb-section .breadscrumb-order .order-box .order-image .star {
     position: absolute;
@@ -808,6 +813,16 @@
 
 .breadscrumb-section .breadscrumb-order .order-box .order-image .checkmark__background {
     fill: var(--theme-color);
+    -webkit-animation: rotate 35s linear both infinite;
+    animation: rotate 35s linear both infinite
+}
+.breadscrumb-section .breadscrumb-order .order-box .order-image .times__background {
+    fill: red;
+    -webkit-animation: rotate 35s linear both infinite;
+    animation: rotate 35s linear both infinite
+}
+.breadscrumb-section .breadscrumb-order .order-box .order-image .check__background {
+    fill: limegreen;
     -webkit-animation: rotate 35s linear both infinite;
     animation: rotate 35s linear both infinite
 }

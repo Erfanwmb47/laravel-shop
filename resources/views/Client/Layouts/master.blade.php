@@ -1185,5 +1185,5 @@
 
 @yield('js')
 </body>
-
+@include('sweetalert::alert')
 </html>
