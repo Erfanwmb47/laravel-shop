@@ -49,14 +49,14 @@ DB::table('categories')->insert([
     'updated_at' => Jalalian::now()
 ]);
 
-DB::table('categories')->insert([
-    'name' => ' حالت دهنده های برقی مو',
-    'meta' => 'Hair styler',
-    'description' => 'محصولات حالت دهنده های برقی مو',
-    'category_id' => Category::whereMeta('Hair products')->first()->id,
-    'created_at' => Jalalian::now(),
-    'updated_at' => Jalalian::now()
-]);
+//DB::table('categories')->insert([
+//    'name' => ' حالت دهنده های برقی مو',
+//    'meta' => 'Hair styler',
+//    'description' => 'محصولات حالت دهنده های برقی مو',
+//    'category_id' => Category::whereMeta('Hair products')->first()->id,
+//    'created_at' => Jalalian::now(),
+//    'updated_at' => Jalalian::now()
+//]);
 DB::table('categories')->insert([
     'name' => 'اکسسوری مو',
     'meta' => 'Hair appliances',
@@ -65,4 +65,6 @@ DB::table('categories')->insert([
     'created_at' => Jalalian::now(),
     'updated_at' => Jalalian::now()
 ]);
+
+require __DIR__ . '/sub sub categories/Hair products.php';
 
