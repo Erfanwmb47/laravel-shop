@@ -16,7 +16,20 @@ class ShopController extends ClientController
             $user_wishlist=Auth::user()->wishlists->pluck('product_id')->toArray();
         }
 
-        $products=Product::all();
+        $products=Product::paginate(4);
+        $pro =  $products->map(function ($item){
+            $item->brand_name = $item->brand->name;
+            $item->image = str_replace('public','/storage',$item->gallery->path);
+            return $item ;
+        });
+        $data = [];
+        if ($request->ajax()) {
+            foreach ($pro as $product) {
+
+                array_push($data,$product);
+			}
+            return $data;
+        }
         return view('Client.Shop.index',
             compact('products','user_wishlist'));
     }
