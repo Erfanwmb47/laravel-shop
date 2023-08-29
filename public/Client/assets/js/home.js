@@ -247,11 +247,17 @@ $(window).scroll(function() {
    //  console.log('window height : ' + $(window).height())
     // console.log('------------------------------------------')
 
-    if(Math.round(($(document).height())) - (Math.round($(window).scrollTop() + $(window).height() ) ) < 2) {
-        console.log('event')
+    // if(Math.round(($(document).height())) - (Math.round($(window).scrollTop() + $(window).height() ) ) < 2) {
+    //     console.log('event')
+    //     for(let i=0;i<1;i++)
+    //         $('#product_list').append(product);
+    //
+    // }
+    var foot = $('footer').css('height').replace('px','')
+    if($(window).scrollTop() + $(window).height() > $(document).height() - foot) {
+        // ajax call get data from server and append to the div
         for(let i=0;i<1;i++)
-            $('#product_list').append(product);
-
+                    $('#product_list').append(product);
     }
 });
 
