@@ -67,16 +67,17 @@
                             </li>
 
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="pills-card-tab" data-bs-toggle="pill"
-                                        data-bs-target="#pills-card" type="button" role="tab" aria-controls="pills-card"
-                                        aria-selected="false"><i data-feather="credit-card"></i>نظرات</button>
+                                <a href="{{route('profile.comments.index')}}">
+                                    <button class="nav-link {{side_menu_profile_active('/comments')}}" ><i data-feather="message-square"></i>نظرات</button>
+                                </a>
+
                             </li>
 
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="pills-address-tab" data-bs-toggle="pill"
-                                        data-bs-target="#pills-address" type="button" role="tab"
-                                        aria-controls="pills-address" aria-selected="false"><i data-feather="map-pin"></i>
+                                <a href="{{route('profile.addresses.index')}}">
+                                <button class="nav-link {{side_menu_profile_active('/addresses')}}"><i data-feather="map-pin"></i>
                                     آدرس ها</button>
+                                </a>
                             </li>
 
                             <li class="nav-item" role="presentation">

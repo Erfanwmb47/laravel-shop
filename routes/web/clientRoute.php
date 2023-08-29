@@ -1,6 +1,7 @@
 <?php
 
 
+use App\Http\Controllers\Client\AboutUsController;
 use App\Http\Controllers\Client\AddressController;
 use App\Http\Controllers\Client\Cart\CartController;
 use App\Http\Controllers\Client\Cart\PaymentController;
@@ -124,5 +125,8 @@ Route::prefix('search')->name('client.shop.')->group(function (){
 
 Route::get('contact-us',[ContactUsController::class,'index'])->name('contactUs.index');
 Route::post('contact-us/send',[ContactUsController::class,'send'])->name('contactUs.send');
+Route::get('about-us',[AboutUsController::class,'index'])->name('aboutUs.index');
+
+
 
 
