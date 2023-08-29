@@ -7,6 +7,7 @@ use App\Http\Controllers\Client\Cart\PaymentController;
 use App\Http\Controllers\Client\CommentController;
 use App\Http\Controllers\Auth\AuthTokenController;
 use App\Http\Controllers\Auth\GoogleAuthController;
+use App\Http\Controllers\Client\ContactUsController;
 use App\Http\Controllers\Client\Discount\DiscountController;
 use App\Http\Controllers\Client\HomeController;
 use App\Http\Controllers\Client\Product\ProductController;
@@ -19,6 +20,8 @@ use App\Http\Controllers\Stack\SmsController;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Client\Profile\CommentController as ProfileCommentController;
+use \App\Http\Controllers\Client\Profile\AddressController as ProfileAddressController;
 
 
 
@@ -50,6 +53,17 @@ Route::domain($domain)->middleware('auth')->group(function (){
         Route::post('orders/detail',[OrderController::class,'showDetails'])->name('profile.orders.detail');
         Route::get('orders/tracking/{order}',[OrderController::class,'tracking'])->name('profile.orders.tracking');
         Route::get('orders/{order}/payment',[OrderController::class,'payment'])->name('profile.orders.payment');
+
+
+
+        Route::get('comments',[ProfileCommentController::class,'index'])->name('profile.comments.index');
+        Route::post('comments/get-comment-details',[ProfileCommentController::class,'getCommentDetails']);
+        Route::post('comments/edit-comment/{shopComment}',[ProfileCommentController::class,'editComment'])->name('profile.comments.edit');
+
+        Route::get('addresses',[ProfileAddressController::class,'index'])->name('profile.addresses.index');
+        Route::post('addresses/store',[ProfileAddressController::class,'store'])->name('profile.addresses.store');
+
+
 });
 
 Route::get('/auth/token',[AuthTokenController::class,'getToken'])->name('2fa.token');
@@ -107,5 +121,8 @@ Route::prefix('search')->name('client.shop.')->group(function (){
     Route::get('/',[ShopController::class,'index'])->name('index');
     Route::post('/',[ShopController::class.'index']);
 });
+
+Route::get('contact-us',[ContactUsController::class,'index'])->name('contactUs.index');
+Route::post('contact-us/send',[ContactUsController::class,'send'])->name('contactUs.send');
 
 
