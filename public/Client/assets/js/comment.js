@@ -114,10 +114,6 @@ function removeN(val){
 $('#commentSend').on('submit',function (e){
     e.preventDefault();
     var formData = new FormData(e.target)
-
-    console.log(formData.get('title'))
-   // formData.append('image',photo,'image');
-
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': document.head.querySelector('meta[name="csrf-token"]').content,
@@ -216,7 +212,7 @@ $('#commentSend').on('submit',function (e){
                 '\n' +
                 '                                                                        <div class="people-comment">\n' +
                 '                                                                            <a class="name"\n' +
-                '                                                                               href="javascript:void(0)"><span class=" float-start '+rateColor(Number(formData.get('rating')))+'">'+formatter.format(0)+'.'+formatter.format(formData.get('rating'))+'  </span>'+formData.get('title')+'</a>\n' +
+                '                                                                               href="javascript:void(0)"><span class=" float-start '+rateColor(Number(formData.get('rating')))+'">'+formatter.format(formData.get('rating'))+'.'+formatter.format(0)+'  </span>'+formData.get('title')+'</a>\n' +
                 '                                                                            <div class="date-time">\n' +
                 '                                                                                <div class="flex">\n' +
                 '                                                                                    <h6 class="text-content">\n' +
@@ -255,8 +251,6 @@ $('#commentSend').on('submit',function (e){
         }
     });
 });
-
-
 
 $(function () {
 
@@ -357,7 +351,7 @@ $('#editCommentBtn').on('click',function(e){
             _method : 'post'
         }),
         success : function(res) {
-            const formatter = new Intl.NumberFormat('en-US', {
+            const formatter = new Intl.NumberFormat('fa-IR', {
                 // These options are needed to round to whole numbers if that's what you want.
                 //minimumFractionDigits: 0, // (this suffices for whole numbers, but will print 2500.10 as $2,500.1)
                 //maximumFractionDigits: 0, // (causes 2500.99 to be printed as $2,501)
@@ -374,18 +368,22 @@ $('#editCommentBtn').on('click',function(e){
             $('#commentDetailTable textarea[name="text"]').text(res.comment.text)
             $('#commentDetailTable textarea[name="text"]').change()
 
-            positive.forEach(function (item){
-                pTemp += '<div class="flex-space-between form-control mt-1" data-positive="'+item+'">\n' +
-                    '                                <span><i class="fa fa-plus text-success mx-2"></i>'+item+'</span>\n' +
-                    '                                <span><i class="fa fa-trash text-danger pointer" onclick="removeP(\''+item+'\')"></i></span>\n' +
-                    '                            </div>'
-            })
-            negative.forEach(function (item){
-                nTemp += '<div class="flex-space-between form-control mt-1" data-positive="'+item+'">\n' +
-                    '                                <span><i class="fa fa-plus text-success mx-2"></i>'+item+'</span>\n' +
-                    '                                <span><i class="fa fa-trash text-danger pointer" onclick="removeP(\''+item+'\')"></i></span>\n' +
-                    '                            </div>'
-            })
+            if(positive != null){
+                positive.forEach(function (item){
+                    pTemp += '<div class="flex-space-between form-control mt-1" data-positive="'+item+'">\n' +
+                        '                                <span><i class="fa fa-plus text-success mx-2"></i>'+item+'</span>\n' +
+                        '                                <span><i class="fa fa-trash text-danger pointer" onclick="removeP(\''+item+'\')"></i></span>\n' +
+                        '                            </div>'
+                })
+            }
+            if(negative != null){
+                negative.forEach(function (item){
+                    nTemp += '<div class="flex-space-between form-control mt-1" data-positive="'+item+'">\n' +
+                        '                                <span><i class="fa fa-plus text-success mx-2"></i>'+item+'</span>\n' +
+                        '                                <span><i class="fa fa-trash text-danger pointer" onclick="removeP(\''+item+'\')"></i></span>\n' +
+                        '                            </div>'
+                })
+            }
             $('#ShowPList').html(pTemp);
             $('#ShowNList').html(nTemp);
         }
@@ -397,17 +395,21 @@ $('#commentEdit').on('submit',function (e){
     var id = $('#editCommentBtn').attr('comment-id')
     var formData = new FormData(e.target)
     var url = '/comments/edit-comment/'+id
-    console.log(formData.get('title'))
+    console. log(jQuery(). jquery)
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': document.head.querySelector('meta[name="csrf-token"]').content,
+            'Content-Type' : 'application/json'
         }
     })
     $.ajax({
         type: "POST",
         contentType: false,
         url: url,
-        data: formData,
+        data: JSON.stringify({
+            data : formData,
+            _method : 'POST'
+        }),
         cache: false,
         processData: false,
         success: function(data)
@@ -459,5 +461,160 @@ $('#commentEdit').on('submit',function (e){
     });
 })
 
+var page = 1;
+var canSendAjax=true;
+function load_more_comments(id,page){
+    $.ajax({
+        url:"/products/"+id+"?page=" + page,
+        type: "get",
+        datatype: "html",
+        beforeSend: function()
+        {
+            if(canSendAjax){
 
+            }
+            // $('.ajax-loading').show();
+        }
+    })
+        .done(function(res)
+        {
+            const formatter = new Intl.NumberFormat('fa-IR', {
+                // These options are needed to round to whole numbers if that's what you want.
+                //minimumFractionDigits: 0, // (this suffices for whole numbers, but will print 2500.10 as $2,500.1)
+                //maximumFractionDigits: 0, // (causes 2500.99 to be printed as $2,501)
+            });
+            const boxes = document.querySelectorAll('.beforsend');
+            boxes.forEach(box => {
+                box.remove();
+            });
+
+            // console.log(res.data[0])
+            if(res.data.length == 0){
+                // $('.ajax-loading').html("No more records!");
+                canSendAjax=false;
+                $('#showMoreComments').remove()
+                return;
+            }
+
+            res.data.forEach(function (item){
+                console.log(item['comment'].like)
+                var positive = ''
+                var negative = ''
+                JSON.parse(item['comment'].positive).forEach(function (item1){
+                    positive+= '<div class="flex"><i class="fa fa-plus text-success mx-1"></i> <h6 class="text-black-50 text-sm-end">'+item1+'</h6></div>\n'
+                })
+                JSON.parse(item['comment'].positive).forEach(function (item1){
+                    negative+= '<div class="flex"><i class="fa fa-minus text-danger mx-1"></i> <h6 class="text-black-50 text-sm-end">'+item1+'</h6></div>\n'
+                })
+
+                var react = ''
+                if (res.authCheck){
+                    react =
+                        '                                                                                    <a href="javascript:;" class="opacity-100">\n' +
+                        '                                                                                        <i class="fa '+reactionCheck(item['reaction'])[0]+'" id="like"></i>\n' +
+                        '                                                                                        <span >'+formatter.format(item['comment'].like)+'</span>\n' +
+                        '                                                                                        <i class="me-3 fa '+reactionCheck(item['reaction'])[1]+'" id="dislike" ></i>\n' +
+                        '                                                                                        <span>'+formatter.format(item['comment'].dislike)+'</span>\n' +
+                        '                                                                                    </a>\n'
+                }
+                else {
+                    react =
+                        '                                                                                    <a href="javascript:;" class="opacity-100">\n' +
+                        '                                                                                        <i class="fa fa-thumbs-o-up " ></i>\n' +
+                        '                                                                                        <span>'+formatter.format(item['comment'].like)+'</span>\n' +
+                        '\n' +
+                        '                                                                                        <i class="fa fa-thumbs-o-down me-3"></i>\n' +
+                        '                                                                                        <span>'+formatter.format(item['comment'].dislike)+'</span>\n' +
+                        '\n' +
+                        '                                                                                    </a>\n'
+                }
+                var comments='<li comment-id="'+item['comment'].id+'">\n' +
+                    '                                                                    <div class="people-box">\n' +
+                    '                                                                        <div>\n' +
+                    '                                                                            <div class="people-image">\n' +
+                    '                                                                                <img src="'+item['comment'].user_image+'"\n' +
+                    '                                                                                     class="img-fluid blur-up lazyload"\n' +
+                    '                                                                                     alt="">\n' +
+                    '                                                                            </div>\n' +
+                    '                                                                        </div>\n' +
+                    '\n' +
+                    '                                                                        <div class="people-comment">\n' +
+                    '                                                                            <a class="name"\n' +
+                    '                                                                               href="javascript:void(0)"><span class=" float-start '+rateColor(item['comment'].rate)+'">'+formatter.format(item['comment'].rate)+'.'+formatter.format(0)+'</span> '+item['comment'].title+'</a>\n' +
+                    '                                                                            <div class="date-time">\n' +
+                    '                                                                                <div class="flex">\n' +
+                    '                                                                                    <h6 class="text-content">'+timeSince(new Date(item['comment'].created_at))+'</h6>\n' +
+                    '                                                                                        <span class="mx-3 me-3 text-black-50">●</span>\n' +
+                    '                                                                                        <h6 class="text-content">'+item['comment'].user.firstName +' '+ item['comment'].user.lastName+'</h6>\n' +
+                    '                                                                                </div>\n' +
+                    '\n' +
+                    '                                                                            </div>\n' +
+                    '                                                                            <hr style="background: -webkit-gradient(linear, 0 0, 100% 0, from(transparent), to(transparent), color-stop(50%, black)); width: 100%;">\n' +
+                    '                                                                            <div class="reply">\n' +
+                    '                                                                                <p class="text-md-end">'+item['comment'].text+'\n' +
+                    '                                                                                </p>\n' +
+                    '                                                                                <div class="row mt-2">\n' +
+                    '                                                                                        <div class="col-6">\n' + positive +
+                    '                                                                                        </div>\n' +
+                    '                                                                                        <div class="col-6">\n' + negative +
+                    '                                                                                        </div>\n' +
+                    '                                                                                </div>\n' +
+                    '                                                                            </div>\n' +
+                    '                                                                            <hr style="background: -webkit-gradient(linear, 0 0, 100% 0, from(transparent), to(transparent), color-stop(50%, black)); width: 100%;">\n' +
+                    '                                                                            <div class="me-auto mx-0 align-content-start float-start">\n' + react +
+                    '                                                                            </div>\n' +
+                    '                                                                        </div>\n' +
+                    '                                                                    </div>\n' +
+                    '                                                                </li>';
+                $('.review-list').append(comments);
+            })
+
+        })
+        .fail(function(jqXHR, ajaxOptions, thrownError)
+        {
+            // alert('No response from server');
+        });
+}
+$('#showMoreComments').on('click',function(e){
+   var id =  $(e.target).attr('product-id')
+    page++;
+    load_more_comments(id,page);
+})
+
+function reactionCheck(item){
+    if(item === 'like')
+        return ['fa-thumbs-up','fa-thumbs-o-down']
+    else if (item === 'dislike')
+        return ['fa-thumbs-o-up','fa-thumbs-down']
+    else
+        return ['fa-thumbs-o-up','fa-thumbs-o-down']
+}
+
+function timeSince(date) {
+
+    var seconds = Math.floor((new Date() - date) / 1000);
+
+    var interval = Math.floor(seconds / 31536000);
+
+    if (interval > 1) {
+        return  interval+" سال پیش";
+    }
+    interval = Math.floor(seconds / 2592000);
+    if (interval > 1) {
+        return  interval+" ماه پیش" ;
+    }
+    interval = Math.floor(seconds / 86400);
+    if (interval > 1) {
+        return  interval+" روز پیش" ;
+    }
+    interval = Math.floor(seconds / 3600);
+    if (interval > 1) {
+        return  interval+" ساعت قبل" ;
+    }
+    interval = Math.floor(seconds / 60);
+    if (interval > 1) {
+        return  interval+" دقیقه قبل" ;
+    }
+    return Math.floor(seconds) + " ثانیه قبل";
+}
 

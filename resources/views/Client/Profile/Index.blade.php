@@ -123,45 +123,49 @@
                                             @php
                                                 $firstComment = $user->shop_comments->first();
                                             @endphp
-                                            <div class="order-box dashboard-bg-box w-100">
-                                                <div class="order-container ">
-                                                    <div class="order-icon">
-                                                        <i data-feather="shopping-bag"></i>
-                                                    </div>
+                                            @if( isset($firstComment))
+                                                <div class="order-box dashboard-bg-box w-100">
+                                                    <div class="order-container ">
+                                                        <div class="order-icon">
+                                                            <i data-feather="shopping-bag"></i>
+                                                        </div>
 
-                                                    <div class="order-detail">
-                                                        <h4> <span class="">{{faNumber(5)}}/ @if($firstComment->product->countRate != 0){{faNumber($firstComment->product->sumRate/$firstComment->product->countRate)}} @else 0 @endif </span></h4>
-                                                        <h6 class="text-content">{{$firstComment->product->name}}</h6>
+                                                        <div class="order-detail">
+                                                            <h4> <span class="@if($firstComment->product->countRate!= 0) {{comment_rating_color($firstComment->rate)[1]}} @endif">{{faNumber(5)}}/ @if($firstComment->product->countRate != 0){{faNumber(number_format($firstComment->product->sumRate/$firstComment->product->countRate,1))}} @else 0 @endif </span></h4>
+                                                            <h6 class="text-content">{{$firstComment->product->name}}</h6>
+                                                        </div>
+                                                        <div class="me-auto ms-0">
+                                                        </div>
                                                     </div>
-                                                    <div class="me-auto ms-0">
-                                                    </div>
-                                                </div>
-                                                <div class="product-order-detail">
+                                                    <div class="product-order-detail">
 
-                                                    <a href="product-left-thumbnail.html" class="order-image">
-                                                        <img src="{{str_replace('public','/storage',optional($firstComment->product->gallery)->path)}}"
-                                                             class="blur-up lazyload w-10" alt="">
-                                                    </a>
-                                                    <div class="order-wrap">
-                                                        <a href="product-left-thumbnail.html">
-                                                            <h3>{{$firstComment->title}}</h3>
+                                                        <a href="product-left-thumbnail.html" class="order-image">
+                                                            <img src="{{str_replace('public','/storage',optional($firstComment->product->gallery)->path)}}"
+                                                                 class="blur-up lazyload w-10" alt="">
                                                         </a>
-                                                        <p class="text-content">{{$firstComment->text}}</p>
-                                                        <ul class="product-size">
-{{--                                                            <li>--}}
-{{--                                                                <div class="size-box">--}}
-{{--                                                                    <h6 class="text-content">امتیاز :  </h6>--}}
-{{--                                                                    <div class="product-rating ms-2">--}}
-{{--                                                                        <ul class="rating">--}}
-{{--                                                                            <li class="text-warning me-2"> </li>--}}
-{{--                                                                        </ul>--}}
-{{--                                                                    </div>--}}
-{{--                                                                </div>--}}
-{{--                                                            </li>--}}
-                                                        </ul>
+                                                        <div class="order-wrap">
+                                                            <a href="product-left-thumbnail.html">
+                                                                <h3>{{$firstComment->title}}</h3>
+                                                            </a>
+                                                            <p class="text-content">{{$firstComment->text}}</p>
+                                                            <ul class="product-size">
+                                                                {{--                                                            <li>--}}
+                                                                {{--                                                                <div class="size-box">--}}
+                                                                {{--                                                                    <h6 class="text-content">امتیاز :  </h6>--}}
+                                                                {{--                                                                    <div class="product-rating ms-2">--}}
+                                                                {{--                                                                        <ul class="rating">--}}
+                                                                {{--                                                                            <li class="text-warning me-2"> </li>--}}
+                                                                {{--                                                                        </ul>--}}
+                                                                {{--                                                                    </div>--}}
+                                                                {{--                                                                </div>--}}
+                                                                {{--                                                            </li>--}}
+                                                            </ul>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            @else
+                                                <div>هنوز نظری ثبت نکرده اید </div>
+                                            @endif
                                         </div>
                                     </div>
                                 </div>

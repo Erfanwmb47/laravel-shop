@@ -1,13 +1,13 @@
  /**=====================
      Quantity 2 js
 ==========================**/
- $(".addcart-button").click(function () {
+ $(document).on('click','.addcart-button', function (e) {
      $(this).next().addClass("open");
      // $(".add-to-cart-box .qty-input").val('1');
      $(this).parent().children().find("input[type='text']:first").val(1);
  });
 
- $('.add-to-cart-box').on('click', function () {
+ $(document).on('click','.add-to-cart-box', function () {
      var $qty = $(this).siblings(".qty-input");
      var currentVal = parseInt($qty.val());
      if (!isNaN(currentVal)) {
@@ -15,7 +15,7 @@
      }
  });
 
- $('.qty-left-minus').on('click', function () {
+ $(document).on('click','.qty-left-minus', function () {
      var $qty = $(this).siblings(".qty-input");
      var _val = $($qty).val();
      if (_val == '1') {
@@ -36,7 +36,7 @@
 
  });
 
- $('.qty-right-plus').click(function () {
+ $(document).on('click','.qty-right-plus',function () {
      if (Number($(this).prev().val()) < Number($(this).prev().attr('data-maxOrder'))) {
          $(this).prev().val(+$(this).prev().val() + 1);
          $(this).prev().attr('value', +$(this).prev().val());

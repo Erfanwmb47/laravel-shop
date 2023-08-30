@@ -87,7 +87,7 @@ function viewproduct(event, id) {
         },
         success : function(res) {
           setTimeout(function (){
-              const formatter = new Intl.NumberFormat('ar-EG');
+              const formatter = new Intl.NumberFormat('fa-IR');
               document.getElementById('modal_product_name').parentElement.parentElement.parentElement.classList.remove('loading')
               document.getElementById('modal_product_name').innerText =res.product.name
               document.getElementById('modal_product_price').innerText =formatter.format(res.product.price)+ ' تومان'
@@ -138,17 +138,6 @@ function viewproduct(event, id) {
     });
 }
 
-// $('#xxx').on('scroll',function (res){
-//    console.log('hi');
-// });
-// $(window).scroll(function(event) {
-//     if($(window).scrollBottom() + $(window).height() > $(document).height() - 400) {
-//         alert("near bottom!");
-//     }
-// });
-
-
-
 var page = 1;
 var canSendAjax=true;
 // var site_url = "{{ url('/') }}";
@@ -160,7 +149,7 @@ function load_more(page){
         beforeSend: function()
         {
             if(canSendAjax){
-                for (var i=0;i<3;i++){
+                for (var i=0;i<5;i++){
                     var product='<div class="beforsend">\n' +
                         '                            <div class="product-box-3 h-100 wow fadeInUp loading">\n' +
                         '                                <div class="product-header">\n' +
@@ -194,38 +183,19 @@ function load_more(page){
                         '                                </div>\n' +
                         '                                <div class="product-footer">\n' +
                         '                                    <div class="product-detail">\n' +
-                        '                                        <span class="span-name">Vegetable</span>\n' +
+                        '                                        <span class="span-name"></span>\n' +
                         '                                        <a href="product-left-thumbnail.html">\n' +
-                        '                                            <h5 class="name">Fresh Bread and Pastry Flour 200 g</h5>\n' +
+                        '                                            <h5 class="name"></h5>\n' +
                         '                                        </a>\n' +
-                        '                                        <p class="text-content mt-1 mb-2 product-content">Cheesy feet cheesy grin brie.\n' +
-                        '                                            Mascarpone cheese and wine hard cheese the big cheese everyone loves smelly\n' +
-                        '                                            cheese macaroni cheese croque monsieur.</p>\n' +
+                        '                                        <p class="text-content mt-1 mb-2 product-content"></p>\n' +
                         '                                        <div class="product-rating mt-2">\n' +
-                        '                                            <ul class="rating">\n' +
-                        '                                                <li>\n' +
-                        '                                                    <i data-feather="star" class="fill"></i>\n' +
-                        '                                                </li>\n' +
-                        '                                                <li>\n' +
-                        '                                                    <i data-feather="star" class="fill"></i>\n' +
-                        '                                                </li>\n' +
-                        '                                                <li>\n' +
-                        '                                                    <i data-feather="star" class="fill"></i>\n' +
-                        '                                                </li>\n' +
-                        '                                                <li>\n' +
-                        '                                                    <i data-feather="star" class="fill"></i>\n' +
-                        '                                                </li>\n' +
-                        '                                                <li>\n' +
-                        '                                                    <i data-feather="star"></i>\n' +
-                        '                                                </li>\n' +
-                        '                                            </ul>\n' +
-                        '                                            <span>(4.0)</span>\n' +
+                        '                                            <span></span>\n' +
                         '                                        </div>\n' +
-                        '                                        <h6 class="unit">250 ml</h6>\n' +
-                        '                                        <h5 class="price"><span class="theme-color">$08.02</span> <del>$15.15</del>\n' +
+                        '                                        <h6 class="unit"></h6>\n' +
+                        '                                        <h5 class="price"><span class="theme-color"></span> <del></del>\n' +
                         '                                        </h5>\n' +
                         '                                        <div class="add-to-cart-box bg-white">\n' +
-                        '                                            <button class="btn btn-add-cart addcart-button">Add\n' +
+                        '                                            <button class="btn btn-add-cart addcart-button">\n' +
                         '                                                <span class="add-icon bg-light-gray">\n' +
                         '                                                    <i class="fa-solid fa-plus"></i>\n' +
                         '                                                </span>\n' +
@@ -257,110 +227,106 @@ function load_more(page){
     })
         .done(function(data)
         {
+            const formatter = new Intl.NumberFormat('fa-IR', {
+            });
             const boxes = document.querySelectorAll('.beforsend');
             boxes.forEach(box => {
                 box.remove();
             });
-
-            console.log(data)
             if(data.length == 0){
                 // $('.ajax-loading').html("No more records!");
                 canSendAjax=false;
                 return;
             }
-
+            var rate = ''
             data.forEach(function (item){
-                console.log(item)
+                if (Number(item['product'].countRate) != 0){
+                    rate = '('+Number(item['product'].sumRate) / Number(item['product'].countRate)+')';
+                }
+                else {
+                    rate = '<br>'
+                }
                 var offer = ''
-                if(item.offer){
+                if(item['product'].offer){
                     offer =
 
-                        '                                                    <span class="theme-color price">'+item.price - (item.price*item.offer/100)+'\n' +
+                        '                                                    <span class="theme-color price">'+formatter.format(item['product'].price - (item['product'].price*item['product'].offer/100))+'\n' +
                         '                                            <object data="/Client/assets/svg/toman.svg" width="20" height="20"> </object>\n' +
                         '                                        </span>\n' +
                         '                                                    <br>\n' +
-                        '                                                    <del class="">'+item.price+'\n' +
+                        '                                                    <del class="">'+formatter.format(item['product'].price)+'\n' +
                         '                                                    </del>\n'
                 }
                 else {
                     offer =
-                        '                                                    <span class="theme-color price fa-num">'+item.price+'\n' +
+                        '                                                    <span class="theme-color price fa-num">'+formatter.format(item['product'].price)+'\n' +
                         '                                                <object data="/Client/assets/svg/toman.svg" width="20" height="20"> </object>\n' +
                         '                                                <br>\n' +
                         '                                                <del></del>\n' +
                         '                                            </span>\n'
                 }
+                var wl = ''
+                if (item['inWishlist']){
+                    wl =
+                        '<a href="javascript:;" class="notifi-wishlist"   onclick="deleteWishlistShop(event,\''+item['product'].id+'\')" >\n' +
+                        ' <i class="fa text-danger  fa-heart" aria-hidden="true"></i>\n' +
+                        ' </a>\n'
+                }
+                else{
+                    wl =
+                        ' <a href="javascript:;" class="notifi-wishlist"   onclick="addWishlistShop(event,\''+item['product'].id+'\')" >\n' +
+                        ' <i class="fa text-danger  fa-heart-o" aria-hidden="true"></i>\n' +
+                        ' </a>\n'
+                }
                 var product='<div>\n' +
                     '                                <div class="product-box-3 h-100 wow fadeInUp">\n' +
                     '                                    <div class="product-header">\n' +
                     '                                        <div class="product-image">\n' +
-                    '                                            <a href="/poducts/'+item.id+'l">\n' +
-                    '                                                <img src="'+item.image+'"\n' +
+                    '                                            <a href="/poducts/'+item['product'].id+'l">\n' +
+                    '                                                <img src="'+item['product'].image+'"\n' +
                     '                                                     class="img-fluid blur-up lazyload" alt="">\n' +
                     '                                            </a>\n' +
                     '                                            <ul class="product-option">\n' +
                     '                                                <li data-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده">\n' +
-                    '                                                    <a href="javascript:;" onclick="viewproduct(event,'+item.id+')" data-bs-toggle="modal" data-bs-target="#view">\n' +
-                    '                                                        <i data-feather="eye"></i>\n' +
+                    '                                                    <a href="javascript:;" onclick="viewproduct(event,'+item['product'].id+')" data-bs-toggle="modal" data-bs-target="#view">\n' +
+                    '                                                        <i class="fa fa-eye"></i>\n' +
                     '                                                    </a>\n' +
                     '                                                </li>\n' +
                     '                                                <li data-bs-toggle="tooltip" data-bs-placement="top" title="Compare">\n' +
                     '                                                    <a href="compare.html">\n' +
-                    '                                                        <i data-feather="refresh-cw"></i>\n' +
+                    '                                                        <i class="fa fa-refresh"></i>\n' +
                     '                                                    </a>\n' +
                     '                                                </li>\n' +
-                    '                                                <li >\n' +
-                    '                                                    <a href="javascript:;" class="notifi-wishlist"   onclick="addWishlistShop(event,\''+item.id+'\')" >\n' +
-                    '                                                        <i class="fa text-danger  fa-heart-o" aria-hidden="true"></i>\n' +
-                    '                                                    </a>\n' +
+                    '                                                <li >\n' + wl +
                     '                                                </li>\n' +
                     '                                            </ul>\n' +
                     '                                        </div>\n' +
                     '                                    </div>\n' +
                     '                                    <div class="product-footer">\n' +
                     '                                        <div class="product-detail">\n' +
-                    '                                           <span class="span-name">'+item.brand.name+'</span>\n' +
-                    '                                            <a href="products/'+item.id+'">\n' +
-                    '                                                <h5 class="name">'+item.name+'</h5>\n' +
+                    '                                            <a href="products/'+item['product'].id+'">\n' +
+                    '                                                <h5 class="name">'+item['product'].name+'</h5>\n' +
                     '                                            </a>\n' +
-                    '                                            <p class="text-content mt-1 mb-2 product-content">'+item.abstract+'</p>\n' +
+                    '                                            <p class="text-content mt-1 mb-2 product-content">'+item['product'].abstract+'</p>\n' +
                     '                                            <div class="product-rating mt-2">\n' +
-                    '                                                <ul class="rating">\n' +
-                    '                                                    <li>\n' +
-                    '                                                        <i data-feather="star" class="fill"></i>\n' +
-                    '                                                    </li>\n' +
-                    '                                                    <li>\n' +
-                    '                                                        <i data-feather="star" class="fill"></i>\n' +
-                    '                                                    </li>\n' +
-                    '                                                    <li>\n' +
-                    '                                                        <i data-feather="star" class="fill"></i>\n' +
-                    '                                                    </li>\n' +
-                    '                                                    <li>\n' +
-                    '                                                        <i data-feather="star" class="fill"></i>\n' +
-                    '                                                    </li>\n' +
-                    '                                                    <li>\n' +
-                    '                                                        <i data-feather="star"></i>\n' +
-                    '                                                    </li>\n' +
-                    '                                                </ul>\n' +
-                    '                                                <span>('+Number(item.sumRate/item.countRate)+')</span>\n' +
+                    '                                                <span>'+rate+'</span>\n' +
                     '                                            </div>\n' +
-                    '                                            <h6 class="unit">250 ml</h6>\n' +
                     '                                            <h5 class="price">\n' + offer +
                     '                                            </h5>\n' +
                     '                                            <div class="add-to-cart-box bg-white">\n' +
-                    '                                                <button class="btn btn-add-cart addcart-button" onclick="addCartlistShop(event,'+item.id+',1,true)">افزودن\n' +
+                    '                                                <button class="btn btn-add-cart addcart-button" onclick="addCartlistShop(event,'+item['product'].id+',1,true)">افزودن\n' +
                     '                                                    <span class="add-icon bg-light-orange">\n' +
                     '                                                <i class="fa-solid fa-plus"></i>\n' +
                     '                                            </span>\n' +
                     '                                                </button>\n' +
-                    '                                                <div class="cart_qty qty-box @if(\\Modules\\Cart\\Helpers\\Cart\\Cart::has($product))open @endif">\n' +
+                    '                                                <div class="cart_qty qty-box '+checkProductInCart(item['productInCart'])[0]+'">\n' +
                     '                                                    <div class="input-group bg-white">\n' +
                     '                                                        <button type="button" class="qty-left-minus" data-type="minus"\n' +
                     '                                                                data-field="" >\n' +
                     '                                                            <i class="fa fa-minus" aria-hidden="true"></i>\n' +
                     '                                                        </button>\n' +
-                    '                                                        <input class="form-control input-number qty-input" readonly="readonly" type="text" min="1" max="'+item.maxOrder+'"\n' +
-                    '                                                               name="quantity" value="@php echo (\\Modules\\Cart\\Helpers\\Cart\\Cart::has($product) ) ? ($productInCart[\'quantity\']) : \'1\' @endphp " id="valueSingleProductFloating'+item.id+'"  data-maxOrder="{{$product->maxOrder}}" @if(\\Modules\\Cart\\Helpers\\Cart\\Cart::has($product))data-cart="{{$productInCart[\'id\']}}" @endif onchange="changeQuantityShop(event,\''+item.id+'\')">\n' +
+                    '                                                        <input class="form-control input-number qty-input" readonly="readonly" type="text" min="1" max="'+item['product'].maxOrder+'"\n' +
+                    '                                                               name="quantity" value="'+checkProductInCart(item['productInCart'])[1]+'" id="valueSingleProductFloating'+item['product'].id+'"  data-maxOrder="'+item['product'].maxOrder+'" '+checkProductInCart(item['productInCart'])[2]+' onchange="changeQuantityShop(event,\''+item['product'].id+'\')">\n' +
                     '                                                        <button type="button" class="qty-right-plus" data-type="plus"\n' +
                     '                                                                data-field="" >\n' +
                     '                                                            <i class="fa fa-plus" aria-hidden="true"></i>\n' +
@@ -373,6 +339,8 @@ function load_more(page){
                     '                                </div>\n' +
                     '                            </div>';
                 $('#product_list').append(product);
+
+
             })
 
         })
@@ -382,20 +350,6 @@ function load_more(page){
         });
 }
 $(window).scroll(function() {
-   /* setTimeout(() => {
-        console.log("Delayed for 1 second.");
-    }, 1000);*/
-  //  console.log('height document : ' + $(document).height())
-     //console.log('scroll top : ' + $(window).scrollTop())
-   //  console.log('window height : ' + $(window).height())
-    // console.log('------------------------------------------')
-
-    // if(Math.round(($(document).height())) - (Math.round($(window).scrollTop() + $(window).height() ) ) < 2) {
-    //     console.log('event')
-    //     for(let i=0;i<1;i++)
-    //         $('#product_list').append(product);
-    //
-    // }
     var foot = $('footer').css('height').replace('px','')
     if($(window).scrollTop() + $(window).height() > $(document).height() - foot) {
         // ajax call get data from server and append to the div
@@ -405,4 +359,13 @@ $(window).scroll(function() {
         load_more(page);
     }
 });
+
+function checkProductInCart(item){
+    if(item.length === 0 ){
+        return ['',1,'']
+    }
+    else {
+        return ['open',item.quantity,'data-cart="'+item.id+'"']
+    }
+}
 

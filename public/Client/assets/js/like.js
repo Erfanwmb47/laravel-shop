@@ -1,4 +1,5 @@
-$('#like').on('click',function (e){
+$(document).on('click','#like',function (e){
+    console.log(e.target)
     e.preventDefault();
     $.ajaxSetup({
         headers: {
@@ -36,7 +37,7 @@ $('#like').on('click',function (e){
         }
     });
 });
-$('#dislike').on('click',function (e){
+$(document).on('click','#dislike',function (e){
     e.preventDefault();
     console.log(e.target.parentElement.firstElementChild.classList)
     $.ajaxSetup({

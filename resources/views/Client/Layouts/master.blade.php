@@ -150,7 +150,7 @@
                                     </div>
                                 </li>
                                 <li class="right-side">
-                                    <a href="contact-us.html" class="delivery-login-box">
+                                    <a href="{{route('contactUs.index')}}" class="delivery-login-box">
                                         <div class="delivery-icon">
                                             <i data-feather="phone-call"></i>
                                         </div>
@@ -720,7 +720,7 @@
                                                data-bs-toggle="dropdown">مجله سینویا</a>
                                         </li>
                                         <li class="nav-item ">
-                                            <a class="nav-link dropdown-toggle" href="/aboutUs"
+                                            <a class="nav-link dropdown-toggle" href="{{route('aboutUs.index')}}"
                                                >درباره سینویا</a>
                                         </li>
 

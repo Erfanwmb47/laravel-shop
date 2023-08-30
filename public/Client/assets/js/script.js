@@ -272,7 +272,7 @@ $(window).on("load resize", function () {
 /*=====================
    13. Wishlist Js
    ==========================*/
-$(".notifi-wishlist").on("click", function (event) {
+$(document).on("click",".notifi-wishlist", function (event) {
     var massage = ''
     var title = ''
 

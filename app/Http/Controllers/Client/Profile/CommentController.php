@@ -26,8 +26,8 @@ class CommentController extends ClientController
 
     public function editComment(Request $request,ShopComment $shopComment)
     {
-
-        dd($request->all());
+//        dd($shopComment);
+        dd($request);
 //        dd($shopComment);
         $shopComment->update($request->all());
     }

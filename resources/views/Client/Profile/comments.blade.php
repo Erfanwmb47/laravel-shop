@@ -3,8 +3,7 @@
 
 @section('left-content')
 
-    <button class="btn left-dashboard-show btn-animation btn-md fw-bold d-block mb-4 d-lg-none">Show
-        Menu</button>
+    <button class="btn left-dashboard-show btn-animation btn-md fw-bold d-block mb-4 d-lg-none">نمایش منو</button>
     <div class="dashboard-right-sidebar">
         <div class="tab-content" id="pills-tabContent">
             <div class="tab-pane fade show active" id="pills-dashboard" role="tabpanel"
@@ -23,7 +22,6 @@
                         @foreach($comments as $comment)
                             <div class="order-box dashboard-bg-box w-100">
                                 <div class="order-container">
-
                                     <div class="order-icon">
                                         <i data-feather="message-square"></i>
                                     </div>
@@ -56,14 +54,14 @@
                                         </div>
                                         <p class="text-content">{{$comment->text}}</p>
                                         <div class="row mt-2">
-                                            @if(!is_null($comment->positive))
+                                            @if($comment->positive != 'null')
                                                 <div class="col-6">
                                                     @foreach(json_decode($comment->positive) as $item)
                                                         <div class="flex"><i class="fa fa-plus text-success mx-1"></i> <h6 class="text-black-50 text-sm-end">{{$item}}</h6></div>
                                                     @endforeach
                                                 </div>
                                             @endif
-                                            @if(!is_null($comment->negative))
+                                                @if($comment->negative != 'null')
                                                 <div class="col-6">
                                                     @foreach(json_decode($comment->negative) as $item)
                                                         <div class="flex"><i class="fa fa-minus text-danger mx-1"></i> <h6 class="text-black-50 text-sm-end">{{$item}}</h6></div>
@@ -79,18 +77,18 @@
                 </div>
             </div>
         </div>
-        <!-- ثبت نظر Start -->
+        <!-- ویرایش نظر Start -->
         <div class="modal fade theme-modal" id="editComment" tabindex="-1" aria-labelledby="exampleModalLabel2"
              aria-hidden="true">
             <div class="modal-dialog modal-xl modal-dialog-centered modal-fullscreen-sm-down">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel2">ثبت نظر</h5>
+                        <h5 class="modal-title" id="exampleModalLabel2">ویرایش نظر</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                             <i class="fa-solid fa-xmark"></i>
                         </button>
                     </div>
-                    <form method="post" id="commentEdit" action="{{route('profile.comments.edit',9)}}">
+                    <form method="post" id="commentEdit" action="{{route('profile.comments.edit',5)}}">
                         @csrf
 {{--                        @method('PATCH')--}}
                         <div class="modal-body" id="commentDetailTable">
@@ -229,7 +227,7 @@
                                         با توجه به ساختار بخش نظرات، از پرسیدن سوال یا درخواست راهنمایی در این بخش خودداری کرده و سوالات خود را در بخش «پرسش و پاسخ» مطرح کنید.
                                         افزودن عکس و ویدیو به نظرات:
                                         با مطالعه‌ی این لینک می‌توانید مفید‌ترین الگوی عکاسی از کالایی که خریداری کرده‌اید را مشاهده کنید.
-                                        پیشنهاد می‌شود قوانین کامل ثبت نظر را در این صفحه مطالعه کنید.
+                                        پیشنهاد می‌شود قوانین کامل ویرایش نظر را در این صفحه مطالعه کنید.
                                     </h6>
                                 </div>
 
@@ -257,8 +255,8 @@
                                     <select class="form-control" id="positiveList" name="positive[]" hidden="hidden" multiple>
 
                                     </select>
-                                    {{--                        <label for="positiveList">لیست نکات مثبت:</label>--}}
-                                    {{--                        <button class="btn btn-success" type="button" id="positiveBtnRemove">حذف نکته مثبت</button>--}}
+                                    {{--                        <label for="positiveList">لیست نکات مویرایش:</label>--}}
+                                    {{--                        <button class="btn btn-success" type="button" id="positiveBtnRemove">حذف نکته مویرایش</button>--}}
                                 </div>
                                 <div class="col-xxl-6 mt-4">
                                     <div class=" border rounded border-1 flex-space-between">
@@ -281,13 +279,13 @@
                         </div>
                         <div class="modal-footer">
                             <button type="submit" class="btn btn-animation btn-md fw-bold"
-                                    data-bs-dismiss="modal">ثبت نظر</button>
+                                    data-bs-dismiss="modal">ویرایش نظر</button>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
-        <!-- ثبت نظر End -->
+        <!-- ویرایش نظر End -->
     </div>
 @endsection
 

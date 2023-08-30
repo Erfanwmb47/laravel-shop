@@ -58,6 +58,7 @@ class CartController extends ClientController
             'cart_id'=>Cart::get($product)['id'],
             'quantity' =>Cart::get($product)['quantity'],
             'maxOrder' =>$product->maxOrder,
+            'totalPrice' =>$this->totalPrice()
 
         ]);
 

@@ -92,7 +92,7 @@
                                         {{faNumber(number_format($product->price))}} تومان</del> @endif</h3>
                                     <div class="product-rating custom-rate flex">
                                         <p class="@if($product->countRate!= 0) {{comment_rating_color($product->sumRate/$product->countRate)[1]}} @endif p-2">
-                                            {{faNumber('5')}} /  @if($product->countRate != 0){{faNumber($product->sumRate/$product->countRate)}} @else 0 @endif</p>
+                                             @if($product->countRate != 0){{faNumber(number_format($product->sumRate/$product->countRate,1))}} @else 0 @endif</p>
                                         <span class="review">{{faNumber($product->countRate)}}رای</span>
                                     </div>
                                 </div>
@@ -104,73 +104,6 @@
                                             @endphp
                                     </p>
                                 </div>
-
-{{--                                <div class="product-packege">--}}
-{{--                                    <div class="product-title">--}}
-{{--                                        <h4>Weight</h4>--}}
-{{--                                    </div>--}}
-{{--                                    <ul class="select-packege">--}}
-{{--                                        <li>--}}
-{{--                                            <a href="javascript:void(0)" class="active">1/2 KG</a>--}}
-{{--                                        </li>--}}
-{{--                                        <li>--}}
-{{--                                            <a href="javascript:void(0)">1 KG</a>--}}
-{{--                                        </li>--}}
-{{--                                        <li>--}}
-{{--                                            <a href="javascript:void(0)">1.5 KG</a>--}}
-{{--                                        </li>--}}
-{{--                                        <li>--}}
-{{--                                            <a href="javascript:void(0)">Red Roses</a>--}}
-{{--                                        </li>--}}
-{{--                                        <li>--}}
-{{--                                            <a href="javascript:void(0)">With Pink Roses</a>--}}
-{{--                                        </li>--}}
-{{--                                    </ul>--}}
-{{--                                </div>--}}
-
-{{--                                <div class="time deal-timer product-deal-timer mx-md-0 mx-auto" id="clockdiv-1"--}}
-{{--                                     data-hours="1" data-minutes="2" data-seconds="3">--}}
-{{--                                    <div class="product-title">--}}
-{{--                                        <h4>Hurry up! Sales Ends In</h4>--}}
-{{--                                    </div>--}}
-{{--                                    <ul>--}}
-{{--                                        <li>--}}
-{{--                                            <div class="counter d-block">--}}
-{{--                                                <div class="days d-block">--}}
-{{--                                                    <h5></h5>--}}
-{{--                                                </div>--}}
-{{--                                                <h6>Days</h6>--}}
-{{--                                            </div>--}}
-{{--                                        </li>--}}
-{{--                                        <li>--}}
-{{--                                            <div class="counter d-block">--}}
-{{--                                                <div class="hours d-block">--}}
-{{--                                                    <h5></h5>--}}
-{{--                                                </div>--}}
-{{--                                                <h6>Hours</h6>--}}
-{{--                                            </div>--}}
-{{--                                        </li>--}}
-{{--                                        <li>--}}
-{{--                                            <div class="counter d-block">--}}
-{{--                                                <div class="minutes d-block">--}}
-{{--                                                    <h5></h5>--}}
-{{--                                                </div>--}}
-{{--                                                <h6>Min</h6>--}}
-{{--                                            </div>--}}
-{{--                                        </li>--}}
-{{--                                        <li>--}}
-{{--                                            <div class="counter d-block">--}}
-{{--                                                <div class="seconds d-block">--}}
-{{--                                                    <h5></h5>--}}
-{{--                                                </div>--}}
-{{--                                                <h6>Sec</h6>--}}
-{{--                                            </div>--}}
-{{--                                        </li>--}}
-{{--                                    </ul>--}}
-{{--                                </div>--}}
-
-
-
                                 <div class="note-box product-packege">
                                     <div class="cart_qty qty-box product-qty">
                                         <div class="input-group">
@@ -402,7 +335,7 @@
                                                                                         <span >{{$commentUser->like}}</span>
                                                                                         <i class="me-3 fa fa-thumbs-o-down" id="dislike" ></i>
                                                                                         <span>{{$commentUser->dislike}}</span>
-                                                                                    </a>
+                                                                                    </p>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -469,9 +402,9 @@
                                                                                 @guest
                                                                                     <a href="javascript:;" class="opacity-100">
                                                                                         <i class="fa fa-thumbs-o-up " ></i>
-                                                                                        <span class="mx-4">{{$comment->like}}</span>
+                                                                                        <span>{{$comment->like}}</span>
 
-                                                                                        <i class="fa fa-thumbs-o-down "></i>
+                                                                                        <i class="fa fa-thumbs-o-down me-3"></i>
                                                                                         <span>{{$comment->dislike}}</span>
 
                                                                                     </a>
@@ -486,6 +419,7 @@
                                                                 <p>نظری در باره این محصول وجود ندارد</p>
                                                             @endif
                                                         </ul>
+                                                        <button product-id="{{$product->id}}" id="showMoreComments" type="button" class="btn btn-furniture m-auto mt-4">مشاهده بیشتر</button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -540,7 +474,7 @@
                                     <li>
                                         <div class="offer-product">
                                             <a href="product-left-thumbnail.html" class="offer-image">
-                                                <img src="../assets/images/vegetable/product/23.png"
+                                                <img src="/Client/assets/images/vegetable/product/23.png"
                                                      class="img-fluid blur-up lazyload" alt="">
                                             </a>
 
@@ -559,7 +493,7 @@
                                     <li>
                                         <div class="offer-product">
                                             <a href="product-left-thumbnail.html" class="offer-image">
-                                                <img src="../assets/images/vegetable/product/24.png"
+                                                <img src="/Client/assets/images/vegetable/product/24.png"
                                                      class="blur-up lazyload" alt="">
                                             </a>
 
@@ -578,7 +512,7 @@
                                     <li>
                                         <div class="offer-product">
                                             <a href="product-left-thumbnail.html" class="offer-image">
-                                                <img src="../assets/images/vegetable/product/25.png"
+                                                <img src="/Client/assets/images/vegetable/product/25.png"
                                                      class="blur-up lazyload" alt="">
                                             </a>
 
@@ -597,7 +531,7 @@
                                     <li class="mb-0">
                                         <div class="offer-product">
                                             <a href="product-left-thumbnail.html" class="offer-image">
-                                                <img src="../assets/images/vegetable/product/26.png"
+                                                <img src="/Client/assets/images/vegetable/product/26.png"
                                                      class="blur-up lazyload" alt="">
                                             </a>
 
@@ -619,7 +553,7 @@
                         <!-- Banner Section -->
                         <div class="ratio_156 pt-25">
                             <div class="home-contain">
-                                <img src="../assets/images/vegetable/banner/8.jpg" class="bg-img blur-up lazyload"
+                                <img src="/Client/assets/images/vegetable/banner/8.jpg" class="bg-img blur-up lazyload"
                                      alt="">
                                 <div class="home-detail p-top-left home-p-medium">
                                     <div>
@@ -648,7 +582,7 @@
                 <h2>محصولات مرتبط</h2>
                 <span class="title-leaf">
                     <svg class="icon-width">
-                        <use xlink:href="../assets/svg/leaf.svg#leaf"></use>
+                        <use xlink:href="/Client/assets/svg/leaf.svg#leaf"></use>
                     </svg>
                 </span>
             </div>
@@ -660,7 +594,7 @@
                                 <div class="product-header">
                                     <div class="product-image">
                                         <a href="product-left.htm">
-                                            <img src="../assets/images/cake/product/11.png"
+                                            <img src="/Client/assets/images/cake/product/11.png"
                                                  class="img-fluid blur-up lazyload" alt="">
                                         </a>
 
@@ -747,7 +681,7 @@
                                 <div class="product-header">
                                     <div class="product-image">
                                         <a href="product-left-thumbnail.html">
-                                            <img src="../assets/images/cake/product/2.png"
+                                            <img src="/Client/assets/images/cake/product/2.png"
                                                  class="img-fluid blur-up lazyload" alt="">
                                         </a>
 
@@ -833,7 +767,7 @@
                                 <div class="product-header">
                                     <div class="product-image">
                                         <a href="product-left-thumbnail.html">
-                                            <img src="../assets/images/cake/product/3.png"
+                                            <img src="/Client/assets/images/cake/product/3.png"
                                                  class="img-fluid blur-up lazyload" alt="">
                                         </a>
 
@@ -920,7 +854,7 @@
                                 <div class="product-header">
                                     <div class="product-image">
                                         <a href="product-left-thumbnail.html">
-                                            <img src="../assets/images/cake/product/4.png"
+                                            <img src="/Client/assets/images/cake/product/4.png"
                                                  class="img-fluid blur-up lazyload" alt="">
                                         </a>
 
@@ -1007,7 +941,7 @@
                                 <div class="product-header">
                                     <div class="product-image">
                                         <a href="product-left-thumbnail.html">
-                                            <img src="../assets/images/cake/product/5.png"
+                                            <img src="/Client/assets/images/cake/product/5.png"
                                                  class="img-fluid blur-up lazyload" alt="">
                                         </a>
 
@@ -1094,7 +1028,7 @@
                                 <div class="product-header">
                                     <div class="product-image">
                                         <a href="product-left-thumbnail.html">
-                                            <img src="../assets/images/cake/product/6.png"
+                                            <img src="/Client/assets/images/cake/product/6.png"
                                                  class="img-fluid blur-up lazyload" alt="">
                                         </a>
 
@@ -1183,7 +1117,7 @@
                                 <div class="product-header">
                                     <div class="product-image">
                                         <a href="product-left-thumbnail.html">
-                                            <img src="../assets/images/cake/product/7.png" class="img-fluid" alt="">
+                                            <img src="/Client/assets/images/cake/product/7.png" class="img-fluid" alt="">
                                         </a>
 
                                         <ul class="product-option">
@@ -1533,6 +1467,8 @@
 
 @section('js')
     <!-- jquery ui-->
+    <script src="/Client/assets/js/like.js"></script>
+
     <script src="/Client/assets/js/jquery-ui.min.js"></script>
 
     <!-- Slick js-->
@@ -1567,6 +1503,6 @@
     <script src="/Client/assets/js/Cart.js"></script>
     <script src="/Client/assets/js/Wishlist.js"></script>
     <script src="/Client/assets/js/comment.js"></script>
-    <script src="/Client/assets/js/like.js"></script>
+
 
 @endsection

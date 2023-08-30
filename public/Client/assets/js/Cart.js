@@ -62,7 +62,6 @@ function changeQuantityCartNav(event, id , cartName = null) {
             $("#cartChangeNav"+id);
             document.getElementById('cartChangeNav'+id).innerText =res.newPriceProduct + "تومان" ;
             document.getElementById('finalCostNav').innerText = res.totalPrice + " تومان" ;
-            $("#finalCostNav").load(" #finalCostNav");
             //  location.reload();
         }
     });
@@ -97,8 +96,9 @@ function changeQuantityShop(event, id = null , cartName = null){
                 _method: 'patch'
             }),
             success: function (res) {
+                console.log(res)
                 document.getElementById('valueOf' +id).innerHTML = event.target.value;
-                $("#finalCostNav").load(" #finalCostNav");
+                $("#finalCostNav").html( res.totalPrice + ' تومان')
             }
         });
     }
@@ -214,6 +214,7 @@ function addCartlistShop(event, id,quantity,plus = false) {
                 _method: 'post'
             }),
             success: function (res) {
+                console.log(res)
                 var k = '<li class="product-box-contain" id="cart' + res.cart_id + '">\n' +
                     '                                                            <div class="drop-cart">\n' +
                     '                                                                <a href="/product/' + res.id + '" class="drop-image">\n' +
@@ -232,18 +233,6 @@ function addCartlistShop(event, id,quantity,plus = false) {
                     '                                                                </div>\n' +
                     '                                                            </div>\n' +
                     '                                                        </li>';
-                // var children = document.getElementById('cartBox').childNodes;
-                // let children = document.querySelectorAll('#cartBox li');
-                // children.forEach(function(item){
-                //     console.log(item.id);
-                //     if ( item.id != 'cart'+res.cart_id ) {
-                //         $('#cartBox').append(k);
-                //         document.getElementById('cartcounter1').innerHTML = Number(document.getElementById('cartcounter1').innerHTML)+1;
-                //         // document.getElementById('cartcounter2').innerHTML = Number(document.getElementById('cartcounter2').innerHTML)+1;
-                //     }
-                //     else {
-                //         document.getElementById('valueOf'+res.id).innerHTML = res.quantity;
-                //     }            });
                 if (!document.getElementById('cart' + res.cart_id)) {
                     $('#cartBox').append(k);
                     document.getElementById('cartcounter1').innerHTML = Number(document.getElementById('cartcounter1').innerHTML) + 1;
@@ -254,10 +243,10 @@ function addCartlistShop(event, id,quantity,plus = false) {
                 if (!!document.getElementById('cartEmpty')) document.getElementById('cartEmpty').remove();
                 //TODO moshkel taghir quantity bad az ezafe kardan
 
-                if(document.getElementById('valueSingleProductFloating'+res.id))
-                    document.getElementById('valueSingleProductFloating'+res.id).setAttribute('data-cart',res.cart_id);
-
-                $("#finalCostNav").load(" #finalCostNav");
+                if(document.getElementById('valueSingleProductFloating'+res.id)) {
+                    document.getElementById('valueSingleProductFloating' + res.id).setAttribute('data-cart', res.cart_id);
+                }
+                $("#finalCostNav").html( res.totalPrice + ' تومان')
             }
         });
     }

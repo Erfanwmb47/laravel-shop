@@ -14,22 +14,19 @@ use Illuminate\Support\Facades\Auth;
 
 class ProductController extends ClientController
 {
-    public function index()
+    public function index(Request $request)
     {
-
         $products = Product::latest()->paginate(20);
         return view('Client.Products.Index',[
             'products' => $products
         ]);
     }
 
-    public function single(Product $product)
+    public function single(Request $request,Product $product)
     {
         $array=[];
         $comment_reaction=[];
         $commentUser=new Collection();
-
-
         foreach ($product->attributes as $pa){
             if(array_key_exists($pa->name,$array))
                 array_push($array[$pa->name],$pa->pivot->value->value);
@@ -60,10 +57,28 @@ class ProductController extends ClientController
 
 //            dd($comment_reaction[2]);
 //dd($commentUser->);
+        $comments = $product->comments()->paginate(1)->where('status','=','1')->diff($commentUser);
+        $comm =  $comments->map(function ($item){
+            $item->user_image = str_replace('public','/storage',$item->user->gallery->path);
+            return $item ;
+        });
+        $data = [];
+        $react = '';
+        if ($request->ajax()) {
+            foreach ($comm as $comment) {
+                if(array_key_exists($comment->id,$comment_reaction)){
+                    $react = $comment_reaction[$comment->id];
+                };
+                array_push($data,['comment' => $comment,'reaction'=>$react]);
+                $react = '';
+            }
+//            dd($data);
+            return ['data'=>$data,'authCheck'=>Auth::check()];
+        }
             return view('Client.Products.Single',[
                 'product' => $product,
                 'attributes' => $array,
-                'comments'=>$product->comments->where('status','=','1')->diff($commentUser),
+                'comments'=> $comments,
                 'commentUser'=> $commentUser->count()==1 ? $commentUser->first() : [],
                 'commentReaction' => $comment_reaction
             ]);
