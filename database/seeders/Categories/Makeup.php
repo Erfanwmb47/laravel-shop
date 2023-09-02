@@ -73,3 +73,14 @@ DB::table('categories')->insert([
     'created_at' => Jalalian::now(),
     'updated_at' => Jalalian::now()
 ]);
+
+DB::table('categories')->insert([
+    'name' => 'ابزار آرایش',
+    'meta' => 'makeup tools',
+    'description' => 'ابزار آرایش',
+    'category_id' =>Category::whereMeta('makeup')->first()->id,
+    'created_at' => Jalalian::now(),
+    'updated_at' => Jalalian::now()
+]);
+
+        require __DIR__ . '/sub sub categories/Makeup.php';

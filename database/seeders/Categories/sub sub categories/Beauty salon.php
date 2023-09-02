@@ -113,9 +113,9 @@ DB::table('categories')->insert([
 ]);
 //کاشت و طراحی ناخن
 DB::table('categories')->insert([
-    'name' => 'لاک ناخن',
+    'name' => 'لاک ژل',
     'meta' => 'Nail gel',
-    'description' => 'لاک ناخن',
+    'description' => 'لاک ژل',
     'category_id' => Category::whereMeta('Nail planting and design')->first()->id,
     'created_at' => Jalalian::now(),
     'updated_at' => Jalalian::now()
