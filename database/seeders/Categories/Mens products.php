@@ -55,3 +55,6 @@ DB::table('categories')->insert([
     'created_at' => Jalalian::now(),
     'updated_at' => Jalalian::now()
 ]);
+
+       require __DIR__ . '/sub sub categories/Mens products.php';
+
