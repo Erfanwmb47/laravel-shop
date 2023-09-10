@@ -88,6 +88,9 @@ Route::get('/q',function (){
     Auth::loginUsingId(1);
     return back();
 });
+Route::get('/x',function (){
+    return view('auth.loginWithPhone');
+});
 Route::get('/a',function (){
     Auth::loginUsingId(2);
     return back();

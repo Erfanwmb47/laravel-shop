@@ -32,9 +32,9 @@ class LoginRequest extends FormRequest
     public function rules()
     {
         return [
-            'email' => ['required', 'string'],
+//            'email' => ['required', 'string'],
             'password' => ['required', 'string'],
-            'g-recaptcha-response' => ['required',new Recaptcha]
+//            'g-recaptcha-response' => ['required',new Recaptcha]
         ];
     }
 
@@ -57,17 +57,25 @@ class LoginRequest extends FormRequest
             ]);
         RateLimiter::clear($this->throttleKey());
         }*/
-
-        $user=User::where('email',$this->email)->first();
+//        dd($this->email);
         //dd(Hash::check($this->password,$user->password));
+
+        if(!!$this->email){
+            $user=User::where('email',$this->email)->first();
+        }
+        else if(!!$this->user){
+            $user=User::where('id',$this->user)->first();
+
+        }
+
         //dd($user->role)
         if(!$user || !Hash::check($this->password,$user->password )){
 
             RateLimiter::clear($this->throttleKey());
 
-
+            session()->reflash();
             throw validationException::withMessages([
-               'email' => __('auth.failed'),
+               'password' => __('auth.failed'),
             ]);
             RateLimiter::clear($this->throttleKey());
             abort(403);

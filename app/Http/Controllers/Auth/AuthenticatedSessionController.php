@@ -48,8 +48,17 @@ class AuthenticatedSessionController extends AuthController
 
     public function store(LoginRequest $request)
     {
+
         try {
-            //dd($request->session());
+            if(!$request->email && !!session()->get('email')){
+                $request->request->add(['email' => session()->get('email')]);
+            }
+            elseif (!$request->user && !!session()->get('sms.user_id')){
+                $request->request->add(['user' => session()->get('sms.user_id')]);
+            }
+//            dd($request->email);
+//            dd($request->all());
+//            dd(session()->all());
             //return redirect(route('2fa.token'));
             $request->authenticate();
 //        dd(Auth::user()->username == 'mstf76');
@@ -112,7 +121,6 @@ class AuthenticatedSessionController extends AuthController
         if($user=User::query()->wherePhone($data['phone'])->first())
         {
             $code=ActiveCode::GenerateCode($user);
-
             try {
                // $user->notify(new ActiveCodeNotification($code,$user->phone));
                 $request->session()->flash('sms',[
@@ -127,12 +135,13 @@ class AuthenticatedSessionController extends AuthController
         }
 
         else{
+//            dd($data);
             //TODO register user ba sms
-            $code =   RegisterWithSms::GenerateCode($data->phone);
+            $code =   RegisterWithSms::GenerateCode($data['phone']);
             //$user->otify(new ActiveCodeNotification($code,$request->phone));
 
-            $data->session()->put([
-                'register-sms' => $data->phone
+            $request->session()->put([
+                'register-sms' => $data['phone']
             ]);
             return redirect(route('SMS.token'));
         }
@@ -159,10 +168,8 @@ class AuthenticatedSessionController extends AuthController
     }
 
     public function SmsVerifyToken(Request $request)
-
     {
         if(!!session()->get('register-sms')){
-
             $code_verify = implode($request->token);
             $phone=RegisterWithSms::wherePhone($request->session()->get('register-sms'))->firstOrFail();
             $status=RegisterWithSms::VerifyCode($code_verify,$phone->phone);
@@ -171,20 +178,17 @@ class AuthenticatedSessionController extends AuthController
                     'phone'=> $phone->phone
                 ]);
                 //TODO remember me baraye login
-                Auth::login($user);
                 $phone->delete();
-                Alert::toast('ثبت نام شما با موفقیت انجام شد.','success');
-                return redirect()->intended(RouteServiceProvider::HOME);
+//                $this->setFirstNameAndLastName($user);
+//                return redirect()->route('setInformation',$user);
+                return redirect(route('setInformation',$user));
             }
             else{
                 $request->session()->reflash();
                 Alert::toast('کد تایید وارد شده صحیح نمی باشد.','error');
                 return back();
             }
-
-
         }
-
         if (!!session()->get('sms.user_id')) {
             $code_verify = implode($request->token);
             $user_verify=User::findorFail($request->session()->get('sms.user_id'));
@@ -197,7 +201,6 @@ class AuthenticatedSessionController extends AuthController
             }
 
             if($status){
-
                 Auth::login($user_verify);
                 $user_verify->notify( new LoginToWebsiteNotification());
                 $user_verify->activeCode()->delete();
@@ -208,7 +211,20 @@ class AuthenticatedSessionController extends AuthController
         }
     }
 
+    public function setInformation(User $user)
+    {
+        return view('auth.setInformation',[
+            'user' => $user
+        ]);
+    }
+    public function setInformationAfterRegister(Request $request , User $user)
+    {
+        $user->update($request->all());
+        Auth::login($user);
+        Alert::toast('ثبت نام شما با موفقیت انجام شد.','success');
 
+        return redirect()->intended(RouteServiceProvider::HOME);
+    }
     /**
      * Destroy an authenticated session.
      *
@@ -226,4 +242,39 @@ class AuthenticatedSessionController extends AuthController
         return redirect('/');
     }
 
+    public function checkInputIsEmailOrPhone(Request $request)
+    {
+        if(filter_var($request->phone, FILTER_VALIDATE_EMAIL)){
+             $request->validate([
+                'phone' => 'required'
+             ]);
+            $user=User::where('email',$request->phone)->first();
+            if(!!$user){
+                $request->session()->flash('email',$request->phone);
+                return redirect(route('enterPassword'));
+            }
+            else{
+                toast('چناچه در سایت ثبت نام نکرده اید ابتدا با شماره همراه خود ثبت نام کنید.','error');
+                return back()->withErrors([
+                    'email' => 'کاربری با این مشخصات وجود ندارد'
+                ]);
+            }
+
+        }
+        else if (preg_match('/^[0-9]{11}+$/', $request->phone)){
+          return $this->storePhone($request);
+        }
+        else{
+            return  back()->withErrors([
+               'email' => 'اطلاعات به درستی وارد نشده است'
+            ]);
+        }
+    }
+
+    public function enterPassword()
+    {
+//        dd(session()->all());
+        session()->reflash();
+        return view('auth.enter-password');
+    }
 }

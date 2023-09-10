@@ -40,6 +40,14 @@ Route::middleware('guest')->group(function () {
 
     Route::post('reset-password', [NewPasswordController::class, 'store'])
                 ->name('password.update');
+
+    Route::post('check-email-phone', [AuthenticatedSessionController::class, 'checkInputIsEmailOrPhone'])
+        ->name('checkInputIsEmailOrPhone');
+    Route::get('enter-password', [AuthenticatedSessionController::class, 'enterPassword'])
+        ->name('enterPassword');
+
+    Route::get('set-information/{user}',[AuthenticatedSessionController::class,'setInformation'])->name('setInformation');
+    Route::post('siar/{user}',[AuthenticatedSessionController::class,'setInformationAfterRegister'])->name('setInformationAfterRegister');
 });
 
 Route::middleware('auth')->group(function () {
@@ -61,6 +69,7 @@ Route::middleware('auth')->group(function () {
 
     Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
                 ->name('logout');
+
 
 
 });

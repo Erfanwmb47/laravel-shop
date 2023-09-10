@@ -100,41 +100,48 @@
                             {{--
                                                         <h3>به سینویا خوش آمدید</h3>
                             --}}
-                            <h4>ورود | ثبت نام </h4>
+                            <h4>ثبت مشخصات</h4>
                         </div>
                         <div class="input-box">
-                            <form class="row g-4" method="POST" action="{{ route('checkInputIsEmailOrPhone') }}" autocomplete="off">
+                            <form class="row g-4" method="POST" action="{{ route('setInformationAfterRegister',$user)}}" autocomplete="off">
                                 @csrf
                                 <div class="col-12">
                                     <div class="form-floating theme-form-floating log-in-form  ">
-                                        <input type="tel" class="form-control  text-end @error('phone') border border-2 border-danger @enderror"  id="phone" placeholder="شماره همراه" name="phone" value="{{old('phone')}}">
-                                        <label for="phone" class="right-0">لطفا شماره همراه یا ایمیل خود را وارد کنید</label>
+                                        <input type="text" class="form-control  text-end @error('firstName') border border-2 border-danger @enderror"  id="firstName" placeholder="شماره همراه" name="firstName" value="{{old('firstName')}}">
+                                        <label for="firstName" class="right-0">نام خود را وارد کنید</label>
                                     </div>
-                                    @error('email') <a class="text-danger text-sm mt-1">{{$message}}</a> @enderror
+                                    @error('firstName') <a class="text-danger text-sm mt-1">{{$message}}</a> @enderror
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-floating theme-form-floating log-in-form  ">
+                                        <input type="text" class="form-control  text-end @error('lastName') border border-2 border-danger @enderror"  id="lastName" placeholder="شماره همراه" name="lastName" value="{{old('lastName')}}">
+                                        <label for="lastName" class="right-0">نام خانوادگی خود را وارد کنید</label>
+                                    </div>
+                                    @error('lastName') <a class="text-danger text-sm mt-1">{{$message}}</a> @enderror
                                 </div>
 
-{{--                                <div class="col-12">--}}
-{{--                                    <div class="form-floating theme-form-floating log-in-form">--}}
-{{--                                        <input type="password" class="form-control @error('password') border border-2 border-danger @enderror" id="password" name="password"--}}
-{{--                                               placeholder="رمز عبور">--}}
-{{--                                        <label for="password" class="right-0">رمز عبور</label>--}}
-{{--                                    </div>--}}
-{{--                                    @error('password') <a class="text-danger text-sm mt-1">{{$message}}</a> @enderror--}}
-{{--                                </div>--}}
+                                {{--                                <div class="col-12">--}}
+                                {{--                                    <div class="form-floating theme-form-floating log-in-form">--}}
+                                {{--                                        <input type="password" class="form-control @error('password') border border-2 border-danger @enderror" id="password" name="password"--}}
+                                {{--                                               placeholder="رمز عبور">--}}
+                                {{--                                        <label for="password" class="right-0">رمز عبور</label>--}}
+                                {{--                                    </div>--}}
+                                {{--                                    @error('password') <a class="text-danger text-sm mt-1">{{$message}}</a> @enderror--}}
+                                {{--                                </div>--}}
 
                                 <div class="col-12">
                                     <div class="forgot-box">
-{{--                                        <div class="form-check ps-0 m-0 remember-box">--}}
-{{--                                            <input class="checkbox_animated check-box" type="checkbox"--}}
-{{--                                                   id="flexCheckDefault">--}}
-{{--                                            <label class="form-check-label" for="flexCheckDefault">به خاطر سپردن</label>--}}
-{{--                                        </div>--}}
-{{--                                        <a href="forgot.html" class="forgot-password">فراموشی رمز عبور</a>--}}
+                                        {{--                                        <div class="form-check ps-0 m-0 remember-box">--}}
+                                        {{--                                            <input class="checkbox_animated check-box" type="checkbox"--}}
+                                        {{--                                                   id="flexCheckDefault">--}}
+                                        {{--                                            <label class="form-check-label" for="flexCheckDefault">به خاطر سپردن</label>--}}
+                                        {{--                                        </div>--}}
+                                        {{--                                        <a href="forgot.html" class="forgot-password">فراموشی رمز عبور</a>--}}
                                     </div>
                                 </div>
                                 <x-recaptcha />
                                 <div class="col-12">
-                                    <button class="btn btn-animation w-100 justify-content-center" type="submit">ورود</button>
+                                    <button class="btn btn-animation w-100 justify-content-center" type="submit">ثبت</button>
                                 </div>
                             </form>
                         </div>
@@ -143,41 +150,40 @@
                             <h6>یا</h6>
                         </div>
 
-{{--                        <div class="log-in-button">--}}
-{{--                            <ul>--}}
-{{--                                <li>--}}
-{{--                                    <a href="{{route('login')}}" class="btn google-button w-100">--}}
-{{--                                         ورود با ایمیل--}}
-{{--                                    </a>--}}
-{{--                                </li>--}}
-{{--                            </ul>--}}
-{{--                        </div>--}}
+                        {{--                        <div class="log-in-button">--}}
+                        {{--                            <ul>--}}
+                        {{--                                <li>--}}
+                        {{--                                    <a href="{{route('login')}}" class="btn google-button w-100">--}}
+                        {{--                                         ورود با ایمیل--}}
+                        {{--                                    </a>--}}
+                        {{--                                </li>--}}
+                        {{--                            </ul>--}}
+                        {{--                        </div>--}}
                         <div class="log-in-button">
                             <ul>
                                 <li>
-                                    <a href="{{route('auth.google')}}" class="btn google-button w-100">
-                                        <img src="/Client/assets/images/inner-page/google.png" class="blur-up lazyload"
-                                             alt=""> ورود با گوگل
+                                    <a href="{{route('home')}}" class="btn google-button w-100">
+                                        باشه بعدا
                                     </a>
                                 </li>
                             </ul>
                         </div>
 
-{{--                        <div class="other-log-in">--}}
-{{--                            <h6></h6>--}}
-{{--                        </div>--}}
+                        {{--                        <div class="other-log-in">--}}
+                        {{--                            <h6></h6>--}}
+                        {{--                        </div>--}}
 
-{{--                        <div class="sign-up-box">--}}
-{{--                            <h4>آیا عضو سایت نیستید ؟</h4>--}}
-{{--                            <a href="{{route('register')}}">ثبت نام</a>--}}
-{{--                        </div>--}}
+                        {{--                        <div class="sign-up-box">--}}
+                        {{--                            <h4>آیا عضو سایت نیستید ؟</h4>--}}
+                        {{--                            <a href="{{route('register')}}">ثبت نام</a>--}}
+                        {{--                        </div>--}}
                     </div>
                 </div>
             </div>
         </div>
     </section>
 </div>
-    <!-- log in section end -->
+<!-- log in section end -->
 <!-- latest jquery-->
 <script src="/Client/assets/js/jquery-3.6.0.min.js"></script>
 

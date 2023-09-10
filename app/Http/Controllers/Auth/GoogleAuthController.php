@@ -34,42 +34,42 @@ class GoogleAuthController extends AuthController
             $user = User::where('email',$googleUser->email)->first();
             $username = str_replace('@gmail.com','',$googleUser->email);
 
-            if(!$user){
-                $mime='';
-                $header=get_headers($googleUser->avatar);
-
-                if(in_array('Content-Type: image/jpeg',$header)){
-                    $mime='JPEG';
-                }
-                elseif (in_array('Content-Type: image/png',$header)){
-                    $mime='PNG';
-                }
-                $path='storage/Image/Users/'.$username .'.'. $mime;
-                $size=file_put_contents(public_path($path), file_get_contents($googleUser->avatar));
-
-
-                $newgallery= Gallery::create([
-                    'title' => $username ,
-                    'alt'  => $googleUser->name,
-                    'size' => $size,
-                    'mime' => $mime,
-                    'path'=> str_replace('storage','public',$path),
-                    'flag'=> 'users',
-                    'created_at'=> Jalalian::now(),
-                    'updated_at' => Jalalian::now()
-                ]);
-
-                $us=$newgallery->id;
-                $user = User::create([
-                    'username' =>$username ,
-                    'email' => $googleUser->email,
-                    'password' => bcrypt(\Str::random(16)),
-                    'gallery_id' => $us,
-                    'two_factor_type' =>'off',
-                    'created_at'=> Jalalian::now(),
-                    'updated_at' => Jalalian::now()
-                ]);
-            }
+//            if(!$user){
+//                $mime='';
+//                $header=get_headers($googleUser->avatar);
+//
+//                if(in_array('Content-Type: image/jpeg',$header)){
+//                    $mime='JPEG';
+//                }
+//                elseif (in_array('Content-Type: image/png',$header)){
+//                    $mime='PNG';
+//                }
+//                $path='storage/Image/Users/'.$username .'.'. $mime;
+//                $size=file_put_contents(public_path($path), file_get_contents($googleUser->avatar));
+//
+//
+//                $newgallery= Gallery::create([
+//                    'title' => $username ,
+//                    'alt'  => $googleUser->name,
+//                    'size' => $size,
+//                    'mime' => $mime,
+//                    'path'=> str_replace('storage','public',$path),
+//                    'flag'=> 'users',
+//                    'created_at'=> Jalalian::now(),
+//                    'updated_at' => Jalalian::now()
+//                ]);
+//
+//                $us=$newgallery->id;
+//                $user = User::create([
+//                    'username' =>$username ,
+//                    'email' => $googleUser->email,
+//                    'password' => bcrypt(\Str::random(16)),
+//                    'gallery_id' => $us,
+//                    'two_factor_type' =>'off',
+//                    'created_at'=> Jalalian::now(),
+//                    'updated_at' => Jalalian::now()
+//                ]);
+//            }
             if($user){
 
                 if (!$user->gallery_id ||$user->gallery_id=='1' || $user->gallery_id=='2' ){
