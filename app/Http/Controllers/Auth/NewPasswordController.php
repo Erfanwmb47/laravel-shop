@@ -3,12 +3,18 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
+use App\Notifications\LoginToWebsiteNotification;
 use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Password;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rules;
+use mysql_xdevapi\Exception;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class NewPasswordController extends AuthController
 {
@@ -20,7 +26,7 @@ class NewPasswordController extends AuthController
      */
     public function create(Request $request)
     {
-        return view('auth.reset-password2', ['request' => $request]);
+        return view('auth.reset-password', ['request' => $request]);
     }
 
     /**
@@ -61,5 +67,45 @@ class NewPasswordController extends AuthController
                     ? redirect()->route('login')->with('status', __($status))
                     : back()->withInput($request->only('email'))
                             ->withErrors(['email' => __($status)]);
+    }
+
+    public function resetPasswordWithPhone()
+    {
+//        Auth::login($user_verify);
+//        $user_verify->notify( new LoginToWebsiteNotification());
+        session()->reflash();
+        return view('auth.reset-password.reset');
+    }
+
+    public function storePassword(Request $request)
+    {
+//            $request->validate([
+//                'password' => ['required', 'confirmed', Rules\Password::defaults()]
+//            ]);
+//        dd($request->password);
+                $validator = Validator::make($request->all(), [
+                    'password' => ['required', 'confirmed', Rules\Password::defaults()]
+                ]);
+
+        if ($validator->fails()) {
+            session()->reflash();
+            return back()
+                ->withErrors($validator)
+                ->withInput();
+        }
+            $user = User::findorFail($request->session()->get('sms.user_id'));
+            $user->forceFill([
+                'password' => $request->password,
+                'remember_token' => Str::random(60),
+            ])->save();
+            event(new PasswordReset($user));
+            Alert::toast('رمز عبورشما با موفقیت ویرایش شد','success');
+//            session()->reflash();
+            return redirect()->route('login');
+
+
+
+
+
     }
 }

@@ -46,8 +46,18 @@ Route::middleware('guest')->group(function () {
     Route::get('enter-password', [AuthenticatedSessionController::class, 'enterPassword'])
         ->name('enterPassword');
 
+    // ویرایش نام و نام خانوادگی بعد از ثبت نام
     Route::get('set-information/{user}',[AuthenticatedSessionController::class,'setInformation'])->name('setInformation');
     Route::post('siar/{user}',[AuthenticatedSessionController::class,'setInformationAfterRegister'])->name('setInformationAfterRegister');
+    // ربیست کردن پسور با شماره تلفن همراه
+    Route::post('resetPasswordPhone', [PasswordResetLinkController::class, 'storePhone'])->name('resetWithPhone');
+    Route::get('/auth/resetPasswordToken',[PasswordResetLinkController::class,'SmsTokenCreate'])->name('resetPassword.token');
+    Route::post('/auth/resetPasswordToken',[PasswordResetLinkController::class,'SmsVerifyToken']);
+    Route::get('rp', [NewPasswordController::class, 'resetPasswordWithPhone'])
+        ->name('resetPasswordWithPhone');
+    Route::post('rp', [NewPasswordController::class, 'storePassword'])
+        ->name('updatePasswordWithPhone');
+
 });
 
 Route::middleware('auth')->group(function () {

@@ -83,6 +83,9 @@ class User extends Authenticatable implements MustVerifyEmail
     public function activeCode(){
         return $this->hasMany(ActiveCode::class);
     }
+    public function resetToken(){
+        return $this->hasMany(ResetToken::class);
+    }
     public function hasTwoFactoryAuthenticaredEnabaled(){
             return $this->two_factor_type !== 'off';
     }
