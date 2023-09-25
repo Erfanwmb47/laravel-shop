@@ -11,6 +11,8 @@ use App\Models\Profile;
 use App\Models\Province;
 use App\Models\User;
 use App\Notifications\ActiveCodeNotification;
+use App\Providers\RouteServiceProvider;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -262,6 +264,24 @@ class ProfileController extends ClientController
         ]);
 
         return response(['success' => 'با موفقیت ویرایش شد ']) ;
+    }
+
+    public function setEmail(Request $request)
+    {
+        $validated = $request->validate([
+            'email' => 'required'
+        ]);
+        $user = auth()->user()->update([
+            'email' => $request->email
+        ]);
+//        event(new Registered($user));
+        if ($request->user()->hasVerifiedEmail()) {
+            return redirect()->intended(RouteServiceProvider::HOME);
+        }
+
+        $request->user()->sendEmailVerificationNotification();
+        Alert::toast('ایمیل جهت تایید برایی شما فرستاده شده است ', 'success');
+        return back()->with('status', 'verification-link-sent');
     }
 
 }

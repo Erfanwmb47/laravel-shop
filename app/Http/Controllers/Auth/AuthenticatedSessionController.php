@@ -273,7 +273,6 @@ class AuthenticatedSessionController extends AuthController
 
     public function enterPassword()
     {
-//        dd(session()->all());
         session()->reflash();
         return view('auth.enter-password');
     }

@@ -42,6 +42,7 @@
 
     <!-- Home Section Start -->
     <section class="home-section pt-2">
+
         <div class="container-fluid-lg ">
             <div class="row g-4">
                 <div class="col-xl-9 col-lg-8 ">

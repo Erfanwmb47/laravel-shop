@@ -101,8 +101,13 @@ class NewPasswordController extends AuthController
             event(new PasswordReset($user));
             Alert::toast('رمز عبورشما با موفقیت ویرایش شد','success');
 //            session()->reflash();
-            return redirect()->route('login');
 
+        if(Auth::check()){
+            return redirect()->route('home');
+        }
+        else{
+            return redirect()->route('login');
+        }
 
 
 

@@ -44,6 +44,7 @@ Route::domain($domain)->middleware('auth')->group(function (){
         Route::get('/edit', [ProfileController::class, 'edit'])->name('profile.edit');
         Route::patch('{user}', [ProfileController::class, 'update'])->name('profile.update');
         Route::post('/setusername/{user}', [ProfileController::class, 'setUsername'])->name('profile.setUsername');
+        Route::post('/setemail/{user}', [ProfileController::class, 'setEmail'])->name('profile.setEmail');
 
         Route::get('wishlist',[WishlistController::class,'index']);
         Route::post('wishlist',[WishlistController::class,'index'])->name('profile.wishlist.index');

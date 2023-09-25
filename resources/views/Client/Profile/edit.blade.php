@@ -55,6 +55,56 @@
                         </div>
                         <!-- Edit Profile End -->
                     @endif
+                    @if(!$user->email)
+                        <div class="bg-danger text-white w-100 h-25 p-4 rounded rounded-3 mb-4 flex-space-between">
+                            <h6>شما هنوز برای خود ایمیل ثبت نکرده اید </h6>
+                            <a  href="javascript:;" data-bs-toggle="modal" id="setUsernameBtn"
+                                data-bs-target="#editEmail">تنظیم ایمیل</a>
+                        </div>
+                        <!-- Edit Profile Start -->
+                        <div class="modal fade theme-modal" id="editEmail" tabindex="-1" aria-labelledby="exampleModalLabel2"
+                             aria-hidden="true">
+                            <div class="modal-dialog modal-sm modal-dialog-centered modal-fullscreen-sm-down">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel2">ایمیل شما</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                                            <i class="fa-solid fa-xmark"></i>
+                                        </button>
+                                    </div>
+                                    <form action="{{route('profile.setEmail',$user)}}" id="setUsernameForm" method="post">
+                                        @csrf
+                                        <div class="modal-body">
+                                            <div class="row g-4">
+                                                <div class="col-xxl-12">
+                                                    <div class="form-floating theme-form-floating">
+                                                        <input name="email" type="text" class="form-control" id="email1" value="">
+                                                        <label for="email1">ایمیل</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-animation btn-md fw-bold"
+                                                    data-bs-dismiss="modal">انصراف</button>
+                                            <button type="submit" data-bs-dismiss="modal"
+                                                    class="btn theme-bg-color btn-md fw-bold text-light" id="">ذخیره</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Edit Profile End -->
+                    @endif
+                    @if($user->email && !$user->hasVerifiedEmail())
+                        <div class="bg-danger text-white w-100 h-25 p-4 rounded rounded-3 mb-4 flex-space-between">
+                            <h6>شما هنوز ایمیل خود را تایید نکرده اید</h6>
+                            <form method="POST" action="{{ route('verification.send') }}">
+                                @csrf
+                            <a  href="javascript:;">ارسال تاییدیه</a>
+                            </form>
+                        </div>
+                    @endif
                     <div class="profile-detail dashboard-bg-box">
                         <div class="dashboard-title">
                             @if(isset($user->username))<h3>{{$user->username}}</h3>  @endif
@@ -144,9 +194,17 @@
                                         <tr>
                                             <td>رمز عبور :</td>
                                             <td>
-                                                <a href="javascript:void(0)">●●●●●●
-                                                    <span data-bs-toggle="modal"
-                                                          data-bs-target="#editProfile">ویرایش</span></a>
+                                                <form method="POST" action="{{route('resetWithPhone') }}">
+                                                    @csrf
+                                                    <input name="phone" type="hidden" value="{{$user->phone}}" readonly>
+                                                    <button class="btn" type="submit">
+                                                    <a href="javascript:void(0)">
+                                                            ●●●●●●
+                                                                <span>ویرایش</span>
+                                                        </a>
+                                                    </button>
+                                                </form>
+
                                             </td>
                                         </tr>
                                         </tbody>
